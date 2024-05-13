@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 abstract class CustomColors {
+  CustomColors._();
   static const Color vividGreen49 = Color(0xFF9DD549);
   static const Color vividGreen5A = Color(0xFF9DCD5A);
   static const Color vividGreen25 = Color(0xFF85C525);
