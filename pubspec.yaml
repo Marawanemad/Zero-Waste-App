@@ -101,3 +101,10 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
+
+flutter_assets:
+  assets_path: assets/images/onboarding/
+  output_path: lib/shared/
+  filename: assets.dart
+  field_prefix:
