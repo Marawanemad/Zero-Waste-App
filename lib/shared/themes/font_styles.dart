@@ -1,22 +1,121 @@
 import 'package:flutter/material.dart';
+import 'package:zerowasteapp/shared/themes/colors.dart';
 
-abstract class CustomFontStyle {
-  static const Color vividGreen49 = Color(0xFF9DD549);
-  static const Color vividGreen5A = Color(0xFF9DCD5A);
-  static const Color vividGreen25 = Color(0xFF85C525);
-  static const Color darkGreen28 = Color(0xFF437028);
-  static const Color liteGreenF1 = Color(0xFFF9FFF1);
-  static const Color liteGrayF3 = Color(0xFFF3F3F3);
-  static const Color liteGrayF7 = Color(0xFFF2F4F7);
-  static const Color grey89 = Color(0xFF868889);
-  static const Color grey85 = Color(0xFF667085);
-  static const Color grey61 = Color(0xFF666161);
-  static const Color grey9C = Color(0xFF848A9C);
-  static const Color grey73 = Color(0xFF737373);
-  static const Color darkGrey73 = Color(0xFF434141);
-  static const Color black19 = Color(0xFF030319);
-  static const Color red05 = Color(0xFFFC0005);
-  static const Color orange4A = Color(0xFFFFA84A);
+abstract class CustomTextStyle {
+  static const TextStyle semiBold14 = TextStyle(
+    fontFamily: "Outfit",
+    fontSize: 14,
+    fontWeight: FontWeight.w600,
+    color: CustomColors.grey85,
+  );
+  static const TextStyle regular12 = TextStyle(
+    fontFamily: "Outfit",
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    color: CustomColors.grey61,
+  );
+  static const TextStyle bold10 = TextStyle(
+    fontFamily: "Outfit",
+    fontSize: 10,
+    fontWeight: FontWeight.w700,
+    color: CustomColors.darkGreen28,
+  );
 
-  
+  static const TextStyle medium14 = TextStyle(
+    fontFamily: "Outfit",
+    fontSize: 14,
+    fontWeight: FontWeight.w500,
+    color: CustomColors.grey61,
+  );
+
+  static const TextStyle bold12 = TextStyle(
+    fontFamily: "Outfit",
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+    color: CustomColors.darkGreen28,
+  );
+  static const TextStyle extraBold24 = TextStyle(
+    fontFamily: "Outfit",
+    fontSize: 24,
+    fontWeight: FontWeight.w800,
+    color: CustomColors.liteGreenF1,
+  );
+  static const TextStyle extraBold16 = TextStyle(
+    fontFamily: "Outfit",
+    fontSize: 16,
+    fontWeight: FontWeight.w800,
+    color: Colors.black,
+  );
+  static const TextStyle bold20 = TextStyle(
+    fontFamily: "Outfit",
+    fontSize: 20,
+    fontWeight: FontWeight.w700,
+    color: CustomColors.vividGreen5A,
+  );
+  static const TextStyle semiBold8 = TextStyle(
+    fontFamily: "Outfit",
+    fontSize: 8,
+    fontWeight: FontWeight.w600,
+    color: Colors.black,
+  );
+  static const TextStyle medium18 = TextStyle(
+    fontFamily: "Outfit",
+    fontSize: 18,
+    fontWeight: FontWeight.w500,
+    color: Colors.black,
+  );
+  static const TextStyle semiBold20 = TextStyle(
+    fontFamily: "Outfit",
+    fontSize: 20,
+    fontWeight: FontWeight.w600,
+    color: Color(0xFF2C2C63),
+  );
+  static const TextStyle medium16 = TextStyle(
+    fontFamily: "Outfit",
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
+  static const TextStyle semiBold12 = TextStyle(
+    fontFamily: "Outfit",
+    fontSize: 12,
+    fontWeight: FontWeight.w600,
+    color: Colors.black,
+  );
+  static const TextStyle bold22 = TextStyle(
+    fontFamily: "Outfit",
+    fontSize: 22,
+    fontWeight: FontWeight.w700,
+    color: Colors.white,
+  );
+  static const TextStyle medium10 = TextStyle(
+    fontFamily: "Outfit",
+    fontSize: 10,
+    fontWeight: FontWeight.w500,
+    color: Colors.white,
+  );
+  static const TextStyle semiBold11 = TextStyle(
+    fontFamily: "Outfit",
+    fontSize: 11,
+    fontWeight: FontWeight.w600,
+    color: Colors.white,
+  );
+  static const TextStyle bold16 = TextStyle(
+    fontFamily: "Outfit",
+    fontSize: 16,
+    fontWeight: FontWeight.w700,
+    color: CustomColors.darkGreen28,
+  );
+  static const TextStyle bold34 = TextStyle(
+    fontFamily: "Outfit",
+    fontSize: 34,
+    fontWeight: FontWeight.w700,
+    color: Colors.black,
+  );
+  static const TextStyle bold14 = TextStyle(
+    fontFamily: "Outfit",
+    fontSize: 14,
+    fontWeight: FontWeight.w700,
+    color: Color(0xff555252),
+  );
 }
