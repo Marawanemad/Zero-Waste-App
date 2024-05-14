@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:zerowasteapp/shared/assets.dart';
 import 'package:zerowasteapp/shared/extensions/context_width_extension.dart';
@@ -83,14 +84,19 @@ class _OnBoardingState extends State<OnBoarding> {
                 itemCount: boarding.length,
               ),
             ),
-            const DefaultBigButton(),
+            DefaultGreenButton(
+              boardController: boardController,
+              isLast: isLast,
+            ),
             const SizedBox(height: 42),
             SmoothPageIndicator(
               controller: boardController,
               count: boarding.length,
               effect: const ExpandingDotsEffect(
                 activeDotColor: CustomColors.vividGreen49,
+                dotColor: Color(0xFFD9D9D9),
                 dotHeight: 6,
+                dotWidth: 13,
                 expansionFactor: 5,
                 radius: 18,
               ),
@@ -141,21 +147,46 @@ class OnBoardingItemWidget extends StatelessWidget {
   }
 }
 
-class DefaultBigButton extends StatelessWidget {
-  const DefaultBigButton({super.key});
+class DefaultGreenButton extends StatelessWidget {
+  DefaultGreenButton(
+      {super.key, required this.isLast, required this.boardController});
+  bool isLast;
+  var boardController;
 
   @override
   Widget build(BuildContext context) {
     return MaterialButton(
-      onPressed: () {},
+      onPressed: () {
+        if (isLast) {
+          // endOnBoarding();
+        } else {
+          boardController.nextPage(
+            duration: const Duration(milliseconds: 750),
+            curve: Curves.easeInToLinear,
+          );
+        }
+      },
       color: CustomColors.vividGreen49,
       elevation: 0,
       shape: ContinuousRectangleBorder(
         borderRadius: BorderRadius.circular(15),
       ),
-      child: Text(
-        "Next",
-        style: CustomTextStyle.bold20.copyWith(color: Colors.white),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 44, vertical: 13),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              "Next",
+              style: CustomTextStyle.bold20.copyWith(color: Colors.white),
+            ),
+            const SizedBox(width: 10),
+            SvgPicture.asset(
+              Assets.iconsArrow,
+              height: 15.0.getResponsiveFontSize(context),
+            ),
+          ],
+        ),
       ),
     );
   }

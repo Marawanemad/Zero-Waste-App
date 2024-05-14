@@ -35,6 +35,7 @@ flutter:
 
   assets:
     - assets/images/onboarding/
+    - assets/icons/
 
 
 fonts:
@@ -59,8 +60,14 @@ fonts:
       - asset: assets/fonts/Outfit/Outfit-Thin.ttf
         weight: 100
 
+# flutter_assets:
+#   assets_path: assets/images/onboarding/
+#   output_path: lib/shared/
+#   filename: assets.dart
+#   field_prefix:
+
 flutter_assets:
-  assets_path: assets/images/onboarding/
+  assets_path: assets/
   output_path: lib/shared/
   filename: assets.dart
   field_prefix:
