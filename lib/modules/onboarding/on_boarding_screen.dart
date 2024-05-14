@@ -1,122 +1,162 @@
-// import 'package:flutter/material.dart';
-// import 'package:shop_app/modules/login/login_screen.dart';
-// import 'package:shop_app/shared/network/local/cache_helper.dart';
-// import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:zerowasteapp/shared/assets.dart';
+import 'package:zerowasteapp/shared/extensions/context_width_extension.dart';
+import 'package:zerowasteapp/shared/themes/colors.dart';
+import 'package:zerowasteapp/shared/themes/font_styles.dart';
 
-// import '../../shared/components/components.dart';
-// import '../../shared/components/functions.dart';
-// import '../../styles/colors.dart';
+class BoardingModel {
+  final String image;
+  final String title;
+  final String? body;
+  BoardingModel({
+    required this.image,
+    required this.title,
+    required this.body,
+  });
+}
 
-// class BoardingModel {
-//   final String image;
-//   final String title;
-//   final String body;
-//   BoardingModel({
-//     required this.image,
-//     required this.title,
-//     required this.body,
-//   });
-// }
+class OnBoarding extends StatefulWidget {
+  const OnBoarding({super.key});
 
-// class OnBoarding extends StatefulWidget {
-//   const OnBoarding({super.key});
+  @override
+  State<OnBoarding> createState() => _OnBoardingState();
+}
 
-//   @override
-//   State<OnBoarding> createState() => _OnBoardingState();
-// }
+class _OnBoardingState extends State<OnBoarding> {
+  final List<BoardingModel> boarding = [
+    BoardingModel(
+      image: Assets.imagesOnboardingOnboarding1,
+      title: "Recycle",
+      body: "Your Trash",
+    ),
+    BoardingModel(
+      image: Assets.imagesOnboardingOnboarding2,
+      title: "on board 2 title",
+      body: "on board 2 body",
+    ),
+    BoardingModel(
+      image: Assets.imagesOnboardingOnboarding3,
+      title: "on board 3 title",
+      body: "on board 3 body",
+    ),
+  ];
+  void endOnBoarding() {
+    // navigateToWithReplacement(context, LoginScreen());
+    // CacheHelper.setData(key: 'onBoarding', value: true);
+  }
 
-// class _OnBoardingState extends State<OnBoarding> {
-//   final List<BoardingModel> boarding = [
-//     BoardingModel(
-//       image: "assets/images/onboard_1.jpeg",
-//       title: "Brows awesome  products",
-//       body: "Best prices ever !",
-//     ),
-//     BoardingModel(
-//       image: "assets/images/onboard_1.jpeg",
-//       title: "on board 2 title",
-//       body: "on board 2 body",
-//     ),
-//     BoardingModel(
-//       image: "assets/images/onboard_1.jpeg",
-//       title: "on board 3 title",
-//       body: "on board 3 body",
-//     ),
-//   ];
-//   void endOnBoarding() {
-//     navigateToWithReplacement(context, LoginScreen());
-//     CacheHelper.setData(key: 'onBoarding', value: true);
-//   }
+  final PageController boardController = PageController();
+  bool isLast = false;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: CustomColors.liteGreenF1,
+      appBar: AppBar(
+        actions: [
+          TextButton(
+            onPressed: () => endOnBoarding(),
+            child: const Text("Skip"),
+          )
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 40),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(height: 60),
 
-//   final PageController boardController = PageController();
-//   bool isLast = false;
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         actions: [
-//           TextButton(
-//               onPressed: () {
-//                 endOnBoarding();
-//               },
-//               child: const Text("Skip"))
-//         ],
-//       ),
-//       body: Padding(
-//         padding: const EdgeInsets.all(30.0),
-//         child: Column(
-//           children: [
-//             Expanded(
-//               child: PageView.builder(
-//                 onPageChanged: (int index) {
-//                   if (index == boarding.length - 1) {
-//                     isLast = true;
-//                   } else {
-//                     isLast = false;
-//                   }
-//                 },
-//                 controller: boardController,
-//                 physics: const BouncingScrollPhysics(),
-//                 itemBuilder: (context, index) =>
-//                     buildBoardingItem(boarding[index]),
-//                 itemCount: boarding.length,
-//               ),
-//             ),
-//             Row(
-//               children: [
-//                 SmoothPageIndicator(
-//                   controller: boardController,
-//                   count: boarding.length,
-//                   effect: const WormEffect(
-//                     activeDotColor: primaryColor,
-//                     dotHeight: 10,
-//                     dotWidth: 10,
-//                     spacing: 5,
-//                     type: WormType.thin,
-//                   ),
-//                 ),
-//                 const Spacer(),
-//                 FloatingActionButton(
-//                   onPressed: () {
-//                     if (isLast) {
-//                       endOnBoarding();
-//                     } else {
-//                       boardController.nextPage(
-//                         duration: const Duration(milliseconds: 750),
-//                         curve: Curves.easeInToLinear,
-//                       );
-//                     }
-//                   },
-//                   child: const Icon(
-//                     Icons.arrow_forward_ios,
-//                     color: Colors.white,
-//                   ),
-//                 )
-//               ],
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
+            Expanded(
+              child: PageView.builder(
+                onPageChanged: (int index) {
+                  if (index == boarding.length - 1) {
+                    isLast = true;
+                  } else {
+                    isLast = false;
+                  }
+                },
+                controller: boardController,
+                physics: const BouncingScrollPhysics(),
+                itemBuilder: (context, index) =>
+                    OnBoardingItemWidget(model: boarding[index]),
+                itemCount: boarding.length,
+              ),
+            ),
+            const DefaultBigButton(),
+            const SizedBox(height: 42),
+            SmoothPageIndicator(
+              controller: boardController,
+              count: boarding.length,
+              effect: const ExpandingDotsEffect(
+                activeDotColor: CustomColors.vividGreen49,
+                dotHeight: 6,
+                expansionFactor: 5,
+                radius: 18,
+              ),
+            ),
+            // FloatingActionButton(
+            //   onPressed: () {
+            //     if (isLast) {
+            //       endOnBoarding();
+            //     } else {
+            //       boardController.nextPage(
+            //         duration: const Duration(milliseconds: 750),
+            //         curve: Curves.easeInToLinear,
+            //       );
+            //     }
+            //   },
+            //   child: const Icon(
+            //     Icons.arrow_forward_ios,
+            //     color: Colors.white,
+            //   ),
+            // ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class OnBoardingItemWidget extends StatelessWidget {
+  const OnBoardingItemWidget({
+    super.key,
+    required this.model,
+  });
+
+  final BoardingModel model;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Image.asset(model.image),
+        const SizedBox(height: 80.0),
+        Text(model.title, style: CustomTextStyle.bold32.responsive(context)),
+        const SizedBox(height: 10),
+        Text(model.body!, style: CustomTextStyle.thin24.responsive(context)),
+      ],
+    );
+  }
+}
+
+class DefaultBigButton extends StatelessWidget {
+  const DefaultBigButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialButton(
+      onPressed: () {},
+      color: CustomColors.vividGreen49,
+      elevation: 0,
+      shape: ContinuousRectangleBorder(
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Text(
+        "Next",
+        style: CustomTextStyle.bold20.copyWith(color: Colors.white),
+      ),
+    );
+  }
+}
