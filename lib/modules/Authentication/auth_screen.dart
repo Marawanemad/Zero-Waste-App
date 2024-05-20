@@ -1,7 +1,7 @@
 // import 'package:flutter/material.dart';
-// import 'package:zerowasteapp/shared/assets.dart';
-// import 'package:zerowasteapp/shared/themes/colors.dart';
-// import 'package:zerowasteapp/shared/themes/font_styles.dart';
+// import 'package:zero_waste_app/shared/assets.dart';
+// import 'package:zero_waste_app/shared/themes/colors.dart';
+// import 'package:zero_waste_app/shared/themes/font_styles.dart';
 
 // class AuthScreen extends StatefulWidget {
 //   const AuthScreen({super.key});
@@ -138,10 +138,10 @@
 // }
 
 import 'package:flutter/material.dart';
-import 'package:zerowasteapp/shared/assets.dart';
-import 'package:zerowasteapp/shared/extensions/context_width_extension.dart';
-import 'package:zerowasteapp/shared/themes/colors.dart';
-import 'package:zerowasteapp/shared/themes/font_styles.dart';
+import 'package:zero_waste_app/shared/assets.dart';
+import 'package:zero_waste_app/shared/extensions/context_width_extension.dart';
+import 'package:zero_waste_app/shared/themes/colors.dart';
+import 'package:zero_waste_app/shared/themes/font_styles.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
