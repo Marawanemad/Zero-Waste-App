@@ -20,7 +20,8 @@ dependencies:
   device_preview: ^1.1.0
   carousel_slider: ^4.2.1
   flutter_svg: ^2.0.9
-
+  icons_plus: ^5.0.0
+  
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2

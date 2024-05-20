@@ -61,7 +61,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 width: double.infinity,
               ),
             ),
-            SizedBox(height: 25),
+            SizedBox(height: 20),
             // Text with many colors
             Text.rich(
               textAlign: TextAlign.center,
@@ -81,18 +81,18 @@ class _AuthScreenState extends State<AuthScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 25),
+            SizedBox(height: 10),
             Text(
               "You are on the right path\n to change your behavior...and earn money",
               textAlign: TextAlign.center,
               style: CustomTextStyle.regular12.copyWith(color: Colors.black),
             ),
-            Spacer(),
+            Spacer(flex: 2),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 50),
               child: Card(
                 color: Colors.white.withOpacity(0),
-                elevation: 5,
+                elevation: 7,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -110,7 +110,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       button_text: Text(
                         "Register",
                         style: CustomTextStyle.bold16
-                            .copyWith(color: CustomColors.darkgrey52),
+                            .copyWith(color: CustomColors.darkGrey52),
                       ),
                       lift_radius: false,
                     ),
@@ -118,30 +118,33 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
               ),
             ),
-            Spacer(),
+            SizedBox(height: 40),
             // Text with many colors
-            Text.rich(
-              textAlign: TextAlign.center,
-              TextSpan(
-                children: [
-                  TextSpan(
-                    text: "By logging in or registering, you agree to our\n",
-                    style: CustomTextStyle.bold10
-                        .copyWith(color: CustomColors.vividGreen5A),
-                  ),
-                  TextSpan(
-                      text: "Terms of Service", style: CustomTextStyle.bold10),
-                  TextSpan(
-                    text: " and ",
-                    style: CustomTextStyle.bold10
-                        .copyWith(color: CustomColors.vividGreen5A),
-                  ),
-                  TextSpan(
-                      text: "Privacy Policy", style: CustomTextStyle.bold10),
-                ],
+            Expanded(
+              flex: 1,
+              child: Text.rich(
+                textAlign: TextAlign.center,
+                TextSpan(
+                  children: [
+                    TextSpan(
+                      text: "By logging in or registering, you agree to our\n",
+                      style: CustomTextStyle.bold10
+                          .copyWith(color: CustomColors.vividGreen5A),
+                    ),
+                    TextSpan(
+                        text: "Terms of Service",
+                        style: CustomTextStyle.bold10),
+                    TextSpan(
+                      text: " and ",
+                      style: CustomTextStyle.bold10
+                          .copyWith(color: CustomColors.vividGreen5A),
+                    ),
+                    TextSpan(
+                        text: "Privacy Policy", style: CustomTextStyle.bold10),
+                  ],
+                ),
               ),
             ),
-            SizedBox(height: 25),
           ],
         ),
       ),
@@ -156,6 +159,9 @@ Widget authButton({
 }) {
   return Expanded(
     child: InkWell(
+      borderRadius: BorderRadius.horizontal(
+          left: lift_radius ? Radius.circular(20) : Radius.zero,
+          right: lift_radius ? Radius.zero : Radius.circular(20)),
       onTap: () {},
       child: Container(
         child: Center(child: button_text),

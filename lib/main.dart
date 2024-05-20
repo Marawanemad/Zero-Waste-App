@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zerowasteapp/bloc_observer.dart';
+import 'package:zerowasteapp/modules/authentication/login/login_screen.dart';
 import 'package:zerowasteapp/modules/onboarding/on_boarding_screen.dart';
 import 'package:zerowasteapp/shared/data/local/cache_helper.dart';
 import 'package:zerowasteapp/shared/data/online/dio_helper.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.greenAccent),
         useMaterial3: true,
       ),
-      home: const OnBoarding(),
+      home: LoginScreen(),
     );
   }
 }
