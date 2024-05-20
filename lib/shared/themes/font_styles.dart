@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zerowasteapp/shared/themes/colors.dart';
+import 'package:zero_waste_app/shared/themes/colors.dart';
 
 abstract class CustomTextStyle {
   static const TextStyle semiBold14 = TextStyle(
@@ -129,6 +129,7 @@ abstract class CustomTextStyle {
     fontSize: 24,
     fontWeight: FontWeight.w700,
     color: Colors.black,
+    letterSpacing: 3.6,
   );
   static const TextStyle bold14 = TextStyle(
     fontFamily: "Outfit",

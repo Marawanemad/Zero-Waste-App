@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:zerowasteapp/shared/assets.dart';
-import 'package:zerowasteapp/shared/themes/colors.dart';
-import 'package:zerowasteapp/shared/themes/font_styles.dart';
+import 'package:zero_waste_app/shared/assets.dart';
+import 'package:zero_waste_app/shared/themes/colors.dart';
+import 'package:zero_waste_app/shared/themes/font_styles.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
@@ -21,7 +21,7 @@ class _AuthScreenState extends State<AuthScreen> {
 
   // to change the opacity when the screen start
   void _fadeInWidgets() {
-    Future.delayed(Duration(milliseconds: 800), () {
+    Future.delayed(const Duration(milliseconds: 800), () {
       setState(() {
         _imageOpacity = 1.0;
       });
@@ -38,13 +38,13 @@ class _AuthScreenState extends State<AuthScreen> {
       // make animation in the page
       body: AnimatedOpacity(
         opacity: _imageOpacity,
-        duration: Duration(seconds: 1),
+        duration: const Duration(seconds: 1),
         child: Column(
           children: [
             // Animated opacity for the image
             Container(
               width: double.infinity,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
@@ -56,12 +56,16 @@ class _AuthScreenState extends State<AuthScreen> {
                   bottomRight: Radius.circular(40),
                 ),
               ),
-              child: Image(
-                image: AssetImage(Assets.imagesAuthentication1),
+              child: const Image(
+                image: AssetImage(Assets.imagesAuthenticationAuthScreen),
                 width: double.infinity,
               ),
             ),
+<<<<<<< HEAD
             SizedBox(height: 20),
+=======
+            const SizedBox(height: 25),
+>>>>>>> 2f60f094f309108acfc56eb76ea5e0b4a53da024
             // Text with many colors
             Text.rich(
               textAlign: TextAlign.center,
@@ -81,13 +85,21 @@ class _AuthScreenState extends State<AuthScreen> {
                 ],
               ),
             ),
+<<<<<<< HEAD
             SizedBox(height: 10),
+=======
+            const SizedBox(height: 25),
+>>>>>>> 2f60f094f309108acfc56eb76ea5e0b4a53da024
             Text(
               "You are on the right path\n to change your behavior...and earn money",
               textAlign: TextAlign.center,
               style: CustomTextStyle.regular12.copyWith(color: Colors.black),
             ),
+<<<<<<< HEAD
             Spacer(flex: 2),
+=======
+            const Spacer(),
+>>>>>>> 2f60f094f309108acfc56eb76ea5e0b4a53da024
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 50),
               child: Card(
@@ -97,27 +109,28 @@ class _AuthScreenState extends State<AuthScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     authButton(
-                      button_color: CustomColors.vividGreen5A,
-                      button_text: Text(
+                      buttonColor: CustomColors.vividGreen5A,
+                      buttonText: Text(
                         "Sign in",
                         style: CustomTextStyle.bold16
                             .copyWith(color: Colors.white),
                       ),
-                      lift_radius: true,
+                      liftRadius: true,
                     ),
                     authButton(
-                      button_color: CustomColors.greyF3,
-                      button_text: Text(
+                      buttonColor: CustomColors.greyF3,
+                      buttonText: Text(
                         "Register",
                         style: CustomTextStyle.bold16
                             .copyWith(color: CustomColors.darkGrey52),
                       ),
-                      lift_radius: false,
+                      liftRadius: false,
                     ),
                   ],
                 ),
               ),
             ),
+<<<<<<< HEAD
             SizedBox(height: 40),
             // Text with many colors
             Expanded(
@@ -145,6 +158,32 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
               ),
             ),
+=======
+            const Spacer(),
+            // Text with many colors
+            Text.rich(
+              textAlign: TextAlign.center,
+              TextSpan(
+                children: [
+                  TextSpan(
+                    text: "By logging in or registering, you agree to our\n",
+                    style: CustomTextStyle.bold10
+                        .copyWith(color: CustomColors.vividGreen5A),
+                  ),
+                  const TextSpan(
+                      text: "Terms of Service", style: CustomTextStyle.bold10),
+                  TextSpan(
+                    text: " and ",
+                    style: CustomTextStyle.bold10
+                        .copyWith(color: CustomColors.vividGreen5A),
+                  ),
+                  const TextSpan(
+                      text: "Privacy Policy", style: CustomTextStyle.bold10),
+                ],
+              ),
+            ),
+            const SizedBox(height: 25),
+>>>>>>> 2f60f094f309108acfc56eb76ea5e0b4a53da024
           ],
         ),
       ),
@@ -153,9 +192,9 @@ class _AuthScreenState extends State<AuthScreen> {
 }
 
 Widget authButton({
-  required Text button_text,
-  required Color button_color,
-  required bool lift_radius,
+  required Text buttonText,
+  required Color buttonColor,
+  required bool liftRadius,
 }) {
   return Expanded(
     child: InkWell(
@@ -164,15 +203,15 @@ Widget authButton({
           right: lift_radius ? Radius.zero : Radius.circular(20)),
       onTap: () {},
       child: Container(
-        child: Center(child: button_text),
         height: 47.0,
         decoration: BoxDecoration(
-          color: button_color,
+          color: buttonColor,
           borderRadius: BorderRadius.horizontal(
-            left: lift_radius ? Radius.circular(20) : Radius.zero,
-            right: lift_radius ? Radius.zero : Radius.circular(20),
+            left: liftRadius ? const Radius.circular(20) : Radius.zero,
+            right: liftRadius ? Radius.zero : const Radius.circular(20),
           ),
         ),
+        child: Center(child: buttonText),
       ),
     ),
   );

@@ -1,4 +1,4 @@
-name: zerowasteapp
+name: zero_waste_app
 description: A new Flutter project.
 
 publish_to: "none"
@@ -31,6 +31,7 @@ dev_dependencies:
     sdk: flutter
   # to declare package to change app icon 
   flutter_launcher_icons: "^0.13.1"
+  flutter_lints: ^4.0.0
 
 # to make icon change in android and IOS
 flutter_launcher_icons:
