@@ -53,14 +53,14 @@ class _OnBoardingState extends State<OnBoarding> {
                       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
-                          side: BorderSide(color: Colors.grey),
+                          side: const BorderSide(color: Colors.grey),
                         ),
                       ),
                     ),
                     onPressed: () => _endOnBoarding(),
-                    child: Row(
+                    child: const Row(
                       children: [
-                        const Text(
+                        Text(
                           "Skip",
                           style: CustomTextStyle.semiBold16,
                         ),
@@ -73,7 +73,7 @@ class _OnBoardingState extends State<OnBoarding> {
                     ),
                   ),
                 )
-              : SizedBox(),
+              : const SizedBox(),
         ],
       ),
       body: Padding(

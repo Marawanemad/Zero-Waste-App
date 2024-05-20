@@ -84,7 +84,7 @@
 //                     button_color: CustomColors.greyF3,
 //                     button_text: Text("Register",
 //                         style: CustomTextStyle.bold16
-//                             .copyWith(color: CustomColors.darkgrey52)),
+//                             .copyWith(color: CustomColors.darkGrey52)),
 //                     lift_radius: false)
 //               ]),
 //             ),
@@ -161,7 +161,7 @@ class _AuthScreenState extends State<AuthScreen> {
 
   // to change the opacity when the screen start
   void _fadeInWidgets() {
-    Future.delayed(Duration(milliseconds: 800), () {
+    Future.delayed(const Duration(milliseconds: 800), () {
       setState(() {
         _imageOpacity = 1.0;
       });
@@ -178,13 +178,13 @@ class _AuthScreenState extends State<AuthScreen> {
       // make animation in the page
       body: AnimatedOpacity(
         opacity: _imageOpacity,
-        duration: Duration(seconds: 1),
+        duration: const Duration(seconds: 1),
         child: Column(
           children: [
             // Animated opacity for the image
             Container(
               width: double.infinity,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
@@ -196,12 +196,12 @@ class _AuthScreenState extends State<AuthScreen> {
                   bottomRight: Radius.circular(40),
                 ),
               ),
-              child: Image(
+              child: const Image(
                 image: AssetImage(Assets.imagesAuthenticationAuthScreen),
                 width: double.infinity,
               ),
             ),
-            SizedBox(height: 25),
+            const SizedBox(height: 25),
             // Text with many colors
             Text.rich(
               textAlign: TextAlign.center,
@@ -225,7 +225,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 25),
+            const SizedBox(height: 25),
             Text(
               "You are on the right path\n to change your behavior...and earn money",
               textAlign: TextAlign.center,
@@ -233,7 +233,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   .copyWith(color: Colors.black)
                   .responsive(context),
             ),
-            Spacer(),
+            const Spacer(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 50),
               child: Card(
@@ -243,30 +243,30 @@ class _AuthScreenState extends State<AuthScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     authButton(
-                      button_color: CustomColors.vividGreen5A,
-                      button_text: Text(
+                      buttonColor: CustomColors.vividGreen5A,
+                      buttonText: Text(
                         "Sign in",
                         style: CustomTextStyle.bold16
                             .copyWith(color: Colors.white)
                             .responsive(context),
                       ),
-                      lift_radius: true,
+                      liftRadius: true,
                     ),
                     authButton(
-                      button_color: CustomColors.greyF3,
-                      button_text: Text(
+                      buttonColor: CustomColors.greyF3,
+                      buttonText: Text(
                         "Register",
                         style: CustomTextStyle.bold16
                             .copyWith(color: CustomColors.darkGrey52)
                             .responsive(context),
                       ),
-                      lift_radius: false,
+                      liftRadius: false,
                     ),
                   ],
                 ),
               ),
             ),
-            Spacer(),
+            const Spacer(),
             // Text with many colors
             Text.rich(
               textAlign: TextAlign.center,
@@ -277,7 +277,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     style: CustomTextStyle.bold10
                         .copyWith(color: CustomColors.vividGreen5A),
                   ),
-                  TextSpan(
+                  const TextSpan(
                     text: "Terms of Service",
                     style: CustomTextStyle.bold10,
                   ),
@@ -286,12 +286,12 @@ class _AuthScreenState extends State<AuthScreen> {
                     style: CustomTextStyle.bold10
                         .copyWith(color: CustomColors.vividGreen5A),
                   ),
-                  TextSpan(
+                  const TextSpan(
                       text: "Privacy Policy", style: CustomTextStyle.bold10),
                 ],
               ),
             ),
-            SizedBox(height: 25),
+            const SizedBox(height: 25),
           ],
         ),
       ),
@@ -300,23 +300,23 @@ class _AuthScreenState extends State<AuthScreen> {
 }
 
 Widget authButton({
-  required Text button_text,
-  required Color button_color,
-  required bool lift_radius,
+  required Text buttonText,
+  required Color buttonColor,
+  required bool liftRadius,
 }) {
   return Expanded(
     child: InkWell(
       onTap: () {},
       child: Container(
-        child: Center(child: button_text),
         height: 47.0,
         decoration: BoxDecoration(
-          color: button_color,
+          color: buttonColor,
           borderRadius: BorderRadius.horizontal(
-            left: lift_radius ? Radius.circular(20) : Radius.zero,
-            right: lift_radius ? Radius.zero : Radius.circular(20),
+            left: liftRadius ? const Radius.circular(20) : Radius.zero,
+            right: liftRadius ? Radius.zero : const Radius.circular(20),
           ),
         ),
+        child: Center(child: buttonText),
       ),
     ),
   );

@@ -5,7 +5,7 @@ import 'package:zerowasteapp/shared/themes/colors.dart';
 import 'package:zerowasteapp/shared/themes/font_styles.dart';
 
 class DefaultGreenButton extends StatelessWidget {
-  DefaultGreenButton({
+  const DefaultGreenButton({
     super.key,
     required this.boardController,
     required this.text,
@@ -48,7 +48,7 @@ class DefaultGreenButton extends StatelessWidget {
                       height: 15.0.getResponsiveFontSize(context),
                     ),
                   )
-                : SizedBox(),
+                : const SizedBox(),
           ],
         ),
       ),
