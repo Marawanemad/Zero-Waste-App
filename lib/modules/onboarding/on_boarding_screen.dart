@@ -91,6 +91,7 @@ class _OnBoardingState extends State<OnBoarding> {
                   } else {
                     isLast = false;
                   }
+                  isLast = index == (boarding.length - 1);
                 },
                 controller: boardController,
                 physics: const BouncingScrollPhysics(),
