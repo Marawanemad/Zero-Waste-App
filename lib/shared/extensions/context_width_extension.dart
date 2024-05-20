@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zero_waste_app/shared/helpers/responsive_helper.dart';
+import 'package:zerowasteapp/shared/helpers/responsive_helper.dart';
 
 extension MediaQueyHelper on BuildContext {
   double get width => MediaQuery.sizeOf(this).width;

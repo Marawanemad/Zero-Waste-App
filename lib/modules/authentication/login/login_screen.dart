@@ -145,13 +145,7 @@ class LoginScreen extends StatelessWidget {
                   FontAwesome.facebook_f_brand,
                   size: 20,
                   color: Colors.white,
-                )
-                // FaIcon(
-                //   FontAwesomeIcons.facebookF,
-                //   size: 20,
-                //   color: Colors.white,
-                // ),
-                ),
+                )),
             // Spacer()
           ],
         ),
