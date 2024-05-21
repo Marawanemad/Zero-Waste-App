@@ -1,5 +1,7 @@
+// ignore_for_file: use_function_type_syntax_for_parameters
+
 import 'package:flutter/material.dart';
-import 'package:zerowasteapp/shared/themes/colors.dart';
+import 'package:zero_waste_app/shared/themes/colors.dart';
 
 // to make text form field to reuse it
 formField({
@@ -34,10 +36,10 @@ formField({
       // to make action when click on keyboard submit
       textInputAction: text_input_action,
       decoration: InputDecoration(
-          prefix: SizedBox(width: 10),
+          prefix: const SizedBox(width: 10),
           // text appear in box and when you pressed on it move to up and donot disappear
           labelText: labelText,
-          labelStyle: labelStyle ?? TextStyle(color: Colors.black),
+          labelStyle: labelStyle ?? const TextStyle(color: Colors.black),
           // word appear when presed on box and disappeared when user write
           hintText: hintText,
           hintStyle: hintStyle,
@@ -45,7 +47,7 @@ formField({
           prefixIcon: prefixicon,
           prefixIconColor: prefixIconColor ?? Colors.black,
           suffixIcon: Padding(
-            padding: padding ?? EdgeInsets.all(0),
+            padding: padding ?? const EdgeInsets.all(0),
             child: IconButton(
                 onPressed: suffixpressed,
                 icon: Icon(

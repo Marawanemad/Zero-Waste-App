@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:zerowasteapp/shared/assets.dart';
-import 'package:zerowasteapp/shared/themes/colors.dart';
-import 'package:zerowasteapp/shared/themes/font_styles.dart';
+import 'package:zero_waste_app/shared/assets.dart';
+import 'package:zero_waste_app/shared/themes/colors.dart';
+import 'package:zero_waste_app/shared/themes/font_styles.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
@@ -21,7 +21,7 @@ class _AuthScreenState extends State<AuthScreen> {
 
   // to change the opacity when the screen start
   void _fadeInWidgets() {
-    Future.delayed(Duration(milliseconds: 800), () {
+    Future.delayed(const Duration(milliseconds: 800), () {
       setState(() {
         _imageOpacity = 1.0;
       });
@@ -38,13 +38,13 @@ class _AuthScreenState extends State<AuthScreen> {
       // make animation in the page
       body: AnimatedOpacity(
         opacity: _imageOpacity,
-        duration: Duration(seconds: 1),
+        duration: const Duration(seconds: 1),
         child: Column(
           children: [
             // Animated opacity for the image
             Container(
               width: double.infinity,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
@@ -56,12 +56,12 @@ class _AuthScreenState extends State<AuthScreen> {
                   bottomRight: Radius.circular(40),
                 ),
               ),
-              child: Image(
+              child: const Image(
                 image: AssetImage(Assets.imagesAuthenticationAuthScreen),
                 width: double.infinity,
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             // Text with many colors
             Text.rich(
               textAlign: TextAlign.center,
@@ -81,13 +81,13 @@ class _AuthScreenState extends State<AuthScreen> {
                 ],
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               "You are on the right path\n to change your behavior...and earn money",
               textAlign: TextAlign.center,
               style: CustomTextStyle.regular12.copyWith(color: Colors.black),
             ),
-            Spacer(flex: 2),
+            const Spacer(flex: 2),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 50),
               child: Card(
@@ -118,7 +118,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 40),
+            const SizedBox(height: 40),
             // Text with many colors
             Expanded(
               flex: 1,
@@ -131,7 +131,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       style: CustomTextStyle.bold10
                           .copyWith(color: CustomColors.vividGreen5A),
                     ),
-                    TextSpan(
+                    const TextSpan(
                         text: "Terms of Service",
                         style: CustomTextStyle.bold10),
                     TextSpan(
@@ -139,7 +139,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       style: CustomTextStyle.bold10
                           .copyWith(color: CustomColors.vividGreen5A),
                     ),
-                    TextSpan(
+                    const TextSpan(
                         text: "Privacy Policy", style: CustomTextStyle.bold10),
                   ],
                 ),
@@ -153,26 +153,26 @@ class _AuthScreenState extends State<AuthScreen> {
 }
 
 Widget authButton({
-  required Text button_text,
-  required Color button_color,
-  required bool lift_radius,
+  required button_text,
+  required button_color,
+  required lift_radius,
 }) {
   return Expanded(
     child: InkWell(
       borderRadius: BorderRadius.horizontal(
-          left: lift_radius ? Radius.circular(20) : Radius.zero,
-          right: lift_radius ? Radius.zero : Radius.circular(20)),
+          left: lift_radius ? const Radius.circular(20) : Radius.zero,
+          right: lift_radius ? Radius.zero : const Radius.circular(20)),
       onTap: () {},
       child: Container(
-        child: Center(child: button_text),
         height: 47.0,
         decoration: BoxDecoration(
           color: button_color,
           borderRadius: BorderRadius.horizontal(
-            left: lift_radius ? Radius.circular(20) : Radius.zero,
-            right: lift_radius ? Radius.zero : Radius.circular(20),
+            left: lift_radius ? const Radius.circular(20) : Radius.zero,
+            right: lift_radius ? Radius.zero : const Radius.circular(20),
           ),
         ),
+        child: Center(child: button_text),
       ),
     ),
   );
