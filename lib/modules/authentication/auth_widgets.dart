@@ -97,7 +97,7 @@ Widget AuthFormField({
   required validiationMesseage,
 }) {
   return Card(
-    margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 20),
+    margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
     color: CustomColors.greyF3,
     elevation: 5,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),

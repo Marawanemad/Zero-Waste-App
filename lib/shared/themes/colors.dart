@@ -10,6 +10,7 @@ abstract class CustomColors {
   static const Color liteGreenF1 = Color(0xFFF9FFF1);
   static const Color liteGrayF3 = Color(0xFFF3F3F3);
   static const Color liteGrayF7 = Color(0xFFF2F4F7);
+  static const Color liteGrayCB = Color(0xFFD6F0CB);
   static const Color greyF3 = Color(0xFFF3F3F3);
   static const Color greyD8 = Color(0xFFD8D8D8);
   static const Color grey89 = Color(0xFF868889);

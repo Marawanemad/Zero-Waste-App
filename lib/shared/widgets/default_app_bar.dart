@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/widgets/navigator.dart';
 
-PreferredSizeWidget defaultAppBar(
-    {required context,
-    Widget? leading,
-    Widget? title,
-    List<Widget>? actionWidgetsList}) {
+PreferredSizeWidget defaultAppBar({
+  required context,
+  Widget? leading,
+  Widget? title,
+  List<Widget>? actionWidgetsList,
+  pageScreen,
+}) {
   return AppBar(
     elevation: 0,
     leading: leading ??
@@ -15,7 +17,9 @@ PreferredSizeWidget defaultAppBar(
           child: InkWell(
             borderRadius: BorderRadius.circular(10),
             onTap: () {
-              navigateBack(context: context);
+              pageScreen == null
+                  ? navigateBack(context: context)
+                  : navigateAndFinish(context: context, pageScreen: pageScreen);
             },
             child: Container(
               decoration: BoxDecoration(

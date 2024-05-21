@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
+import 'package:zero_waste_app/modules/authentication/auth_screen.dart';
 import 'package:zero_waste_app/modules/authentication/auth_widgets.dart';
+import 'package:zero_waste_app/modules/authentication/login/login_screen.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
 import 'package:zero_waste_app/shared/widgets/default_app_bar.dart';
+import 'package:zero_waste_app/shared/widgets/navigator.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -25,64 +28,73 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: defaultAppBar(context: context),
-      // use to make expanded with fixed height not infinity
-      body: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) =>
-            SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: ConstrainedBox(
-            constraints: BoxConstraints(minHeight: constraints.maxHeight),
-            child: IntrinsicHeight(
-              child: Column(
-                children: [
-                  Text("Register",
-                      style: CustomTextStyle.bold34
-                          .copyWith(color: CustomColors.darkGrey73)),
-                  const SizedBox(height: 30),
-                  Form(
-                    key: formKey,
-                    child: Column(
-                      children: [
-                        AuthFormField(
-                            controller: emailControler,
-                            keyboardtype: TextInputType.name,
-                            text_input_action: TextInputAction.next,
-                            hintText: "Name",
-                            validiationMesseage: "Name must not be empty"),
-                        AuthFormField(
-                            controller: emailControler,
-                            keyboardtype: TextInputType.emailAddress,
-                            text_input_action: TextInputAction.next,
-                            hintText: "Email",
-                            validiationMesseage: "Email must not be empty"),
-                        AuthFormField(
-                            controller: passwordControler,
-                            obscureText: true,
-                            keyboardtype: TextInputType.visiblePassword,
-                            text_input_action: TextInputAction.next,
-                            hintText: "Password",
-                            validiationMesseage: "Please enter your password"),
-                        AuthFormField(
-                            controller: passwordControler,
-                            obscureText: true,
-                            keyboardtype: TextInputType.visiblePassword,
-                            text_input_action: TextInputAction.done,
-                            hintText: "Confirm Password",
-                            validiationMesseage:
-                                "Please confirm your password"),
-                      ],
+    // use to access on back from mobile button
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) {
+        navigateAndFinish(context: context, pageScreen: const AuthScreen());
+      },
+      child: Scaffold(
+        appBar: defaultAppBar(context: context, pageScreen: const AuthScreen()),
+        // use to make expanded with fixed height not infinity
+        body: LayoutBuilder(
+          builder: (BuildContext context, BoxConstraints constraints) =>
+              SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: constraints.maxHeight),
+              child: IntrinsicHeight(
+                child: Column(
+                  children: [
+                    Text("Register",
+                        style: CustomTextStyle.bold34
+                            .copyWith(color: CustomColors.darkGrey73)),
+                    const SizedBox(height: 30),
+                    Form(
+                      key: formKey,
+                      child: Column(
+                        children: [
+                          AuthFormField(
+                              controller: nameControler,
+                              keyboardtype: TextInputType.name,
+                              text_input_action: TextInputAction.next,
+                              hintText: "Name",
+                              validiationMesseage: "Name must not be empty"),
+                          AuthFormField(
+                              controller: emailControler,
+                              keyboardtype: TextInputType.emailAddress,
+                              text_input_action: TextInputAction.next,
+                              hintText: "Email",
+                              validiationMesseage: "Email must not be empty"),
+                          AuthFormField(
+                              controller: passwordControler,
+                              obscureText: true,
+                              keyboardtype: TextInputType.visiblePassword,
+                              text_input_action: TextInputAction.next,
+                              hintText: "Password",
+                              validiationMesseage:
+                                  "Please enter your password"),
+                          AuthFormField(
+                              controller: confirmPasswordControler,
+                              obscureText: true,
+                              keyboardtype: TextInputType.visiblePassword,
+                              text_input_action: TextInputAction.done,
+                              hintText: "Confirm Password",
+                              validiationMesseage:
+                                  "Please confirm your password"),
+                        ],
+                      ),
                     ),
-                  ),
-                  const Spacer(flex: 3),
-                  AuthGreenButton(
-                      onPressed: () {
-                        if (formKey.currentState!.validate()) {}
-                      },
-                      text: "Create Account"),
-                  Authdivider(text: "Or Sign up With"),
-                  SocialLoginButton(
+                    const Spacer(flex: 3),
+                    AuthGreenButton(
+                        onPressed: () {
+                          if (formKey.currentState!.validate()) {
+                            Dialog(context: context);
+                          }
+                        },
+                        text: "Create Account"),
+                    Authdivider(text: "Or Sign up With"),
+                    SocialLoginButton(
                       // color: CustomColors.vividGreen5A,
                       text: Text(
                         textAlign: TextAlign.center,
@@ -93,8 +105,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       icon: Brand(
                         Brands.google,
                         size: 25,
-                      )),
-                  SocialLoginButton(
+                      ),
+                    ),
+                    SocialLoginButton(
                       color: const Color(0xFF1877F2),
                       text: Text(
                         textAlign: TextAlign.center,
@@ -106,9 +119,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         FontAwesome.facebook_f_brand,
                         size: 20,
                         color: Colors.white,
-                      )),
-                  const Spacer()
-                ],
+                      ),
+                    ),
+                    const Spacer()
+                  ],
+                ),
               ),
             ),
           ),
@@ -116,4 +131,54 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ),
     );
   }
+}
+
+void Dialog({required context}) {
+  showDialog(
+    barrierDismissible: false,
+    useRootNavigator: false,
+    context: context,
+    builder: (context) => PopScope(
+      // to stop return back from mobile button
+      canPop: false,
+      child: AlertDialog(
+        title: const Center(
+          child: Text(
+            "Sign Up Success",
+            style: CustomTextStyle.bold20,
+          ),
+        ),
+        content: const CircleAvatar(
+          radius: 60,
+          backgroundColor: CustomColors.vividGreen5A,
+          child: Icon(
+            FontAwesome.check_solid,
+            size: 75,
+            color: CustomColors.liteGrayCB,
+          ),
+        ),
+        actions: [
+          OutlinedButton(
+            onPressed: () {
+              navigateAndFinish(
+                  context: context, pageScreen: const LoginScreen());
+            },
+            style: OutlinedButton.styleFrom(
+              minimumSize: const Size.fromHeight(30),
+              maximumSize: const Size.fromWidth(double.infinity),
+              padding: const EdgeInsets.symmetric(vertical: 10),
+              side: const BorderSide(color: CustomColors.darkGreen28),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15)),
+            ),
+            child: Text(
+              "Sign In",
+              style: CustomTextStyle.bold20
+                  .copyWith(color: CustomColors.darkGreen28),
+            ),
+          )
+        ],
+      ),
+    ),
+  );
 }
