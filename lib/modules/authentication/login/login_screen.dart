@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:zero_waste_app/modules/authentication/auth_screen.dart';
 import 'package:zero_waste_app/modules/authentication/auth_widgets.dart';
+import 'package:zero_waste_app/modules/authentication/login/forget_password.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
 import 'package:zero_waste_app/shared/widgets/default_app_bar.dart';
@@ -67,6 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               text_input_action: TextInputAction.next,
                               hintText: "Username,Email&Phone Number",
                               validiationMesseage: "Email must not be empty"),
+                          const SizedBox(height: 10),
                           AuthFormField(
                               controller: passwordControler,
                               obscureText: true,
@@ -85,7 +87,11 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           const Spacer(),
                           InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                navigate(
+                                    context: context,
+                                    pageScreen: const ForgetPasswordScreen());
+                              },
                               child: Text(
                                 "Forgot Password ?",
                                 style: CustomTextStyle.regular12.copyWith(
