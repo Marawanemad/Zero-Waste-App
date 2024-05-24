@@ -25,7 +25,7 @@ Widget AuthGreenButton({required onPressed, required text}) {
   );
 }
 
-Widget Authdivider({required text}) {
+Widget AuthDivider({required text}) {
   return Expanded(
     flex: 4,
     child: Row(
@@ -91,10 +91,10 @@ Widget SocialLoginButton({Color? color, required icon, required Widget text}) {
 Widget AuthFormField({
   required hintText,
   bool? obscureText,
-  required keyboardtype,
+  required keyboardType,
   required text_input_action,
   required controller,
-  required validiationMesseage,
+  required validationMessage,
 }) {
   return Card(
     margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
@@ -105,15 +105,15 @@ Widget AuthFormField({
       padding: const EdgeInsets.only(left: 5),
       child: formField(
           controller: controller,
-          keyboardtype: keyboardtype,
+          keyboardType: keyboardType,
           text_input_action: text_input_action,
           obscureText: obscureText,
           FormBorderShape: InputBorder.none,
-          FoucsBorderShape: InputBorder.none,
+          focusBorderShape: InputBorder.none,
           hintText: hintText,
           hintStyle: CustomTextStyle.regular12
               .copyWith(color: CustomColors.grey61, fontSize: 16),
-          validiationMesseage: validiationMesseage),
+          validationMessage: validationMessage),
     ),
   );
 }

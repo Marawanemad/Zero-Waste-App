@@ -64,19 +64,18 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           AuthFormField(
                               controller: emailControler,
-                              keyboardtype: TextInputType.emailAddress,
+                              keyboardType: TextInputType.emailAddress,
                               text_input_action: TextInputAction.next,
                               hintText: "Username,Email&Phone Number",
-                              validiationMesseage: "Email must not be empty"),
+                              validationMessage: "Email must not be empty"),
                           const SizedBox(height: 10),
                           AuthFormField(
                               controller: passwordControler,
                               obscureText: true,
-                              keyboardtype: TextInputType.visiblePassword,
+                              keyboardType: TextInputType.visiblePassword,
                               text_input_action: TextInputAction.done,
                               hintText: "Password",
-                              validiationMesseage:
-                                  "Please enter your password"),
+                              validationMessage: "Please enter your password"),
                         ],
                       ),
                     ),
@@ -107,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           if (formKey.currentState!.validate()) {}
                         },
                         text: "Sign in"),
-                    Authdivider(text: "Or Sign in With"),
+                    AuthDivider(text: "Or Sign in With"),
                     SocialLoginButton(
                         // color: CustomColors.vividGreen5A,
                         text: Text(

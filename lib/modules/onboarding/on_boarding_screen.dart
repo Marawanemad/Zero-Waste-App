@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:zero_waste_app/models/boarding_model.dart';
 import 'package:zero_waste_app/modules/onboarding/on_boarding_item_widget.dart';

@@ -56,31 +56,30 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         children: [
                           AuthFormField(
                               controller: nameControler,
-                              keyboardtype: TextInputType.name,
+                              keyboardType: TextInputType.name,
                               text_input_action: TextInputAction.next,
                               hintText: "Name",
-                              validiationMesseage: "Name must not be empty"),
+                              validationMessage: "Name must not be empty"),
                           AuthFormField(
                               controller: emailControler,
-                              keyboardtype: TextInputType.emailAddress,
+                              keyboardType: TextInputType.emailAddress,
                               text_input_action: TextInputAction.next,
                               hintText: "Email",
-                              validiationMesseage: "Email must not be empty"),
+                              validationMessage: "Email must not be empty"),
                           AuthFormField(
                               controller: passwordControler,
                               obscureText: true,
-                              keyboardtype: TextInputType.visiblePassword,
+                              keyboardType: TextInputType.visiblePassword,
                               text_input_action: TextInputAction.next,
                               hintText: "Password",
-                              validiationMesseage:
-                                  "Please enter your password"),
+                              validationMessage: "Please enter your password"),
                           AuthFormField(
                               controller: confirmPasswordControler,
                               obscureText: true,
-                              keyboardtype: TextInputType.visiblePassword,
+                              keyboardType: TextInputType.visiblePassword,
                               text_input_action: TextInputAction.done,
                               hintText: "Confirm Password",
-                              validiationMesseage:
+                              validationMessage:
                                   "Please confirm your password"),
                         ],
                       ),
@@ -93,7 +92,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           }
                         },
                         text: "Create Account"),
-                    Authdivider(text: "Or Sign up With"),
+                    AuthDivider(text: "Or Sign up With"),
                     SocialLoginButton(
                       // color: CustomColors.vividGreen5A,
                       text: Text(

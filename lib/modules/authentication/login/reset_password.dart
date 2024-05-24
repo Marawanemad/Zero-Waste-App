@@ -47,19 +47,18 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                         children: [
                           AuthFormField(
                               controller: newPasswordControler,
-                              keyboardtype: TextInputType.emailAddress,
+                              keyboardType: TextInputType.emailAddress,
                               obscureText: true,
                               text_input_action: TextInputAction.next,
                               hintText: "New Password",
-                              validiationMesseage:
-                                  "Password must not be empty"),
+                              validationMessage: "Password must not be empty"),
                           AuthFormField(
                               controller: confirmPasswordControler,
                               obscureText: true,
-                              keyboardtype: TextInputType.visiblePassword,
+                              keyboardType: TextInputType.visiblePassword,
                               text_input_action: TextInputAction.done,
                               hintText: "OTP",
-                              validiationMesseage:
+                              validationMessage:
                                   "Please Confirm your password"),
                         ],
                       ),

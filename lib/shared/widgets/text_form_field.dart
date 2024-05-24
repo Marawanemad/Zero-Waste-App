@@ -1,28 +1,26 @@
-// ignore_for_file: use_function_type_syntax_for_parameters
-
 import 'package:flutter/material.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 
 // to make text form field to reuse it
 formField({
   required TextEditingController controller,
-  required TextInputType keyboardtype,
+  required TextInputType keyboardType,
   String? labelText,
   TextStyle? labelStyle,
   String? hintText,
   TextStyle? hintStyle,
-  Icon? prefixicon,
-  IconData? suffixicon,
-  suffixpressed,
+  Icon? prefixIcon,
+  IconData? suffixIcon,
+  suffixPressed,
   bool? obscureText,
-  String? validiationMesseage,
+  String? validationMessage,
   TextInputAction? text_input_action,
-  onsubmit(value)?,
+  void Function(String)? onSubmit,
   InputBorder? FormBorderShape,
-  InputBorder? FoucsBorderShape,
+  InputBorder? focusBorderShape,
   double circularBorder = 8,
   Color? prefixIconColor,
-  Color? suffixiconColor,
+  Color? suffixIconColor,
   Color? BorderColor,
   Color? CursorColor,
   padding,
@@ -30,42 +28,44 @@ formField({
   return Padding(
     padding: const EdgeInsets.only(top: 7.0),
     child: TextFormField(
-      maxLines: keyboardtype == TextInputType.multiline ? null : 1,
+      maxLines: keyboardType == TextInputType.multiline ? null : 1,
       obscureText: obscureText ?? false,
       controller: controller,
       // to make action when click on keyboard submit
       textInputAction: text_input_action,
       decoration: InputDecoration(
-          prefix: const SizedBox(width: 10),
-          // text appear in box and when you pressed on it move to up and donot disappear
-          labelText: labelText,
-          labelStyle: labelStyle ?? const TextStyle(color: Colors.black),
-          // word appear when presed on box and disappeared when user write
-          hintText: hintText,
-          hintStyle: hintStyle,
-          // to put icon in the start of box
-          prefixIcon: prefixicon,
-          prefixIconColor: prefixIconColor ?? Colors.black,
-          suffixIcon: Padding(
-            padding: padding ?? const EdgeInsets.all(0),
-            child: IconButton(
-                onPressed: suffixpressed,
-                icon: Icon(
-                  suffixicon,
-                  color: suffixiconColor ?? Colors.black,
-                )),
+        prefix: const SizedBox(width: 10),
+        // text appear in box and when you pressed on it move to up and don't disappear
+        labelText: labelText,
+        labelStyle: labelStyle ?? const TextStyle(color: Colors.black),
+        // word appear when pressed on box and disappeared when user write
+        hintText: hintText,
+        hintStyle: hintStyle,
+        // to put icon in the start of box
+        prefixIcon: prefixIcon,
+        prefixIconColor: prefixIconColor ?? Colors.black,
+        suffixIcon: Padding(
+          padding: padding ?? const EdgeInsets.all(0),
+          child: IconButton(
+            onPressed: suffixPressed,
+            icon: Icon(
+              suffixIcon,
+              color: suffixIconColor ?? Colors.black,
+            ),
           ),
-          // use to make shape when not select the form field
-          enabledBorder: FormBorderShape,
-          // use to make shape when select the form field
-          focusedBorder: FoucsBorderShape),
+        ),
+        // use to make shape when not select the form field
+        enabledBorder: FormBorderShape,
+        // use to make shape when select the form field
+        focusedBorder: focusBorderShape,
+      ),
       cursorColor: CursorColor ?? CustomColors.vividGreen49,
-      keyboardType: keyboardtype,
-      onFieldSubmitted: onsubmit,
+      keyboardType: keyboardType,
+      onFieldSubmitted: onSubmit,
       // make validator to check empty
       validator: (String? value) {
         if (value!.isEmpty) {
-          return validiationMesseage;
+          return validationMessage;
         }
         return null;
       },

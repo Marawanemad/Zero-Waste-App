@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:zero_waste_app/modules/authentication/auth_widgets.dart';
 import 'package:zero_waste_app/modules/authentication/login/reset_password.dart';
@@ -18,8 +17,8 @@ class ForgetPasswordScreen extends StatefulWidget {
 class _ForgetPasswordScreenState extends State<ForgetPasswordScreen>
     with SingleTickerProviderStateMixin {
   var formKey = GlobalKey<FormState>();
-  var emailControler = TextEditingController();
-  var otpControler = TextEditingController();
+  var emailController = TextEditingController();
+  var otpController = TextEditingController();
 
   late AnimationController _controller;
   late Animation<double> _animation;
@@ -27,7 +26,8 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen>
   Timer? timer;
   bool _isRotating = false;
 
-// to make intial animation rotate for refresh icon
+// to make initial animation rotate for refresh icon
+
   @override
   void initState() {
     super.initState();
@@ -97,25 +97,28 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen>
                           children: [
                             Expanded(
                               child: AuthFormField(
-                                  controller: emailControler,
-                                  keyboardtype: TextInputType.emailAddress,
+                                  controller: emailController,
+                                  keyboardType: TextInputType.emailAddress,
                                   text_input_action: TextInputAction.next,
                                   hintText: "Email",
-                                  validiationMesseage:
-                                      "Email must not be empty"),
+                                  validationMessage: "Email must not be empty"),
                             ),
                             Padding(
                               padding: const EdgeInsets.only(right: 15.0),
                               child: IconButton(
                                 style: const ButtonStyle(
-                                    shape: WidgetStatePropertyAll(
-                                        RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(15)))),
-                                    backgroundColor: WidgetStatePropertyAll(
-                                        CustomColors.vividGreen5A)),
+                                  shape: MaterialStatePropertyAll(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(15),
+                                      ),
+                                    ),
+                                  ),
+                                  backgroundColor: MaterialStatePropertyAll(
+                                      CustomColors.vividGreen5A),
+                                ),
                                 onPressed: () {},
-                                // to make icon in opposite diriction
+                                // to make icon in opposite direction
                                 icon: const Icon(
                                   Icons.arrow_forward_ios_rounded,
                                   color: Colors.white,
@@ -129,12 +132,13 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen>
                           children: [
                             Expanded(
                               child: AuthFormField(
-                                  controller: otpControler,
-                                  obscureText: true,
-                                  keyboardtype: TextInputType.visiblePassword,
-                                  text_input_action: TextInputAction.done,
-                                  hintText: "OTP",
-                                  validiationMesseage: "Please enter your OTP"),
+                                controller: otpController,
+                                obscureText: true,
+                                keyboardType: TextInputType.visiblePassword,
+                                text_input_action: TextInputAction.done,
+                                hintText: "OTP",
+                                validationMessage: "Please enter your OTP",
+                              ),
                             ),
                             Padding(
                               padding:
@@ -142,12 +146,15 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen>
                               child: Column(children: [
                                 IconButton(
                                   style: const ButtonStyle(
-                                      shape: WidgetStatePropertyAll(
-                                          RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.all(
-                                                  Radius.circular(15)))),
-                                      backgroundColor: WidgetStatePropertyAll(
-                                          CustomColors.vividGreen5A)),
+                                    shape: MaterialStatePropertyAll(
+                                      RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(15)),
+                                      ),
+                                    ),
+                                    backgroundColor: MaterialStatePropertyAll(
+                                        CustomColors.vividGreen5A),
+                                  ),
                                   onPressed: _remainingSeconds == 30
                                       ? _onPressed
                                       : null,
