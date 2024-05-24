@@ -6,7 +6,7 @@ import 'package:zero_waste_app/modules/authentication/login/forget_password.dart
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
 import 'package:zero_waste_app/shared/widgets/default_app_bar.dart';
-import 'package:zero_waste_app/shared/widgets/navigator.dart';
+import 'package:zero_waste_app/shared/helpers/navigator.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -18,9 +18,9 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   var formKey = GlobalKey<FormState>();
 
-  var emailControler = TextEditingController();
+  var emailController = TextEditingController();
 
-  var passwordControler = TextEditingController();
+  var passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -63,14 +63,14 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: Column(
                         children: [
                           AuthFormField(
-                              controller: emailControler,
+                              controller: emailController,
                               keyboardType: TextInputType.emailAddress,
                               text_input_action: TextInputAction.next,
                               hintText: "Username,Email&Phone Number",
                               validationMessage: "Email must not be empty"),
                           const SizedBox(height: 10),
                           AuthFormField(
-                              controller: passwordControler,
+                              controller: passwordController,
                               obscureText: true,
                               keyboardType: TextInputType.visiblePassword,
                               text_input_action: TextInputAction.done,

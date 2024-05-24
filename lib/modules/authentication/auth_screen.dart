@@ -4,7 +4,7 @@ import 'package:zero_waste_app/modules/authentication/register/register_screen.d
 import 'package:zero_waste_app/shared/assets.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
-import 'package:zero_waste_app/shared/widgets/navigator.dart';
+import 'package:zero_waste_app/shared/helpers/navigator.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
@@ -107,7 +107,7 @@ class _AuthScreenState extends State<AuthScreen> {
                             .copyWith(color: Colors.white),
                       ),
                       lift_radius: true,
-                      ontaping: () {
+                      onTap: () {
                         navigateAndFinish(
                             context: context, pageScreen: const LoginScreen());
                       },
@@ -120,7 +120,7 @@ class _AuthScreenState extends State<AuthScreen> {
                             .copyWith(color: CustomColors.darkGrey52),
                       ),
                       lift_radius: false,
-                      ontaping: () {
+                      onTap: () {
                         navigateAndFinish(
                             context: context,
                             pageScreen: const RegisterScreen());
@@ -165,17 +165,18 @@ class _AuthScreenState extends State<AuthScreen> {
 }
 
 Widget authButton({
-  required button_text,
-  required button_color,
-  required lift_radius,
-  required ontaping,
+  required Widget button_text,
+  required Color button_color,
+  required bool lift_radius,
+  required void Function()? onTap,
 }) {
   return Expanded(
     child: InkWell(
+      onTap: onTap,
       borderRadius: BorderRadius.horizontal(
-          left: lift_radius ? const Radius.circular(20) : Radius.zero,
-          right: lift_radius ? Radius.zero : const Radius.circular(20)),
-      onTap: ontaping,
+        left: lift_radius ? const Radius.circular(20) : Radius.zero,
+        right: lift_radius ? Radius.zero : const Radius.circular(20),
+      ),
       child: Container(
         height: 47.0,
         decoration: BoxDecoration(
