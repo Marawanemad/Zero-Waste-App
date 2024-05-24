@@ -17,21 +17,27 @@ class OnBoardingItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
       children: model.isLast
           ? [
-              Image.asset(model.image),
-              const SizedBox(height: 40.0),
+              // Image.asset(model.image),
+              Image(
+                image: AssetImage(model.image),
+                fit: BoxFit.cover,
+              ),
               Text(model.title,
                   style: CustomTextStyle.bold24.responsive(context)),
             ]
           : [
-              Image.asset(model.image),
-              const SizedBox(height: 80.0),
-              FittedBox(
-                fit: BoxFit.scaleDown,
-                child: Text(model.title,
-                    style: CustomTextStyle.bold32.responsive(context)),
+              // Image.asset(model.image),
+              Image(
+                image: AssetImage(model.image),
+                fit: BoxFit.cover,
               ),
+
+              const SizedBox(height: 80.0),
+              Text(model.title,
+                  style: CustomTextStyle.bold32.responsive(context)),
               const SizedBox(height: 10),
               Text(model.body!,
                   style: CustomTextStyle.thin24.responsive(context)),

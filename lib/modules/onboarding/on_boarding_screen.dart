@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:zero_waste_app/models/boarding_model.dart';
 import 'package:zero_waste_app/modules/onboarding/on_boarding_item_widget.dart';
@@ -79,54 +81,55 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 40),
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const SizedBox(height: 60),
-              Expanded(
-                child: PageView.builder(
-                  onPageChanged: (int index) =>
-                      setState(() => isLast = index == (boarding.length - 1)),
-                  controller: boardController,
-                  physics: const BouncingScrollPhysics(),
-                  itemCount: boarding.length,
-                  itemBuilder: (context, index) => OnBoardingItemWidget(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(height: 60),
+            Expanded(
+              child: PageView.builder(
+                onPageChanged: (int index) =>
+                    setState(() => isLast = index == (boarding.length - 1)),
+                controller: boardController,
+                physics: const BouncingScrollPhysics(),
+                itemCount: boarding.length,
+                itemBuilder: (context, index) => FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: OnBoardingItemWidget(
                     model: boarding[index],
                   ),
                 ),
               ),
-              DefaultGreenButton(
-                boardController: boardController,
-                text: isLast ? 'Start' : "Next",
-                iconPath: !isLast ? Assets.iconsArrow : "",
-                radius: isLast ? 140 : 15,
-                onPressed: () {
-                  if (isLast) {
-                    _endOnBoarding();
-                  } else {
-                    boardController.nextPage(
-                      duration: const Duration(milliseconds: 750),
-                      curve: Curves.easeInToLinear,
-                    );
-                  }
-                },
+            ),
+            DefaultGreenButton(
+              boardController: boardController,
+              text: isLast ? 'Start' : "Next",
+              iconPath: !isLast ? Assets.iconsArrow : "",
+              radius: isLast ? 140 : 15,
+              onPressed: () {
+                if (isLast) {
+                  _endOnBoarding();
+                } else {
+                  boardController.nextPage(
+                    duration: const Duration(milliseconds: 750),
+                    curve: Curves.easeInToLinear,
+                  );
+                }
+              },
+            ),
+            const SizedBox(height: 42),
+            SmoothPageIndicator(
+              controller: boardController,
+              count: boarding.length,
+              effect: const ExpandingDotsEffect(
+                activeDotColor: CustomColors.vividGreen49,
+                dotColor: Color(0xFFD9D9D9),
+                dotHeight: 6,
+                dotWidth: 13,
+                expansionFactor: 5,
+                radius: 18,
               ),
-              const SizedBox(height: 42),
-              SmoothPageIndicator(
-                controller: boardController,
-                count: boarding.length,
-                effect: const ExpandingDotsEffect(
-                  activeDotColor: CustomColors.vividGreen49,
-                  dotColor: Color(0xFFD9D9D9),
-                  dotHeight: 6,
-                  dotWidth: 13,
-                  expansionFactor: 5,
-                  radius: 18,
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
