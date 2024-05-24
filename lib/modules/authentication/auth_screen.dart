@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:zero_waste_app/modules/authentication/login/login_screen.dart';
 import 'package:zero_waste_app/modules/authentication/register/register_screen.dart';
 import 'package:zero_waste_app/shared/assets.dart';
+import 'package:zero_waste_app/shared/extensions/context_width_extension.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
 import 'package:zero_waste_app/shared/helpers/navigator.dart';
@@ -34,6 +35,7 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: CustomColors.liteGreenF1,
       appBar: AppBar(
         backgroundColor: Colors.white,
         toolbarHeight: 5,
@@ -69,17 +71,42 @@ class _AuthScreenState extends State<AuthScreen> {
             Text.rich(
               textAlign: TextAlign.center,
               TextSpan(
+                style: TextStyle(
+                  shadows: [
+                    Shadow(
+                      offset: const Offset(0, 2),
+                      blurRadius: 6.0,
+                      color: const Color(0x00000000).withOpacity(.15),
+                    ),
+                  ],
+                ),
                 children: [
                   TextSpan(
-                    text: "Discover Yourself\n With",
-                    style: CustomTextStyle.bold34.copyWith(height: 1.1),
+                    text: "Discover Yourself\n",
+                    style: CustomTextStyle.bold34
+                        .copyWith(
+                          // height: 1.1,
+                          color: const Color(0xFF464444),
+                        )
+                        .responsive(context),
+                  ),
+                  TextSpan(
+                    text: " With",
+                    style: const TextStyle(
+                      color: Color(0xFF464444),
+                      fontSize: 30,
+                      fontFamily: 'Outfit',
+                      fontWeight: FontWeight.w700,
+                    ).responsive(context),
                   ),
                   TextSpan(
                     text: " Zero Waste",
-                    style: CustomTextStyle.bold32.copyWith(
-                      fontSize: 30,
-                      color: CustomColors.vividGreen5A,
-                    ),
+                    style: CustomTextStyle.bold32
+                        .copyWith(
+                          fontSize: 30,
+                          color: CustomColors.vividGreen5A,
+                        )
+                        .responsive(context),
                   ),
                 ],
               ),
@@ -88,14 +115,28 @@ class _AuthScreenState extends State<AuthScreen> {
             Text(
               "You are on the right path\n to change your behavior...and earn money",
               textAlign: TextAlign.center,
-              style: CustomTextStyle.regular12.copyWith(color: Colors.black),
+              style: CustomTextStyle.regular12
+                  .copyWith(
+                    color: Colors.black,
+                    fontWeight: FontWeight.w300,
+                  )
+                  .responsive(context),
             ),
             const Spacer(flex: 2),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 50),
-              child: Card(
-                color: Colors.white.withOpacity(0),
-                elevation: 5,
+              child: Container(
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0x3F000000),
+                      blurRadius: 6,
+                      offset: Offset(0, 4),
+                      spreadRadius: 0,
+                    )
+                  ],
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -103,21 +144,19 @@ class _AuthScreenState extends State<AuthScreen> {
                       button_color: CustomColors.vividGreen5A,
                       button_text: Text(
                         "Sign in",
-                        style: CustomTextStyle.bold16
-                            .copyWith(color: Colors.white),
+                        style: CustomTextStyle.semiBold18
+                            .copyWith(color: Colors.white)
+                            .responsive(context),
                       ),
                       lift_radius: true,
-                      onTap: () {
-                        navigateAndFinish(
-                            context: context, pageScreen: const LoginScreen());
-                      },
+                      onTap: () => navigateAndFinish(
+                          context: context, pageScreen: const LoginScreen()),
                     ),
                     authButton(
                       button_color: CustomColors.greyF3,
                       button_text: Text(
                         "Register",
-                        style: CustomTextStyle.bold16
-                            .copyWith(color: CustomColors.darkGrey52),
+                        style: CustomTextStyle.semiBold18.responsive(context),
                       ),
                       lift_radius: false,
                       onTap: () {
@@ -174,16 +213,16 @@ Widget authButton({
     child: InkWell(
       onTap: onTap,
       borderRadius: BorderRadius.horizontal(
-        left: lift_radius ? const Radius.circular(20) : Radius.zero,
-        right: lift_radius ? Radius.zero : const Radius.circular(20),
+        left: lift_radius ? const Radius.circular(15) : Radius.zero,
+        right: lift_radius ? Radius.zero : const Radius.circular(15),
       ),
       child: Container(
         height: 47.0,
         decoration: BoxDecoration(
           color: button_color,
           borderRadius: BorderRadius.horizontal(
-            left: lift_radius ? const Radius.circular(20) : Radius.zero,
-            right: lift_radius ? Radius.zero : const Radius.circular(20),
+            left: lift_radius ? const Radius.circular(15) : Radius.zero,
+            right: lift_radius ? Radius.zero : const Radius.circular(15),
           ),
         ),
         child: Center(child: button_text),

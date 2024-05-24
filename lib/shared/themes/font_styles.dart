@@ -144,4 +144,11 @@ abstract class CustomTextStyle {
     fontWeight: FontWeight.w100,
     color: Colors.black,
   );
+  static const TextStyle semiBold18 = TextStyle(
+    color: CustomColors.darkGrey51,
+    fontSize: 18,
+    fontFamily: 'Outfit',
+    fontWeight: FontWeight.w600,
+    height: 0,
+  );
 }
