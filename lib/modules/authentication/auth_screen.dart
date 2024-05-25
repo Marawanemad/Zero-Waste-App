@@ -43,27 +43,32 @@ class _AuthScreenState extends State<AuthScreen> {
       // make animation in the page
       body: AnimatedOpacity(
         opacity: _imageOpacity,
-        duration: const Duration(seconds: 1),
+        duration: const Duration(milliseconds: 200),
         child: Column(
           children: [
             // Animated opacity for the image
-            Container(
-              width: double.infinity,
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  stops: [0.2, 1],
-                  colors: [Colors.white, CustomColors.vividGreen61],
-                ),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(40),
-                  bottomRight: Radius.circular(40),
-                ),
-              ),
-              child: const Image(
-                image: AssetImage(Assets.imagesAuthenticationAuthScreen),
+            Expanded(
+              flex: 4,
+              child: Container(
                 width: double.infinity,
+                // constraints: const BoxConstraints(maxHeight: 200),
+                decoration: const BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    // stops: [0.2, 1],
+                    colors: [Colors.white, CustomColors.vividGreen61],
+                  ),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(40),
+                    bottomRight: Radius.circular(40),
+                  ),
+                ),
+                child: const Image(
+                  image: AssetImage(Assets.imagesAuthenticationAuthScreen),
+                  fit: BoxFit.contain,
+                  // width: double.infinity,
+                ),
               ),
             ),
             const SizedBox(height: 20),
@@ -111,7 +116,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 ],
               ),
             ),
-            const SizedBox(height: 10),
+            const SizedBox(height: 22),
             Text(
               "You are on the right path\n to change your behavior...and earn money",
               textAlign: TextAlign.center,
@@ -169,7 +174,7 @@ class _AuthScreenState extends State<AuthScreen> {
                 ),
               ),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 60),
             // Text with many colors
             Expanded(
               flex: 1,
@@ -217,7 +222,6 @@ Widget authButton({
         right: lift_radius ? Radius.zero : const Radius.circular(15),
       ),
       child: Container(
-        height: 47.0,
         decoration: BoxDecoration(
           color: button_color,
           borderRadius: BorderRadius.horizontal(
@@ -225,7 +229,10 @@ Widget authButton({
             right: lift_radius ? Radius.zero : const Radius.circular(15),
           ),
         ),
-        child: Center(child: button_text),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 14.0),
+          child: Center(child: button_text),
+        ),
       ),
     ),
   );
