@@ -4,7 +4,7 @@ import 'package:zero_waste_app/modules/authentication/login/login_screen.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
 import 'package:zero_waste_app/shared/widgets/default_app_bar.dart';
-import 'package:zero_waste_app/shared/helpers/navigator.dart';
+import 'package:zero_waste_app/shared/helpers/navigation_helper.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({super.key});

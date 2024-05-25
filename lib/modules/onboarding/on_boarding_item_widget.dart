@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:zero_waste_app/models/boarding_model.dart';
-import 'package:zero_waste_app/shared/extensions/context_width_extension.dart';
+import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
 
 class OnBoardingItemWidget extends StatelessWidget {

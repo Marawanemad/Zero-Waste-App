@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:zero_waste_app/modules/authentication/login/login_screen.dart';
 import 'package:zero_waste_app/modules/authentication/register/register_screen.dart';
 import 'package:zero_waste_app/shared/assets.dart';
-import 'package:zero_waste_app/shared/extensions/context_width_extension.dart';
+import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
-import 'package:zero_waste_app/shared/helpers/navigator.dart';
+import 'package:zero_waste_app/shared/helpers/navigation_helper.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({super.key});
@@ -25,11 +25,10 @@ class _AuthScreenState extends State<AuthScreen> {
 
   // to change the opacity when the screen start
   void _fadeInWidgets() {
-    Future.delayed(const Duration(milliseconds: 800), () {
-      setState(() {
-        _imageOpacity = 1.0;
-      });
-    });
+    Future.delayed(
+      const Duration(milliseconds: 800),
+      () => setState(() => _imageOpacity = 1.0),
+    );
   }
 
   @override
@@ -43,7 +42,7 @@ class _AuthScreenState extends State<AuthScreen> {
       // make animation in the page
       body: AnimatedOpacity(
         opacity: _imageOpacity,
-        duration: const Duration(milliseconds: 200),
+        duration: const Duration(seconds: 1),
         child: Column(
           children: [
             // Animated opacity for the image

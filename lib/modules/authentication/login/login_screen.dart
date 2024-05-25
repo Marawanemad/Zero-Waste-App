@@ -6,7 +6,7 @@ import 'package:zero_waste_app/modules/authentication/login/forget_password.dart
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
 import 'package:zero_waste_app/shared/widgets/default_app_bar.dart';
-import 'package:zero_waste_app/shared/helpers/navigator.dart';
+import 'package:zero_waste_app/shared/helpers/navigation_helper.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

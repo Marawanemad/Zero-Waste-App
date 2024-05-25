@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:zero_waste_app/models/boarding_model.dart';
+import 'package:zero_waste_app/modules/authentication/auth_screen.dart';
 import 'package:zero_waste_app/modules/onboarding/on_boarding_item_widget.dart';
 import 'package:zero_waste_app/shared/assets.dart';
+import 'package:zero_waste_app/shared/data/local/cache_helper.dart';
+import 'package:zero_waste_app/shared/data/local/shared_pref_keys_enum.dart';
+import 'package:zero_waste_app/shared/helpers/navigation_helper.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
 import 'package:zero_waste_app/shared/widgets/default_green_button.dart';
@@ -33,9 +37,10 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       isLast: true,
     ),
   ];
+
   void _endOnBoarding() {
-    // navigateToWithReplacement(context, LoginScreen());
-    // CacheHelper.setData(key: 'onBoarding', value: true);
+    navigateAndFinish(context: context, pageScreen: const AuthScreen());
+    CacheHelper.setData(SharedPrefKeys.onBoarding.key, false);
   }
 
   final PageController boardController = PageController();

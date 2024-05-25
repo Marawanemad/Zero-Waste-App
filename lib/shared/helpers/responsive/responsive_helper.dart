@@ -1,7 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:zero_waste_app/shared/enums/screen_sizes.dart';
-import 'package:zero_waste_app/shared/extensions/context_width_extension.dart';
+import 'package:zero_waste_app/shared/helpers/responsive/screen_sizes_enum.dart';
+import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';
 
 double responsiveFontSize(
   BuildContext context, {

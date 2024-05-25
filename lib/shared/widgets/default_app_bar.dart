@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
-import 'package:zero_waste_app/shared/helpers/navigator.dart';
+import 'package:zero_waste_app/shared/helpers/navigation_helper.dart';
 
 PreferredSizeWidget defaultAppBar({
   required context,
