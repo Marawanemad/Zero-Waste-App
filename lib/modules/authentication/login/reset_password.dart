@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:zero_waste_app/modules/authentication/auth_widgets.dart';
+import 'package:zero_waste_app/modules/authentication/auth_widgets/auth_form_field.dart';
+import 'package:zero_waste_app/modules/authentication/auth_widgets/auth_green_button.dart';
 import 'package:zero_waste_app/modules/authentication/login/login_screen.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';

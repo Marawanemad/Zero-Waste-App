@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:zero_waste_app/modules/authentication/auth_screen.dart';
-import 'package:zero_waste_app/modules/authentication/auth_widgets.dart';
+import 'package:zero_waste_app/modules/authentication/auth_widgets/auth_divider.dart';
+import 'package:zero_waste_app/modules/authentication/auth_widgets/auth_form_field.dart';
+import 'package:zero_waste_app/modules/authentication/auth_widgets/auth_green_button.dart';
+import 'package:zero_waste_app/modules/authentication/auth_widgets/social_logins_buttons.dart';
 import 'package:zero_waste_app/modules/authentication/login/forget_password.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';

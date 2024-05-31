@@ -50,13 +50,14 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     return Scaffold(
       backgroundColor: CustomColors.liteGreenF1,
       appBar: AppBar(
+        backgroundColor: CustomColors.liteGreenF1,
         actions: [
           !isLast
               ? Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextButton(
                     style: ButtonStyle(
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
                         RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10.0),
                           side: const BorderSide(color: Colors.grey),

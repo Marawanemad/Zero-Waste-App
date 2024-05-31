@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:zero_waste_app/modules/authentication/auth_widgets.dart';
+import 'package:zero_waste_app/modules/authentication/auth_widgets/auth_form_field.dart';
+import 'package:zero_waste_app/modules/authentication/auth_widgets/auth_green_button.dart';
 import 'package:zero_waste_app/modules/authentication/login/reset_password.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
@@ -107,14 +108,14 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen>
                               padding: const EdgeInsets.only(right: 15.0),
                               child: IconButton(
                                 style: const ButtonStyle(
-                                  shape: MaterialStatePropertyAll(
+                                  shape: WidgetStatePropertyAll(
                                     RoundedRectangleBorder(
                                       borderRadius: BorderRadius.all(
                                         Radius.circular(15),
                                       ),
                                     ),
                                   ),
-                                  backgroundColor: MaterialStatePropertyAll(
+                                  backgroundColor: WidgetStatePropertyAll(
                                       CustomColors.vividGreen5A),
                                 ),
                                 onPressed: () {},
@@ -146,13 +147,13 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen>
                               child: Column(children: [
                                 IconButton(
                                   style: const ButtonStyle(
-                                    shape: MaterialStatePropertyAll(
+                                    shape: WidgetStatePropertyAll(
                                       RoundedRectangleBorder(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(15)),
                                       ),
                                     ),
-                                    backgroundColor: MaterialStatePropertyAll(
+                                    backgroundColor: WidgetStatePropertyAll(
                                         CustomColors.vividGreen5A),
                                   ),
                                   onPressed: _remainingSeconds == 30
