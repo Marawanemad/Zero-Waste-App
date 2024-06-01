@@ -4,8 +4,8 @@ import 'package:zero_waste_app/modules/authentication/auth_screen.dart';
 import 'package:zero_waste_app/modules/authentication/auth_widgets/auth_divider.dart';
 import 'package:zero_waste_app/modules/authentication/auth_widgets/auth_form_field.dart';
 import 'package:zero_waste_app/modules/authentication/auth_widgets/auth_green_button.dart';
+import 'package:zero_waste_app/modules/authentication/auth_widgets/register_dialog.dart';
 import 'package:zero_waste_app/modules/authentication/auth_widgets/social_logins_buttons.dart';
-import 'package:zero_waste_app/modules/authentication/login/login_screen.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
 import 'package:zero_waste_app/shared/widgets/default_app_bar.dart';
@@ -91,7 +91,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     AuthGreenButton(
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
-                            Dialog(context: context);
+                            RegisterDialog(context: context);
                           }
                         },
                         text: "Create Account"),
@@ -133,54 +133,4 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ),
     );
   }
-}
-
-void Dialog({required context}) {
-  showDialog(
-    barrierDismissible: false,
-    useRootNavigator: false,
-    context: context,
-    builder: (context) => PopScope(
-      // to stop return back from mobile button
-      canPop: false,
-      child: AlertDialog(
-        title: const Center(
-          child: Text(
-            "Sign Up Success",
-            style: CustomTextStyle.bold20,
-          ),
-        ),
-        content: const CircleAvatar(
-          radius: 60,
-          backgroundColor: CustomColors.vividGreen5A,
-          child: Icon(
-            FontAwesome.check_solid,
-            size: 75,
-            color: CustomColors.liteGrayCB,
-          ),
-        ),
-        actions: [
-          OutlinedButton(
-            onPressed: () {
-              navigateAndFinish(
-                  context: context, pageScreen: const LoginScreen());
-            },
-            style: OutlinedButton.styleFrom(
-              minimumSize: const Size.fromHeight(30),
-              maximumSize: const Size.fromWidth(double.infinity),
-              padding: const EdgeInsets.symmetric(vertical: 10),
-              side: const BorderSide(color: CustomColors.darkGreen28),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15)),
-            ),
-            child: Text(
-              "Sign In",
-              style: CustomTextStyle.bold20
-                  .copyWith(color: CustomColors.darkGreen28),
-            ),
-          )
-        ],
-      ),
-    ),
-  );
 }

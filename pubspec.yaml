@@ -38,7 +38,7 @@ flutter_launcher_icons:
   android: "launcher_icon"
   # ios: true
   # App Icon path 
-  image_path: "assets/images/onboarding/onboarding3.png"
+  image_path: "assets/images/app_image.png"
 
   flutter_lints: ^2.0.0
 
@@ -46,7 +46,9 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/onboarding/
+    - assets/images/ 
+    - assets/images/onboarding/  
+    - assets/images/home/  
     - assets/images/authentication/
     - assets/icons/
 

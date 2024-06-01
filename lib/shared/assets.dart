@@ -1,7 +1,5 @@
 class Assets {
   Assets._();
-  
-
 
   /// Assets for iconsArrow
   /// assets/icons/arrow.svg
@@ -9,18 +7,23 @@ class Assets {
 
   /// Assets for imagesAuthenticationAuthScreen
   /// assets/images/authentication/auth_Screen.png
-  static const String imagesAuthenticationAuthScreen = "assets/images/authentication/auth_screen.png";
+  static const String imagesAuthenticationAuthScreen =
+      "assets/images/authentication/auth_screen.png";
 
   /// Assets for imagesOnboardingOnboarding1
   /// assets/images/onboarding/onboarding1.png
-  static const String imagesOnboardingOnboarding1 = "assets/images/onboarding/onboarding1.png";
+  static const String imagesOnboardingOnboarding1 =
+      "assets/images/onboarding/onboarding1.png";
 
   /// Assets for imagesOnboardingOnboarding2
   /// assets/images/onboarding/onboarding2.png
-  static const String imagesOnboardingOnboarding2 = "assets/images/onboarding/onboarding2.png";
+  static const String imagesOnboardingOnboarding2 =
+      "assets/images/onboarding/onboarding2.png";
 
-  /// Assets for imagesOnboardingOnboarding3
-  /// assets/images/onboarding/onboarding3.png
-  static const String imagesOnboardingOnboarding3 = "assets/images/onboarding/onboarding3.png";
+  static const String appImage = "assets/images/app_image.png";
+
+  static const String locationImage = "assets/images/home/location.png";
+
+  static const String homeCardImage1 = "assets/images/home/home_card1.png";
+  static const String homeCardImage2 = "assets/images/home/home_card2.png";
 }
-
