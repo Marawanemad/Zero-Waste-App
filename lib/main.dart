@@ -4,6 +4,7 @@ import 'package:zero_waste_app/bloc_observer.dart';
 import 'package:zero_waste_app/modules/authentication/auth_screen.dart';
 import 'package:zero_waste_app/modules/home/home_screen.dart';
 import 'package:zero_waste_app/modules/onboarding/on_boarding_screen.dart';
+import 'package:zero_waste_app/modules/splash_screen.dart';
 import 'package:zero_waste_app/shared/data/local/cache_helper.dart';
 import 'package:zero_waste_app/shared/data/local/shared_pref_keys_enum.dart';
 import 'package:zero_waste_app/shared/data/online/dio_helper.dart';
@@ -38,7 +39,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.greenAccent),
         useMaterial3: true,
       ),
-      home: startWidget,
+      home: SplashScreen(screenName: startWidget),
     );
   }
 }

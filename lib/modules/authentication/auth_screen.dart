@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zero_waste_app/modules/authentication/auth_widgets/auth_button.dart';
 import 'package:zero_waste_app/modules/authentication/login/login_screen.dart';
 import 'package:zero_waste_app/modules/authentication/register/register_screen.dart';
 import 'package:zero_waste_app/shared/assets.dart';
@@ -129,48 +130,34 @@ class _AuthScreenState extends State<AuthScreen> {
             const Spacer(flex: 2),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 50),
-              child: Container(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(15)),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0x3F000000),
-                      blurRadius: 6,
-                      offset: Offset(0, 4),
-                      spreadRadius: 0,
-                    )
-                  ],
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    authButton(
-                      button_color: CustomColors.vividGreen5A,
-                      button_text: Text(
-                        "Sign in",
-                        style: CustomTextStyle.semiBold18
-                            .copyWith(color: Colors.white)
-                            .responsive(context),
-                      ),
-                      lift_radius: true,
-                      onTap: () => navigateAndFinish(
-                          context: context, pageScreen: const LoginScreen()),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  authButton(
+                    button_color: CustomColors.vividGreen5A,
+                    button_text: Text(
+                      "Sign in",
+                      style: CustomTextStyle.semiBold18
+                          .copyWith(color: Colors.white)
+                          .responsive(context),
                     ),
-                    authButton(
-                      button_color: CustomColors.greyF3,
-                      button_text: Text(
-                        "Register",
-                        style: CustomTextStyle.semiBold18.responsive(context),
-                      ),
-                      lift_radius: false,
-                      onTap: () {
-                        navigateAndFinish(
-                            context: context,
-                            pageScreen: const RegisterScreen());
-                      },
+                    lift_radius: true,
+                    onTap: () => navigateAndFinish(
+                        context: context, pageScreen: const LoginScreen()),
+                  ),
+                  authButton(
+                    button_color: CustomColors.greyF3,
+                    button_text: Text(
+                      "Register",
+                      style: CustomTextStyle.semiBold18.responsive(context),
                     ),
-                  ],
-                ),
+                    lift_radius: false,
+                    onTap: () {
+                      navigateAndFinish(
+                          context: context, pageScreen: const RegisterScreen());
+                    },
+                  ),
+                ],
               ),
             ),
             const SizedBox(height: 60),
@@ -205,34 +192,4 @@ class _AuthScreenState extends State<AuthScreen> {
       ),
     );
   }
-}
-
-Widget authButton({
-  required Widget button_text,
-  required Color button_color,
-  required bool lift_radius,
-  required void Function()? onTap,
-}) {
-  return Expanded(
-    child: InkWell(
-      onTap: onTap,
-      borderRadius: BorderRadius.horizontal(
-        left: lift_radius ? const Radius.circular(15) : Radius.zero,
-        right: lift_radius ? Radius.zero : const Radius.circular(15),
-      ),
-      child: Container(
-        decoration: BoxDecoration(
-          color: button_color,
-          borderRadius: BorderRadius.horizontal(
-            left: lift_radius ? const Radius.circular(15) : Radius.zero,
-            right: lift_radius ? Radius.zero : const Radius.circular(15),
-          ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 14.0),
-          child: Center(child: button_text),
-        ),
-      ),
-    ),
-  );
 }

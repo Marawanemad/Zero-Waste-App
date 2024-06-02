@@ -5,7 +5,7 @@ import 'package:zero_waste_app/shared/helpers/navigation_helper.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
 
-void RegisterDialog({required context}) {
+void registerDialog({required context}) {
   showDialog(
     barrierDismissible: false,
     useRootNavigator: false,

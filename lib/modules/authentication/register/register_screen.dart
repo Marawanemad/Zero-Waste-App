@@ -91,7 +91,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     AuthGreenButton(
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
-                            RegisterDialog(context: context);
+                            registerDialog(context: context);
                           }
                         },
                         text: "Create Account"),
