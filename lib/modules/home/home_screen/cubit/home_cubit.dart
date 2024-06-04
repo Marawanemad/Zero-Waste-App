@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zero_waste_app/modules/home/cubit/home_state.dart';
+import 'package:zero_waste_app/modules/home/home_screen/cubit/home_state.dart';
 import 'package:zero_waste_app/shared/assets.dart';
 
 class HomeCubit extends Cubit<HomeState> {

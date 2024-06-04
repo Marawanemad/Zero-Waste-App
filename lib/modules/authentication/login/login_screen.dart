@@ -6,7 +6,7 @@ import 'package:zero_waste_app/modules/authentication/auth_widgets/auth_form_fie
 import 'package:zero_waste_app/modules/authentication/auth_widgets/auth_green_button.dart';
 import 'package:zero_waste_app/modules/authentication/auth_widgets/social_logins_buttons.dart';
 import 'package:zero_waste_app/modules/authentication/login/forget_password.dart';
-import 'package:zero_waste_app/modules/home/home_screen.dart';
+import 'package:zero_waste_app/modules/home/home_screen/home_screen.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
 import 'package:zero_waste_app/shared/widgets/default_app_bar.dart';

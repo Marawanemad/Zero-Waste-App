@@ -21,7 +21,7 @@ Widget itemGridShape({
         padding: const EdgeInsets.all(5),
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
-            side: const BorderSide(width: 1, color: CustomColors.vividGreen49),
+            side: const BorderSide(color: CustomColors.vividGreen49),
             borderRadius: BorderRadius.circular(15),
           ),
         ),
@@ -33,8 +33,9 @@ Widget itemGridShape({
           ),
           Text(
             text[index],
-            style: CustomTextStyle.bold10.responsive(context),
-          )
+            style: CustomTextStyle.bold12.responsive(context),
+          ),
+          const SizedBox(height: 10)
         ]),
       ),
     ),

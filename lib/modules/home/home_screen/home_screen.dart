@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:zero_waste_app/modules/home/cubit/home_cubit.dart';
-import 'package:zero_waste_app/modules/home/cubit/home_state.dart';
-import 'package:zero_waste_app/modules/home/home_widgets/congratulation_dialog.dart';
-import 'package:zero_waste_app/modules/home/home_widgets/green_card.dart';
-import 'package:zero_waste_app/modules/home/home_widgets/home_grid_items.dart';
-import 'package:zero_waste_app/modules/home/home_widgets/points_info_dialog.dart';
-import 'package:zero_waste_app/modules/home/map_screen.dart';
+import 'package:zero_waste_app/modules/home/exchange/exchange_screen.dart';
+import 'package:zero_waste_app/modules/home/home_screen/cubit/home_cubit.dart';
+import 'package:zero_waste_app/modules/home/home_screen/cubit/home_state.dart';
+import 'package:zero_waste_app/modules/home/home_screen/home_widgets/bottom_nav_bar_items.dart';
+import 'package:zero_waste_app/modules/home/home_screen/home_widgets/congratulation_dialog.dart';
+import 'package:zero_waste_app/modules/home/home_screen/home_widgets/green_card.dart';
+import 'package:zero_waste_app/modules/home/home_screen/home_widgets/home_grid_items.dart';
+import 'package:zero_waste_app/modules/home/home_screen/home_widgets/points_info_dialog.dart';
+import 'package:zero_waste_app/modules/home/bin_location/map_screen.dart';
+import 'package:zero_waste_app/modules/home/profile/profile_screen.dart';
+import 'package:zero_waste_app/modules/home/qr_code/qr_scan_screen.dart';
+import 'package:zero_waste_app/modules/home/statistics/statistics_screen.dart';
 import 'package:zero_waste_app/shared/assets.dart';
 import 'package:zero_waste_app/shared/helpers/navigation_helper.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';
@@ -225,6 +230,54 @@ class HomeScreen extends StatelessWidget {
                             .imagesListSelected[homeCubit.currentIndex],
                         scrollController: homeCubit.scrollController,
                       ),
+                    ),
+                  ),
+                  Container(
+                    decoration: const BoxDecoration(),
+                    padding: const EdgeInsets.only(bottom: 15, top: 20),
+                    width: double.infinity,
+                    child: Row(
+                      children: [
+                        bottomNavBarItem(
+                            assetName: Assets.iconsSmileHome,
+                            labelName: "Home",
+                            context: context,
+                            onTap: () {}),
+                        bottomNavBarItem(
+                            assetName: Assets.iconsStatistics,
+                            labelName: "Statistics",
+                            context: context,
+                            onTap: () {
+                              navigate(
+                                  context: context,
+                                  pageScreen: const StatisticsScreen());
+                            }),
+                        NavBarCircleButton(
+                            context: context,
+                            onTap: () {
+                              navigate(
+                                  context: context,
+                                  pageScreen: const QrScanScreen());
+                            }),
+                        bottomNavBarItem(
+                            assetName: Assets.iconsExchangeArrow,
+                            labelName: "Exchange",
+                            context: context,
+                            onTap: () {
+                              navigate(
+                                  context: context,
+                                  pageScreen: const ExchangeScreen());
+                            }),
+                        bottomNavBarItem(
+                            assetName: Assets.iconsProfile,
+                            labelName: "Profile",
+                            context: context,
+                            onTap: () {
+                              navigate(
+                                  context: context,
+                                  pageScreen: const ProfileScreen());
+                            }),
+                      ],
                     ),
                   ),
                 ],
