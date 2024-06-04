@@ -54,7 +54,7 @@ class _SplashScreenState extends State<SplashScreen>
           opacity: _animation,
           child: const Image(
             width: double.infinity,
-            image: AssetImage(Assets.appImage),
+            image: AssetImage(Assets.imagesApp),
             fit: BoxFit.contain,
           ),
         ),

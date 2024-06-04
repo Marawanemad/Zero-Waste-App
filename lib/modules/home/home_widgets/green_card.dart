@@ -20,7 +20,7 @@ Widget homeGreenCard({
       alignment: Alignment.bottomRight,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 40),
+          padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 30),
           child: Align(
             alignment: Alignment.topLeft,
             child: Column(
@@ -32,20 +32,18 @@ Widget homeGreenCard({
                 ),
                 const SizedBox(height: 20),
                 MaterialButton(
+                  padding: const EdgeInsets.symmetric(
+                      vertical: 10, horizontal: 10.0),
                   onPressed: onPressed,
                   color: CustomColors.liteGreenF1,
                   elevation: 0,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 10.0),
-                    child: Text(
-                      buttonText,
-                      style: CustomTextStyle.bold20.copyWith(
-                          fontSize: 12, color: CustomColors.darkGreen28),
-                    ),
+                  child: Text(
+                    buttonText,
+                    style: CustomTextStyle.bold20.copyWith(
+                        fontSize: 12, color: CustomColors.darkGreen28),
                   ),
                 ),
               ],

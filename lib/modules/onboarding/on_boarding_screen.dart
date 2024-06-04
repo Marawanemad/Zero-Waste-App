@@ -31,7 +31,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       body: "Points, Money",
     ),
     BoardingModel(
-      image: Assets.appImage,
+      image: Assets.imagesApp,
       title: "Green Eco Taste",
       body: "",
       isLast: true,

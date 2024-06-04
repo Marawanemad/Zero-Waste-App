@@ -49,6 +49,10 @@ flutter:
     - assets/images/ 
     - assets/images/onboarding/  
     - assets/images/home/  
+    - assets/images/home/plastics/  
+    - assets/images/home/glass/  
+    - assets/images/home/metal/  
+    - assets/images/home/paper/  
     - assets/images/authentication/
     - assets/icons/
 
