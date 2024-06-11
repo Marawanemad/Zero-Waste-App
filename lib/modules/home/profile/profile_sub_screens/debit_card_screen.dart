@@ -46,136 +46,137 @@ class _DebitCardScreenState extends State<DebitCardScreen> {
           child: ConstrainedBox(
             constraints: BoxConstraints(minHeight: constraints.maxHeight),
             child: IntrinsicHeight(
-                child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Spacer(),
-                const Center(
-                  child: Image(
-                    height: 155,
-                    width: 294,
-                    image: AssetImage(Assets.imagesCreditCard),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10, left: 15.0),
-                  child: Form(
-                    key: formKey,
-                    child: Column(
-                      children: [
-                        ProfileFormField(
-                          controller: nameController,
-                          keyboardType: TextInputType.name,
-                          text_input_action: TextInputAction.next,
-                          hintText: "Name on the card",
-                          validationMessage: "Name must not be empty",
-                          prefixIcon: const Icon(
-                            LineAwesome.user_circle_solid,
-                            color: CustomColors.grey96,
-                          ),
-                        ),
-                        ProfileFormField(
-                          controller: cardNumberController,
-                          keyboardType: TextInputType.number,
-                          text_input_action: TextInputAction.next,
-                          hintText: "Card number",
-                          suffixIcon: Brand(Brands.mastercard_logo),
-                          validationMessage: "Card number must not be empty",
-                          prefixIcon: Transform.scale(
-                            scale: 0.5,
-                            child: SvgPicture.asset(
-                              fit: BoxFit.fill,
-                              Assets.iconsCreditCard,
-                              colorFilter: const ColorFilter.mode(
-                                  CustomColors.grey96, BlendMode.srcIn),
-                            ),
-                          ),
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              flex: 3,
-                              child: ProfileFormField(
-                                controller: dateController,
-                                keyboardType: TextInputType.datetime,
-                                text_input_action: TextInputAction.next,
-                                hintText: "Month / Year",
-                                validationMessage: "Date must not be empty",
-                                prefixIcon: const Icon(
-                                  IonIcons.calendar_clear,
-                                  color: CustomColors.grey96,
-                                ),
-                              ),
-                            ),
-                            Expanded(
-                              flex: 2,
-                              child: ProfileFormField(
-                                controller: passwordController,
-                                keyboardType: TextInputType.number,
-                                text_input_action: TextInputAction.done,
-                                hintText: "CVV",
-                                validationMessage: "CVV must not be empty",
-                                prefixIcon: const Icon(
-                                  IonIcons.lock_closed,
-                                  color: CustomColors.grey96,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Spacer(),
+                  const Center(
+                    child: Image(
+                      height: 155,
+                      width: 294,
+                      image: AssetImage(Assets.imagesHomeProfileCreditCard),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 15, top: 15),
-                  child: switchButton(
-                      context: context,
-                      onChange: (value) {
-                        setState(
-                          () {
-                            switchValue = value;
-                          },
-                        );
-                      },
-                      switchValue: switchValue,
-                      text: "Save this card"),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.only(left: 35, top: 35.0, bottom: 5),
-                  child: Text(
-                    "SAVED CARDS",
-                    style: CustomTextStyle.semiBold18.responsive(context),
-                  ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.only(left: 25.0, right: 20, top: 17),
-                  child: greenDebitCardRow(
-                      context: context,
-                      icon: const Icon(
-                        LineAwesome.trash_solid,
-                        color: CustomColors.red05,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10, left: 15.0),
+                    child: Form(
+                      key: formKey,
+                      child: Column(
+                        children: [
+                          ProfileFormField(
+                            controller: nameController,
+                            keyboardType: TextInputType.name,
+                            text_input_action: TextInputAction.next,
+                            hintText: "Name on the card",
+                            validationMessage: "Name must not be empty",
+                            prefixIcon: const Icon(
+                              LineAwesome.user_circle_solid,
+                              color: CustomColors.grey96,
+                            ),
+                          ),
+                          ProfileFormField(
+                            controller: cardNumberController,
+                            keyboardType: TextInputType.number,
+                            text_input_action: TextInputAction.next,
+                            hintText: "Card number",
+                            suffixIcon: Brand(Brands.mastercard_logo),
+                            validationMessage: "Card number must not be empty",
+                            prefixIcon: Transform.scale(
+                              scale: 0.5,
+                              child: SvgPicture.asset(
+                                fit: BoxFit.fill,
+                                Assets.iconsCreditCard,
+                                colorFilter: const ColorFilter.mode(
+                                    CustomColors.grey96, BlendMode.srcIn),
+                              ),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                flex: 3,
+                                child: ProfileFormField(
+                                  controller: dateController,
+                                  keyboardType: TextInputType.datetime,
+                                  text_input_action: TextInputAction.next,
+                                  hintText: "Month / Year",
+                                  validationMessage: "Date must not be empty",
+                                  prefixIcon: const Icon(
+                                    IonIcons.calendar_clear,
+                                    color: CustomColors.grey96,
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                flex: 2,
+                                child: ProfileFormField(
+                                  controller: passwordController,
+                                  keyboardType: TextInputType.number,
+                                  text_input_action: TextInputAction.done,
+                                  hintText: "CVV",
+                                  validationMessage: "CVV must not be empty",
+                                  prefixIcon: const Icon(
+                                    IonIcons.lock_closed,
+                                    color: CustomColors.grey96,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
-                      onPressed: () {},
-                      visaNumber: "8790",
-                      name: "Your Name"),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 40.0),
-                  child: Center(
-                    child: DefaultGreenButton(
-                        text: "Add Address",
-                        onPressed: () {},
-                        horizontalPadding: 20,
-                        verticalPadding: 14,
-                        textSize: 16),
+                    ),
                   ),
-                ),
-                const Spacer()
-              ],
-            )),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15, top: 15),
+                    child: switchButton(
+                        context: context,
+                        onChange: (value) {
+                          setState(
+                            () {
+                              switchValue = value;
+                            },
+                          );
+                        },
+                        switchValue: switchValue,
+                        text: "Save this card"),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 35, top: 35.0, bottom: 5),
+                    child: Text(
+                      "SAVED CARDS",
+                      style: CustomTextStyle.semiBold18.responsive(context),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 25.0, right: 20, top: 17),
+                    child: greenDebitCardRow(
+                        context: context,
+                        icon: const Icon(
+                          LineAwesome.trash_solid,
+                          color: CustomColors.red05,
+                        ),
+                        onPressed: () {},
+                        visaNumber: "8790",
+                        name: "Your Name"),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 40.0),
+                    child: Center(
+                      child: DefaultGreenButton(
+                          text: "Add Address",
+                          onPressed: () {},
+                          horizontalPadding: 20,
+                          verticalPadding: 14,
+                          textSize: 16),
+                    ),
+                  ),
+                  const Spacer()
+                ],
+              ),
+            ),
           ),
         ),
       ),

@@ -14,6 +14,12 @@ abstract class CustomTextStyle {
     fontWeight: FontWeight.w600,
     color: Colors.black,
   );
+  static const TextStyle extraLite = TextStyle(
+    fontFamily: "Outfit",
+    fontSize: 13,
+    fontWeight: FontWeight.w200,
+    color: CustomColors.vividGreen49,
+  );
   static const TextStyle regular12 = TextStyle(
     fontFamily: "Outfit",
     fontSize: 12,

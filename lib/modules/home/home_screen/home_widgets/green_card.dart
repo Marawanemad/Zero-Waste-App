@@ -21,7 +21,7 @@ Widget homeGreenCard({
       alignment: Alignment.bottomRight,
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(vertical: 30.0, horizontal: 30),
+          padding: const EdgeInsets.symmetric(vertical: 25.0, horizontal: 30),
           child: Align(
             alignment: Alignment.topLeft,
             child: Column(

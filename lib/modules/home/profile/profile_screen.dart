@@ -28,17 +28,10 @@ class ProfileScreen extends StatelessWidget {
               "Account",
               style: CustomTextStyle.bold24.responsive(context),
             ),
-            const SizedBox(width: 10),
-            Container(
-                padding: const EdgeInsets.all(5),
-                decoration: BoxDecoration(
-                    color: Colors.orange[700],
-                    borderRadius: BorderRadius.circular(12)),
-                child: const Icon(
-                  shadows: [Shadow(offset: Offset(0, 2))],
-                  IonIcons.person,
-                  color: Colors.white,
-                ))
+            const Image(
+                image: AssetImage(Assets.imagesHomeAccount),
+                width: 39,
+                height: 55)
           ],
         ),
       ),
@@ -118,7 +111,7 @@ class ProfileScreen extends StatelessWidget {
                         context: context,
                         assetIconName: Assets.iconsWallet,
                         text: "Wallets",
-                        pageScreen: const WalletsScreen()),
+                        pageScreen: WalletsScreen()),
                     rowButton(
                         context: context,
                         assetIconName: Assets.iconsTransaction,
