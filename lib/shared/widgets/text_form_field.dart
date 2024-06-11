@@ -9,8 +9,8 @@ formField({
   TextStyle? labelStyle,
   String? hintText,
   TextStyle? hintStyle,
-  Icon? prefixIcon,
-  IconData? suffixIcon,
+  prefixIcon,
+  suffixIcon,
   suffixPressed,
   bool? obscureText,
   String? validationMessage,
@@ -20,14 +20,16 @@ formField({
   InputBorder? focusBorderShape,
   double circularBorder = 8,
   Color? prefixIconColor,
-  Color? suffixIconColor,
   Color? BorderColor,
   Color? CursorColor,
   padding,
+  focusNode,
 }) {
   return Padding(
     padding: const EdgeInsets.only(top: 7.0),
     child: TextFormField(
+      // to can focus on any other field when submit
+      focusNode: focusNode,
       maxLines: keyboardType == TextInputType.multiline ? null : 1,
       obscureText: obscureText ?? false,
       controller: controller,
@@ -44,16 +46,12 @@ formField({
         // to put icon in the start of box
         prefixIcon: prefixIcon,
         prefixIconColor: prefixIconColor ?? Colors.black,
-        suffixIcon: Padding(
-          padding: padding ?? const EdgeInsets.all(0),
-          child: IconButton(
-            onPressed: suffixPressed,
-            icon: Icon(
-              suffixIcon,
-              color: suffixIconColor ?? Colors.black,
-            ),
-          ),
-        ),
+        suffixIcon: suffixPressed != null
+            ? Padding(
+                padding: padding ?? const EdgeInsets.all(0),
+                child: IconButton(onPressed: suffixPressed, icon: suffixIcon),
+              )
+            : suffixIcon,
         // use to make shape when not select the form field
         enabledBorder: FormBorderShape,
         // use to make shape when select the form field

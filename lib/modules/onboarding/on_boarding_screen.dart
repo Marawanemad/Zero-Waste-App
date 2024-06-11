@@ -107,7 +107,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             DefaultGreenButton(
               boardController: boardController,
               text: isLast ? 'Start' : "Next",
-              iconPath: !isLast ? Assets.iconsArrow : "",
+              iconPath: !isLast ? Assets.iconsArrow : null,
               radius: isLast ? 140 : 15,
               onPressed: () {
                 if (isLast) {

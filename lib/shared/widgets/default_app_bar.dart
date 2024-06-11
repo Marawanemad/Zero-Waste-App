@@ -7,6 +7,7 @@ PreferredSizeWidget defaultAppBar({
   Widget? leading,
   Widget? title,
   List<Widget>? actionWidgetsList,
+  centerTitle = false,
   pageScreen,
 }) {
   return AppBar(
@@ -32,5 +33,6 @@ PreferredSizeWidget defaultAppBar({
         ),
     title: title,
     actions: actionWidgetsList,
+    centerTitle: centerTitle,
   );
 }

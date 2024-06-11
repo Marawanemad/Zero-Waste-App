@@ -26,7 +26,7 @@ void registerDialog({required context}) {
           child: Icon(
             FontAwesome.check_solid,
             size: 75,
-            color: CustomColors.liteGrayCB,
+            color: CustomColors.liteGreyCB,
           ),
         ),
         actions: [

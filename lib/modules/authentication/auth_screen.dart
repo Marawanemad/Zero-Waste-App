@@ -149,7 +149,9 @@ class _AuthScreenState extends State<AuthScreen> {
                       button_color: CustomColors.greyF3,
                       button_text: Text(
                         "Register",
-                        style: CustomTextStyle.semiBold18.responsive(context),
+                        style: CustomTextStyle.semiBold18
+                            .copyWith(color: CustomColors.darkGrey51)
+                            .responsive(context),
                       ),
                       lift_radius: false,
                       onTap: () {

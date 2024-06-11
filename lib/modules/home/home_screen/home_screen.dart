@@ -98,7 +98,7 @@ class HomeScreen extends StatelessWidget {
                                                   color: CustomColors.grey61)
                                               .responsive(context)),
                                       TextSpan(
-                                          text: 'AEKS!',
+                                          text: 'NAME!',
                                           style: CustomTextStyle.bold20
                                               .responsive(context)),
                                       TextSpan(
@@ -187,7 +187,7 @@ class HomeScreen extends StatelessWidget {
                                   text: "Environmental\nStatus",
                                   onPressed: () {},
                                   buttonText: 'Click Here',
-                                )
+                                ),
                               ],
                             ),
                           ),
@@ -196,6 +196,7 @@ class HomeScreen extends StatelessWidget {
                                 horizontal: 16.0, vertical: 10),
                             child: Text('Recyclables',
                                 style: CustomTextStyle.medium14
+                                    .copyWith(color: CustomColors.grey61)
                                     .responsive(context)),
                           ),
                           Container(

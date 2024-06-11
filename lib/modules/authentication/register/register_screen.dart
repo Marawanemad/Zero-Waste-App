@@ -3,13 +3,13 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:zero_waste_app/modules/authentication/auth_screen.dart';
 import 'package:zero_waste_app/modules/authentication/auth_widgets/auth_divider.dart';
 import 'package:zero_waste_app/modules/authentication/auth_widgets/auth_form_field.dart';
-import 'package:zero_waste_app/modules/authentication/auth_widgets/auth_green_button.dart';
 import 'package:zero_waste_app/modules/authentication/auth_widgets/register_dialog.dart';
 import 'package:zero_waste_app/modules/authentication/auth_widgets/social_logins_buttons.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
 import 'package:zero_waste_app/shared/widgets/default_app_bar.dart';
 import 'package:zero_waste_app/shared/helpers/navigation_helper.dart';
+import 'package:zero_waste_app/shared/widgets/default_green_button.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -88,7 +88,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     ),
                     const Spacer(flex: 3),
-                    AuthGreenButton(
+                    DefaultGreenButton(
+                        horizontalPadding: 25,
+                        verticalPadding: 8,
+                        textSize: 22,
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
                             registerDialog(context: context);

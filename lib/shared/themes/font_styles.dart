@@ -31,7 +31,7 @@ abstract class CustomTextStyle {
     fontFamily: "Outfit",
     fontSize: 14,
     fontWeight: FontWeight.w500,
-    color: CustomColors.grey61,
+    color: CustomColors.grey89,
   );
 
   static const TextStyle bold12 = TextStyle(
@@ -129,7 +129,6 @@ abstract class CustomTextStyle {
     fontSize: 24,
     fontWeight: FontWeight.w700,
     color: Colors.black,
-    letterSpacing: 3.6,
   );
   static const TextStyle bold14 = TextStyle(
     fontFamily: "Outfit",
@@ -145,7 +144,7 @@ abstract class CustomTextStyle {
     color: Colors.black,
   );
   static const TextStyle semiBold18 = TextStyle(
-    color: CustomColors.darkGrey51,
+    color: Colors.black,
     fontSize: 18,
     fontFamily: 'Outfit',
     fontWeight: FontWeight.w600,
