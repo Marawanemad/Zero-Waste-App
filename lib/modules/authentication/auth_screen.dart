@@ -4,6 +4,7 @@ import 'package:zero_waste_app/modules/authentication/login/login_screen.dart';
 import 'package:zero_waste_app/modules/authentication/register/register_screen.dart';
 import 'package:zero_waste_app/shared/assets.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';
+import 'package:zero_waste_app/shared/helpers/responsive/responsive_scroll_screen.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
 import 'package:zero_waste_app/shared/helpers/navigation_helper.dart';
@@ -44,7 +45,7 @@ class _AuthScreenState extends State<AuthScreen> {
       body: AnimatedOpacity(
         opacity: _imageOpacity,
         duration: const Duration(seconds: 1),
-        child: SingleChildScrollView(
+        child: scrollScreenResponsive(
           child: Column(
             children: [
               // Animated opacity for the image
@@ -127,7 +128,7 @@ class _AuthScreenState extends State<AuthScreen> {
                     )
                     .responsive(context),
               ),
-              const SizedBox(height: 20), // Replace Spacer with a SizedBox
+              const Spacer(flex: 2),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 50),
                 child: Row(
@@ -187,6 +188,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   ],
                 ),
               ),
+              const Spacer()
             ],
           ),
         ),

@@ -21,7 +21,7 @@ Widget SavedWalletsRow({
         ),
         const SizedBox(width: 30),
         Text(walletNumber, style: CustomTextStyle.medium14.responsive(context)),
-        const Spacer(),
+        const Spacer(flex: 4),
         IconButton(onPressed: onPressed, icon: icon),
         const Spacer()
       ],
