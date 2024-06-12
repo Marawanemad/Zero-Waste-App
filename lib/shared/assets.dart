@@ -321,6 +321,10 @@ class Assets {
   /// assets/images/home/profile/etisalat_logo.png
   static const String imagesHomeProfileEtisalatLogo = "assets/images/home/profile/etisalat_logo.png";
 
+  /// Assets for imagesHomeProfileFailureState
+  /// assets/images/home/profile/failure_state.png
+  static const String imagesHomeProfileFailureState = "assets/images/home/profile/failure_state.png";
+
   /// Assets for imagesHomeProfileInstaPayLogo
   /// assets/images/home/profile/insta_pay_logo.png
   static const String imagesHomeProfileInstaPayLogo = "assets/images/home/profile/insta_pay_logo.png";
@@ -328,6 +332,10 @@ class Assets {
   /// Assets for imagesHomeProfileOrangeMoneyLogo
   /// assets/images/home/profile/orange_money_logo.png
   static const String imagesHomeProfileOrangeMoneyLogo = "assets/images/home/profile/orange_money_logo.png";
+
+  /// Assets for imagesHomeProfileSuccessState
+  /// assets/images/home/profile/success_state.png
+  static const String imagesHomeProfileSuccessState = "assets/images/home/profile/success_state.png";
 
   /// Assets for imagesHomeProfileVodafoneLogo
   /// assets/images/home/profile/vodafone_logo.png

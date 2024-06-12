@@ -6,6 +6,7 @@ import 'package:zero_waste_app/modules/home/profile/profile_widgets/profile_form
 import 'package:zero_waste_app/modules/home/profile/profile_widgets/switch_button.dart';
 import 'package:zero_waste_app/shared/assets.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';
+import 'package:zero_waste_app/shared/helpers/responsive/responsive_scroll_screen.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
 import 'package:zero_waste_app/shared/widgets/default_app_bar.dart';
@@ -59,14 +60,7 @@ class _MyAddressScreenState extends State<MyAddressScreen> {
           style: CustomTextStyle.medium18.responsive(context),
         ),
       ),
-      body: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) =>
-            SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: ConstrainedBox(
-            constraints: BoxConstraints(minHeight: constraints.maxHeight),
-            child: IntrinsicHeight(
-              child: Column(
+      body:scrollScreenResponsive(child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Padding(
@@ -164,11 +158,7 @@ class _MyAddressScreenState extends State<MyAddressScreen> {
                   ),
                   const Spacer(),
                 ],
-              ),
-            ),
-          ),
-        ),
-      ),
+              ),),
     );
   }
 }

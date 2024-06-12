@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:zero_waste_app/modules/authentication/auth_widgets/auth_form_field.dart';
 import 'package:zero_waste_app/modules/authentication/login/reset_password.dart';
+import 'package:zero_waste_app/shared/helpers/responsive/responsive_scroll_screen.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
 import 'package:zero_waste_app/shared/widgets/default_app_bar.dart';
@@ -78,128 +79,118 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen>
     return Scaffold(
       appBar: defaultAppBar(context: context),
       // use to make expanded with fixed height not infinity
-      body: LayoutBuilder(
-        builder: (BuildContext context, BoxConstraints constraints) =>
-            SingleChildScrollView(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(minHeight: constraints.maxHeight),
-            child: IntrinsicHeight(
+      body: scrollScreenResponsive(
+        child: Column(
+          children: [
+            Text("Reset Password",
+                style: CustomTextStyle.bold34
+                    .copyWith(color: CustomColors.darkGrey73)),
+            const Spacer(flex: 2),
+            Form(
+              key: formKey,
               child: Column(
                 children: [
-                  Text("Reset Password",
-                      style: CustomTextStyle.bold34
-                          .copyWith(color: CustomColors.darkGrey73)),
-                  const Spacer(flex: 2),
-                  Form(
-                    key: formKey,
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              child: AuthFormField(
-                                  controller: emailController,
-                                  keyboardType: TextInputType.emailAddress,
-                                  text_input_action: TextInputAction.next,
-                                  hintText: "Email",
-                                  validationMessage: "Email must not be empty"),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 15.0),
-                              child: IconButton(
-                                style: const ButtonStyle(
-                                  shape: WidgetStatePropertyAll(
-                                    RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.all(
-                                        Radius.circular(15),
-                                      ),
-                                    ),
-                                  ),
-                                  backgroundColor: WidgetStatePropertyAll(
-                                      CustomColors.vividGreen5A),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: AuthFormField(
+                            controller: emailController,
+                            keyboardType: TextInputType.emailAddress,
+                            text_input_action: TextInputAction.next,
+                            hintText: "Email",
+                            validationMessage: "Email must not be empty"),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 15.0),
+                        child: IconButton(
+                          style: const ButtonStyle(
+                            shape: WidgetStatePropertyAll(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(15),
                                 ),
-                                onPressed: () {},
-                                // to make icon in opposite direction
-                                icon: const Icon(
-                                  Icons.arrow_forward_ios_rounded,
+                              ),
+                            ),
+                            backgroundColor: WidgetStatePropertyAll(
+                                CustomColors.vividGreen5A),
+                          ),
+                          onPressed: () {},
+                          // to make icon in opposite direction
+                          icon: const Icon(
+                            Icons.arrow_forward_ios_rounded,
+                            color: Colors.white,
+                            size: 35,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: AuthFormField(
+                          controller: otpController,
+                          obscureText: true,
+                          keyboardType: TextInputType.visiblePassword,
+                          text_input_action: TextInputAction.done,
+                          hintText: "OTP",
+                          validationMessage: "Please enter your OTP",
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10, right: 15.0),
+                        child: Column(children: [
+                          IconButton(
+                            style: const ButtonStyle(
+                              shape: WidgetStatePropertyAll(
+                                RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(15)),
+                                ),
+                              ),
+                              backgroundColor: WidgetStatePropertyAll(
+                                  CustomColors.vividGreen5A),
+                            ),
+                            onPressed:
+                                _remainingSeconds == 30 ? _onPressed : null,
+                            // to make animation rotate
+                            icon: RotationTransition(
+                              turns: _animation,
+                              child: Transform(
+                                alignment: Alignment.center,
+                                // Rotate the icon 180 degrees around the Y-axis
+                                transform: Matrix4.rotationY(3.14159),
+                                child: const Icon(
+                                  Icons.refresh_outlined,
                                   color: Colors.white,
                                   size: 35,
                                 ),
                               ),
                             ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: AuthFormField(
-                                controller: otpController,
-                                obscureText: true,
-                                keyboardType: TextInputType.visiblePassword,
-                                text_input_action: TextInputAction.done,
-                                hintText: "OTP",
-                                validationMessage: "Please enter your OTP",
-                              ),
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(top: 10, right: 15.0),
-                              child: Column(children: [
-                                IconButton(
-                                  style: const ButtonStyle(
-                                    shape: WidgetStatePropertyAll(
-                                      RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(15)),
-                                      ),
-                                    ),
-                                    backgroundColor: WidgetStatePropertyAll(
-                                        CustomColors.vividGreen5A),
-                                  ),
-                                  onPressed: _remainingSeconds == 30
-                                      ? _onPressed
-                                      : null,
-                                  // to make animation rotate
-                                  icon: RotationTransition(
-                                    turns: _animation,
-                                    child: Transform(
-                                      alignment: Alignment.center,
-                                      // Rotate the icon 180 degrees around the Y-axis
-                                      transform: Matrix4.rotationY(3.14159),
-                                      child: const Icon(
-                                        Icons.refresh_outlined,
-                                        color: Colors.white,
-                                        size: 35,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Text("00:$seconds")
-                              ]),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                          ),
+                          Text("00:$seconds")
+                        ]),
+                      ),
+                    ],
                   ),
-                  const Spacer(flex: 2),
-                  DefaultGreenButton(
-                      horizontalPadding: 25,
-                      verticalPadding: 8,
-                      textSize: 22,
-                      onPressed: () {
-                        if (formKey.currentState!.validate()) {
-                          navigateAndFinish(
-                              context: context,
-                              pageScreen: const ResetPasswordScreen());
-                        }
-                      },
-                      text: "Verify"),
-                  const Spacer(flex: 4),
                 ],
               ),
             ),
-          ),
+            const Spacer(flex: 2),
+            DefaultGreenButton(
+                horizontalPadding: 25,
+                verticalPadding: 8,
+                textSize: 22,
+                onPressed: () {
+                  if (formKey.currentState!.validate()) {
+                    navigateAndFinish(
+                        context: context,
+                        pageScreen: const ResetPasswordScreen());
+                  }
+                },
+                text: "Verify"),
+            const Spacer(flex: 4),
+          ],
         ),
       ),
     );

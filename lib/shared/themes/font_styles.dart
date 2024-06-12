@@ -124,6 +124,12 @@ abstract class CustomTextStyle {
     fontWeight: FontWeight.w700,
     color: Colors.black,
   );
+  static const TextStyle bold36 = TextStyle(
+    fontFamily: "Outfit",
+    fontSize: 36,
+    fontWeight: FontWeight.w700,
+    color: CustomColors.vividGreen49,
+  );
   static const TextStyle bold32 = TextStyle(
     fontFamily: "Outfit",
     fontSize: 32,
@@ -140,7 +146,7 @@ abstract class CustomTextStyle {
     fontFamily: "Outfit",
     fontSize: 14,
     fontWeight: FontWeight.w700,
-    color: Color(0xff555252),
+    color: CustomColors.darkGrey7D,
   );
   static const TextStyle thin24 = TextStyle(
     fontFamily: "Outfit",

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:zero_waste_app/modules/authentication/auth_widgets/auth_form_field.dart';
 import 'package:zero_waste_app/modules/authentication/login/login_screen.dart';
+import 'package:zero_waste_app/shared/helpers/responsive/responsive_scroll_screen.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
 import 'package:zero_waste_app/shared/widgets/default_app_bar.dart';
@@ -30,55 +31,47 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
         appBar:
             defaultAppBar(context: context, pageScreen: const LoginScreen()),
         // use to make expanded with fixed height not infinity
-        body: LayoutBuilder(
-          builder: (BuildContext context, BoxConstraints constraints) =>
-              SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(minHeight: constraints.maxHeight),
-              child: IntrinsicHeight(
+        body: scrollScreenResponsive(
+          child: Column(
+            children: [
+              Text("Reset Password",
+                  style: CustomTextStyle.bold34
+                      .copyWith(color: CustomColors.darkGrey73)),
+              const Spacer(flex: 2),
+              Form(
+                key: formKey,
                 child: Column(
                   children: [
-                    Text("Reset Password",
-                        style: CustomTextStyle.bold34
-                            .copyWith(color: CustomColors.darkGrey73)),
-                    const Spacer(flex: 2),
-                    Form(
-                      key: formKey,
-                      child: Column(
-                        children: [
-                          AuthFormField(
-                              controller: newPasswordController,
-                              keyboardType: TextInputType.emailAddress,
-                              obscureText: true,
-                              text_input_action: TextInputAction.next,
-                              hintText: "New Password",
-                              validationMessage: "Password must not be empty"),
-                          AuthFormField(
-                            controller: confirmPasswordController,
-                            obscureText: true,
-                            keyboardType: TextInputType.visiblePassword,
-                            text_input_action: TextInputAction.done,
-                            hintText: "OTP",
-                            validationMessage: "Please Confirm your password",
-                          ),
-                        ],
-                      ),
+                    AuthFormField(
+                        controller: newPasswordController,
+                        keyboardType: TextInputType.emailAddress,
+                        obscureText: true,
+                        text_input_action: TextInputAction.next,
+                        hintText: "New Password",
+                        validationMessage: "Password must not be empty"),
+                    AuthFormField(
+                      controller: confirmPasswordController,
+                      obscureText: true,
+                      keyboardType: TextInputType.visiblePassword,
+                      text_input_action: TextInputAction.done,
+                      hintText: "OTP",
+                      validationMessage: "Please Confirm your password",
                     ),
-                    const Spacer(flex: 2),
-                    DefaultGreenButton(
-                      horizontalPadding: 25,
-                      verticalPadding: 8,
-                      textSize: 22,
-                      onPressed: () {
-                        if (formKey.currentState!.validate()) {}
-                      },
-                      text: "Confirm Password",
-                    ),
-                    const Spacer(flex: 4),
                   ],
                 ),
               ),
-            ),
+              const Spacer(flex: 2),
+              DefaultGreenButton(
+                horizontalPadding: 25,
+                verticalPadding: 8,
+                textSize: 22,
+                onPressed: () {
+                  if (formKey.currentState!.validate()) {}
+                },
+                text: "Confirm Password",
+              ),
+              const Spacer(flex: 4),
+            ],
           ),
         ),
       ),
