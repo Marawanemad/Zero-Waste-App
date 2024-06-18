@@ -4,22 +4,13 @@ import 'package:zero_waste_app/shared/themes/colors.dart';
 
 Widget walletsImagesRow({required context}) {
   return Container(
-    margin: const EdgeInsets.only(top: 20, left: 20),
-    padding: const EdgeInsets.only(left: 5),
-    width: 500,
+    margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
+    padding: const EdgeInsets.only(left: 5, right: 5),
+    width: double.infinity,
     height: 82,
     decoration: BoxDecoration(
       color: CustomColors.vividGreen5A.withOpacity(0.28),
-      borderRadius: BorderRadius.only(
-        topLeft: const Radius.circular(15),
-        bottomLeft: const Radius.circular(15),
-        topRight: MediaQuery.of(context).size.width < 500
-            ? Radius.zero
-            : const Radius.circular(15),
-        bottomRight: MediaQuery.of(context).size.width < 500
-            ? Radius.zero
-            : const Radius.circular(15),
-      ),
+      borderRadius: BorderRadius.circular(15),
     ),
     child: SingleChildScrollView(
       scrollDirection: Axis.horizontal,

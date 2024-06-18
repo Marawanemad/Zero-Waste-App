@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:zero_waste_app/models/boarding_model.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
@@ -25,7 +24,9 @@ class OnBoardingItemWidget extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
               Text(model.title,
-                  style: CustomTextStyle.bold24.responsive(context)),
+                  style: CustomTextStyle.black28.copyWith(shadows: [
+                    const Shadow(color: Colors.black, blurRadius: 0.2)
+                  ]).responsive(context)),
             ]
           : [
               // Image.asset(model.image),

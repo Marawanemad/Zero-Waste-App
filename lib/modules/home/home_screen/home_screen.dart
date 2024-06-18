@@ -149,8 +149,8 @@ class HomeScreen extends StatelessWidget {
                                           ),
                                         ),
                                         const Positioned(
-                                          bottom: 0,
-                                          left: 0,
+                                          bottom: -2,
+                                          left: -2,
                                           child: Icon(
                                             Icons.info_outline,
                                             color: CustomColors.vividGreen49,
@@ -173,15 +173,23 @@ class HomeScreen extends StatelessWidget {
                               scrollDirection: Axis.horizontal,
                               children: [
                                 homeGreenCard(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.2,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.4,
                                   context: context,
                                   image: Assets.imagesHomeCard1,
                                   text: "EARN 100\nPOINTS FREE",
                                   onPressed: () {
                                     congratulationDialog(context: context);
                                   },
-                                  buttonText: 'Enroll Now',
+                                  buttonText: 'Earn Now',
                                 ),
                                 homeGreenCard(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.5,
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.5,
                                   context: context,
                                   image: Assets.imagesHomeCard2,
                                   text: "Environmental\nStatus",
@@ -203,7 +211,7 @@ class HomeScreen extends StatelessWidget {
                             margin: const EdgeInsets.symmetric(
                               horizontal: 16.0,
                             ),
-                            padding: const EdgeInsets.only(left: 5),
+                            padding: const EdgeInsets.all(5),
                             decoration: ShapeDecoration(
                               color: CustomColors.greyF3,
                               shape: RoundedRectangleBorder(
@@ -212,28 +220,36 @@ class HomeScreen extends StatelessWidget {
                             ),
                             child: Row(
                               children: List.generate(4, (index) {
-                                return TextButton(
-                                  style: ElevatedButton.styleFrom(
-                                    elevation: 0,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(6),
+                                return Expanded(
+                                  child: TextButton(
+                                    style: ElevatedButton.styleFrom(
+                                      shadowColor:
+                                          Colors.black.withOpacity(0.4),
+                                      elevation: homeCubit.currentIndex == index
+                                          ? 5
+                                          : 0,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(6),
+                                      ),
+                                      backgroundColor: homeCubit.currentIndex ==
+                                              index
+                                          ? Colors
+                                              .white // Selected button color
+                                          : CustomColors
+                                              .greyF3, // Default background color
                                     ),
-                                    backgroundColor: homeCubit.currentIndex ==
-                                            index
-                                        ? Colors.white // Selected button color
-                                        : CustomColors
-                                            .greyF3, // Default background color
+                                    onPressed: () =>
+                                        homeCubit.onChangeIndex(index),
+                                    child: Text(
+                                        homeCubit.buttonsNameList[index],
+                                        style: CustomTextStyle.semiBold14
+                                            .copyWith(
+                                                color: homeCubit.currentIndex ==
+                                                        index
+                                                    ? CustomColors.vividGreen49
+                                                    : CustomColors.grey85)
+                                            .responsive(context)),
                                   ),
-                                  onPressed: () =>
-                                      homeCubit.onChangeIndex(index),
-                                  child: Text(homeCubit.buttonsNameList[index],
-                                      style: CustomTextStyle.semiBold14
-                                          .copyWith(
-                                              color: homeCubit.currentIndex ==
-                                                      index
-                                                  ? CustomColors.vividGreen49
-                                                  : CustomColors.grey85)
-                                          .responsive(context)),
                                 );
                               }),
                             ),

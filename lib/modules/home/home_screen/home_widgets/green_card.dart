@@ -9,6 +9,8 @@ Widget homeGreenCard({
   required onPressed,
   required String image,
   required String text,
+  double? height,
+  double? width,
   required String buttonText,
 }) {
   return Container(
@@ -52,6 +54,8 @@ Widget homeGreenCard({
           ),
         ),
         Image(
+          width: width,
+          height: height,
           image: AssetImage(image),
           fit: BoxFit.fill,
         ),

@@ -4,7 +4,6 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:zero_waste_app/modules/home/profile/profile_sub_screens/validation_screen.dart';
 import 'package:zero_waste_app/modules/home/profile/profile_widgets/green_row.dart';
 import 'package:zero_waste_app/modules/home/profile/profile_widgets/profile_form_field.dart';
-import 'package:zero_waste_app/modules/home/profile/profile_widgets/switch_button.dart';
 import 'package:zero_waste_app/shared/assets.dart';
 import 'package:zero_waste_app/shared/helpers/navigation_helper.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';
@@ -47,11 +46,11 @@ class _DebitCardScreenState extends State<DebitCardScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Spacer(),
-            const Center(
+            Center(
               child: Image(
-                height: 155,
-                width: 294,
-                image: AssetImage(Assets.imagesHomeProfileCreditCard),
+                height: MediaQuery.of(context).size.height * 0.3,
+                width: MediaQuery.of(context).size.width * 0.8,
+                image: const AssetImage(Assets.imagesHomeProfileCreditCard),
               ),
             ),
             Padding(
@@ -61,6 +60,7 @@ class _DebitCardScreenState extends State<DebitCardScreen> {
                 child: Column(
                   children: [
                     ProfileFormField(
+                      context: context,
                       controller: nameController,
                       keyboardType: TextInputType.name,
                       text_input_action: TextInputAction.next,
@@ -72,6 +72,7 @@ class _DebitCardScreenState extends State<DebitCardScreen> {
                       ),
                     ),
                     ProfileFormField(
+                      context: context,
                       controller: cardNumberController,
                       keyboardType: TextInputType.number,
                       text_input_action: TextInputAction.next,
@@ -93,6 +94,7 @@ class _DebitCardScreenState extends State<DebitCardScreen> {
                         Expanded(
                           flex: 3,
                           child: ProfileFormField(
+                            context: context,
                             controller: dateController,
                             keyboardType: TextInputType.datetime,
                             text_input_action: TextInputAction.next,
@@ -107,6 +109,7 @@ class _DebitCardScreenState extends State<DebitCardScreen> {
                         Expanded(
                           flex: 2,
                           child: ProfileFormField(
+                            context: context,
                             controller: passwordController,
                             keyboardType: TextInputType.number,
                             text_input_action: TextInputAction.done,
@@ -123,20 +126,6 @@ class _DebitCardScreenState extends State<DebitCardScreen> {
                   ],
                 ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 15, top: 15),
-              child: switchButton(
-                  context: context,
-                  onChange: (value) {
-                    setState(
-                      () {
-                        switchValue = value;
-                      },
-                    );
-                  },
-                  switchValue: switchValue,
-                  text: "Save this card"),
             ),
             Padding(
               padding: const EdgeInsets.only(left: 35, top: 35.0, bottom: 5),

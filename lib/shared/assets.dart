@@ -98,8 +98,8 @@ class Assets {
   static const String imagesHomeAccount = "assets/images/home/account.png";
 
   /// Assets for imagesHomeCard1
-  /// assets/images/home/card1.png
-  static const String imagesHomeCard1 = "assets/images/home/card1.png";
+  /// assets/images/home/card1.jpg
+  static const String imagesHomeCard1 = "assets/images/home/card1.jpg";
 
   /// Assets for imagesHomeCard2
   /// assets/images/home/card2.png

@@ -23,6 +23,7 @@ formField({
   Color? BorderColor,
   Color? CursorColor,
   padding,
+  contentPadding = const EdgeInsets.symmetric(vertical: 8),
   focusNode,
 }) {
   return Padding(
@@ -36,27 +37,31 @@ formField({
       // to make action when click on keyboard submit
       textInputAction: text_input_action,
       decoration: InputDecoration(
-        prefix: const SizedBox(width: 10),
-        // text appear in box and when you pressed on it move to up and don't disappear
-        labelText: labelText,
-        labelStyle: labelStyle ?? const TextStyle(color: Colors.black),
-        // word appear when pressed on box and disappeared when user write
-        hintText: hintText,
-        hintStyle: hintStyle,
-        // to put icon in the start of box
-        prefixIcon: prefixIcon,
-        prefixIconColor: prefixIconColor ?? Colors.black,
-        suffixIcon: suffixPressed != null
-            ? Padding(
-                padding: padding ?? const EdgeInsets.all(0),
-                child: IconButton(onPressed: suffixPressed, icon: suffixIcon),
-              )
-            : suffixIcon,
-        // use to make shape when not select the form field
-        enabledBorder: FormBorderShape,
-        // use to make shape when select the form field
-        focusedBorder: focusBorderShape,
-      ),
+          contentPadding: contentPadding,
+          alignLabelWithHint: true,
+          prefix: const SizedBox(width: 10),
+          // text appear in box and when you pressed on it move to up and don't disappear
+          labelText: labelText,
+          labelStyle: labelStyle ?? const TextStyle(color: Colors.black),
+          // word appear when pressed on box and disappeared when user write
+          hintText: hintText,
+          hintStyle: hintStyle,
+          // to put icon in the start of box
+          prefixIcon: prefixIcon,
+          prefixIconColor: prefixIconColor ?? Colors.black,
+          suffixIcon: suffixPressed != null
+              ? Padding(
+                  padding: padding ?? const EdgeInsets.all(0),
+                  child: IconButton(onPressed: suffixPressed, icon: suffixIcon),
+                )
+              : suffixIcon,
+          // use to make shape when not select the form field
+          enabledBorder: FormBorderShape,
+          // use to make shape when select the form field
+          focusedBorder: focusBorderShape,
+          errorBorder: InputBorder.none,
+          focusedErrorBorder: InputBorder.none,
+          errorStyle: const TextStyle(fontSize: 0)),
       cursorColor: CursorColor ?? CustomColors.vividGreen49,
       keyboardType: keyboardType,
       onFieldSubmitted: onSubmit,

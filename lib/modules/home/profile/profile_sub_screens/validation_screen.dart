@@ -61,7 +61,7 @@ class _ValidationScreenState extends State<ValidationScreen> {
                           ? "Success"
                           : "Failure",
                   style: CustomTextStyle.bold36.responsive(context).copyWith(
-                      color: widget.successState
+                      color: widget.successState || loading
                           ? CustomColors.vividGreen49
                           : CustomColors.red44),
                 ),

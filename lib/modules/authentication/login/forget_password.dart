@@ -27,6 +27,9 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen>
   int _remainingSeconds = 30;
   Timer? timer;
   bool _isRotating = false;
+  bool showErrorIcon = false;
+
+  final otpFocusNode = FocusNode();
 
 // to make initial animation rotate for refresh icon
 
@@ -44,6 +47,10 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen>
 // to stop animation
   @override
   void dispose() {
+    // to stop controller
+    emailController.dispose();
+    otpFocusNode.dispose();
+
     _controller.stop(); // Stop the animation controller
     _controller.dispose(); // Dispose the animation controller
     timer?.cancel(); // Cancel the timer if it's still running
@@ -94,11 +101,16 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen>
                     children: [
                       Expanded(
                         child: AuthFormField(
-                            controller: emailController,
-                            keyboardType: TextInputType.emailAddress,
-                            text_input_action: TextInputAction.next,
-                            hintText: "Email",
-                            validationMessage: "Email must not be empty"),
+                          controller: emailController,
+                          showErrorIcon: showErrorIcon,
+                          keyboardType: TextInputType.emailAddress,
+                          text_input_action: TextInputAction.next,
+                          hintText: "Email",
+                          onSubmit: (_) {
+                            FocusScope.of(context).requestFocus(otpFocusNode);
+                          },
+                          validationMessage: '',
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(right: 15.0),
@@ -114,7 +126,9 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen>
                             backgroundColor: WidgetStatePropertyAll(
                                 CustomColors.vividGreen5A),
                           ),
-                          onPressed: () {},
+                          onPressed: () {
+                            FocusScope.of(context).requestFocus(otpFocusNode);
+                          },
                           // to make icon in opposite direction
                           icon: const Icon(
                             Icons.arrow_forward_ios_rounded,
@@ -130,11 +144,13 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen>
                       Expanded(
                         child: AuthFormField(
                           controller: otpController,
+                          focusNode: otpFocusNode,
+                          showErrorIcon: showErrorIcon,
                           obscureText: true,
                           keyboardType: TextInputType.visiblePassword,
                           text_input_action: TextInputAction.done,
                           hintText: "OTP",
-                          validationMessage: "Please enter your OTP",
+                          validationMessage: '',
                         ),
                       ),
                       Padding(
@@ -183,9 +199,16 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen>
                 textSize: 22,
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
+                    setState(() {
+                      showErrorIcon = false;
+                    });
                     navigateAndFinish(
                         context: context,
                         pageScreen: const ResetPasswordScreen());
+                  } else {
+                    setState(() {
+                      showErrorIcon = true;
+                    });
                   }
                 },
                 text: "Verify"),

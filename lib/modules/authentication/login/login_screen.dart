@@ -26,6 +26,7 @@ class _LoginScreenState extends State<LoginScreen> {
   var emailController = TextEditingController();
 
   var passwordController = TextEditingController();
+  bool showErrorIcon = false;
 
   @override
   Widget build(BuildContext context) {
@@ -62,19 +63,23 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Column(
                   children: [
                     AuthFormField(
-                        controller: emailController,
-                        keyboardType: TextInputType.emailAddress,
-                        text_input_action: TextInputAction.next,
-                        hintText: "Username,Email&Phone Number",
-                        validationMessage: "Email must not be empty"),
+                      controller: emailController,
+                      showErrorIcon: showErrorIcon,
+                      keyboardType: TextInputType.emailAddress,
+                      text_input_action: TextInputAction.next,
+                      hintText: "Username, Email",
+                      validationMessage: '',
+                    ),
                     const SizedBox(height: 10),
                     AuthFormField(
-                        controller: passwordController,
-                        obscureText: true,
-                        keyboardType: TextInputType.visiblePassword,
-                        text_input_action: TextInputAction.done,
-                        hintText: "Password",
-                        validationMessage: "Please enter your password"),
+                      controller: passwordController,
+                      showErrorIcon: showErrorIcon,
+                      obscureText: true,
+                      keyboardType: TextInputType.visiblePassword,
+                      text_input_action: TextInputAction.done,
+                      hintText: "Password",
+                      validationMessage: '',
+                    ),
                   ],
                 ),
               ),
@@ -105,8 +110,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   textSize: 22,
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
+                      setState(() {
+                        showErrorIcon = false;
+                      });
+
                       navigateAndFinish(
                           context: context, pageScreen: const HomeScreen());
+                    } else {
+                      setState(() {
+                        showErrorIcon = true;
+                      });
                     }
                   },
                   text: "Sign in"),

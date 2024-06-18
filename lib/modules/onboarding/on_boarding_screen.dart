@@ -104,6 +104,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
                 ),
               ),
             ),
+            const SizedBox(height: 20),
             DefaultGreenButton(
               boardController: boardController,
               text: isLast ? 'Start' : "Next",

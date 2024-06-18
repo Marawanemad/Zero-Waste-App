@@ -56,6 +56,7 @@ class WalletsScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     ProfileFormField(
+                      context: context,
                       controller: phoneController,
                       keyboardType: TextInputType.phone,
                       text_input_action: TextInputAction.next,

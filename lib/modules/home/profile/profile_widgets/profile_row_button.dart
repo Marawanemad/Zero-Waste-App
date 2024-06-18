@@ -30,7 +30,9 @@ Widget rowButton(
           const SizedBox(width: 15),
           Text(
             text,
-            style: CustomTextStyle.semiBold12.responsive(context),
+            style: CustomTextStyle.semiBold12
+                .copyWith(fontSize: 15)
+                .responsive(context),
           ),
           const Spacer(),
           const Icon(

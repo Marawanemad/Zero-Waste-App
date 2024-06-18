@@ -41,49 +41,43 @@ class ProfileScreen extends StatelessWidget {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: [
-              Row(
+              Stack(
+                // to put the another widget in the bottom
+                alignment: AlignmentDirectional.center,
                 children: [
-                  const Spacer(),
-                  Text(
-                    "Name",
-                    style: CustomTextStyle.bold24.responsive(context),
+                  Container(
+                    width: 78,
+                    height: 85,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: CustomColors.green46, width: 5),
+                      shape: BoxShape.circle,
+                      image: const DecorationImage(
+                        image: AssetImage(Assets.imagesApp),
+                        fit: BoxFit.contain,
+                      ),
+                    ),
                   ),
-                  const SizedBox(width: 9),
-                  Stack(
-                    // to put the another widget in the bottom
-                    alignment: AlignmentDirectional.bottomEnd,
-                    children: [
-                      Container(
-                        width: 65,
-                        height: 65,
-                        decoration: BoxDecoration(
-                          border:
-                              Border.all(color: CustomColors.green46, width: 5),
-                          shape: BoxShape.circle,
-                          image: const DecorationImage(
-                            image: AssetImage(Assets.imagesApp),
-                            fit: BoxFit.contain,
-                          ),
+                  Positioned(
+                    top: 55,
+                    left: 50,
+                    child: CircleAvatar(
+                      radius: 13,
+                      backgroundColor: CustomColors.green46,
+                      child: IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          size: 11,
+                          Icons.photo_camera_rounded,
+                          color: Colors.white,
                         ),
                       ),
-                      Align(
-                        alignment: Alignment.bottomRight,
-                        child: CircleAvatar(
-                          radius: 12,
-                          backgroundColor: CustomColors.green46,
-                          child: IconButton(
-                            onPressed: () {},
-                            icon: const Icon(
-                              size: 10,
-                              Icons.photo_camera_rounded,
-                              color: Colors.white,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 ],
+              ),
+              Text(
+                "Name",
+                style: CustomTextStyle.bold24.responsive(context),
               ),
               const SizedBox(height: 50),
               rowButton(

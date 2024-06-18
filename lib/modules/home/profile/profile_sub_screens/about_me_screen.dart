@@ -73,6 +73,7 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
                 child: Column(
                   children: [
                     ProfileFormField(
+                      context: context,
                       controller: nameController,
                       keyboardType: TextInputType.name,
                       text_input_action: TextInputAction.next,
@@ -84,6 +85,7 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
                       ),
                     ),
                     ProfileFormField(
+                      context: context,
                       controller: emailController,
                       keyboardType: TextInputType.emailAddress,
                       text_input_action: TextInputAction.next,
@@ -95,6 +97,7 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
                       ),
                     ),
                     ProfileFormField(
+                      context: context,
                       controller: phoneController,
                       keyboardType: TextInputType.phone,
                       text_input_action: TextInputAction.next,
@@ -120,6 +123,7 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
                 child: Column(
                   children: [
                     ProfileFormField(
+                      context: context,
                       controller: currentPasswordController,
                       keyboardType: TextInputType.visiblePassword,
                       text_input_action: TextInputAction.next,
@@ -132,6 +136,7 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
                       ),
                     ),
                     ProfileFormField(
+                      context: context,
                       controller: passwordController,
                       keyboardType: TextInputType.visiblePassword,
                       text_input_action: TextInputAction.next,
@@ -157,6 +162,7 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
                       },
                     ),
                     ProfileFormField(
+                      context: context,
                       controller: confirmPasswordController,
                       focusNode: confirmPasswordFocusNode,
                       keyboardType: TextInputType.visiblePassword,

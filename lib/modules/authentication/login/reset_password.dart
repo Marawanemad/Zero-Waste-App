@@ -21,6 +21,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   var newPasswordController = TextEditingController();
 
   var confirmPasswordController = TextEditingController();
+  bool showErrorIcon = false;
   @override
   Widget build(BuildContext context) {
     return PopScope(
@@ -43,19 +44,22 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 child: Column(
                   children: [
                     AuthFormField(
-                        controller: newPasswordController,
-                        keyboardType: TextInputType.emailAddress,
-                        obscureText: true,
-                        text_input_action: TextInputAction.next,
-                        hintText: "New Password",
-                        validationMessage: "Password must not be empty"),
+                      controller: newPasswordController,
+                      showErrorIcon: showErrorIcon,
+                      keyboardType: TextInputType.emailAddress,
+                      obscureText: true,
+                      text_input_action: TextInputAction.next,
+                      hintText: "New Password",
+                      validationMessage: '',
+                    ),
                     AuthFormField(
                       controller: confirmPasswordController,
+                      showErrorIcon: showErrorIcon,
                       obscureText: true,
                       keyboardType: TextInputType.visiblePassword,
                       text_input_action: TextInputAction.done,
-                      hintText: "OTP",
-                      validationMessage: "Please Confirm your password",
+                      hintText: "Confirm New Password",
+                      validationMessage: '',
                     ),
                   ],
                 ),
@@ -66,7 +70,17 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 verticalPadding: 8,
                 textSize: 22,
                 onPressed: () {
-                  if (formKey.currentState!.validate()) {}
+                  if (formKey.currentState!.validate()) {
+                    setState(() {
+                      showErrorIcon = false;
+                    });
+                    navigateAndFinish(
+                        context: context, pageScreen: const LoginScreen());
+                  } else {
+                    setState(() {
+                      showErrorIcon = true;
+                    });
+                  }
                 },
                 text: "Confirm Password",
               ),

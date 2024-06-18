@@ -23,6 +23,19 @@ class QrScanScreen extends StatelessWidget {
         ),
         context: context,
       ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 30.0),
+            child: Center(
+              child: Text(
+                "Your QR Code",
+                style: CustomTextStyle.bold24.responsive(context),
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }

@@ -11,7 +11,7 @@ Widget dropDownRow(
     required onChange,
     required dropDownList}) {
   return Padding(
-    padding: const EdgeInsets.only(left: 15.0, top: 10),
+    padding: const EdgeInsets.only(left: 8.0, top: 10),
     child: Row(
       children: [
         Icon(iconName, color: CustomColors.grey96),

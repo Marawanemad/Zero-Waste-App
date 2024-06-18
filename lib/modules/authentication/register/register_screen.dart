@@ -29,6 +29,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   var passwordController = TextEditingController();
 
   var confirmPasswordController = TextEditingController();
+  bool showErrorIcon = false;
 
   @override
   Widget build(BuildContext context) {
@@ -53,31 +54,39 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 child: Column(
                   children: [
                     AuthFormField(
-                        controller: nameController,
-                        keyboardType: TextInputType.name,
-                        text_input_action: TextInputAction.next,
-                        hintText: "Name",
-                        validationMessage: "Name must not be empty"),
+                      controller: nameController,
+                      showErrorIcon: showErrorIcon,
+                      keyboardType: TextInputType.name,
+                      text_input_action: TextInputAction.next,
+                      hintText: "Name",
+                      validationMessage: '',
+                    ),
                     AuthFormField(
-                        controller: emailController,
-                        keyboardType: TextInputType.emailAddress,
-                        text_input_action: TextInputAction.next,
-                        hintText: "Email",
-                        validationMessage: "Email must not be empty"),
+                      controller: emailController,
+                      showErrorIcon: showErrorIcon,
+                      keyboardType: TextInputType.emailAddress,
+                      text_input_action: TextInputAction.next,
+                      hintText: "Email",
+                      validationMessage: '',
+                    ),
                     AuthFormField(
-                        controller: passwordController,
-                        obscureText: true,
-                        keyboardType: TextInputType.visiblePassword,
-                        text_input_action: TextInputAction.next,
-                        hintText: "Password",
-                        validationMessage: "Please enter your password"),
+                      controller: passwordController,
+                      showErrorIcon: showErrorIcon,
+                      obscureText: true,
+                      keyboardType: TextInputType.visiblePassword,
+                      text_input_action: TextInputAction.next,
+                      hintText: "Password",
+                      validationMessage: '',
+                    ),
                     AuthFormField(
-                        controller: confirmPasswordController,
-                        obscureText: true,
-                        keyboardType: TextInputType.visiblePassword,
-                        text_input_action: TextInputAction.done,
-                        hintText: "Confirm Password",
-                        validationMessage: "Please confirm your password"),
+                      controller: confirmPasswordController,
+                      showErrorIcon: showErrorIcon,
+                      obscureText: true,
+                      keyboardType: TextInputType.visiblePassword,
+                      text_input_action: TextInputAction.done,
+                      hintText: "Confirm Password",
+                      validationMessage: '',
+                    ),
                   ],
                 ),
               ),
@@ -88,7 +97,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   textSize: 22,
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
+                      setState(() {
+                        showErrorIcon = false;
+                      });
+
                       registerDialog(context: context);
+                    } else {
+                      setState(() {
+                        showErrorIcon = true;
+                      });
                     }
                   },
                   text: "Create Account"),

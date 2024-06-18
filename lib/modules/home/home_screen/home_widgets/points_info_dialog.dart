@@ -45,7 +45,7 @@ Widget infoDetails({
   required score,
 }) {
   return Row(
-    mainAxisAlignment: MainAxisAlignment.center,
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Text(
         text,
