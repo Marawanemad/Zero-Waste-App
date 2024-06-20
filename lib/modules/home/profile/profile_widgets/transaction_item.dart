@@ -42,7 +42,7 @@ Widget transactionItem(
             children: [
               TextSpan(
                 text: "$pointNumber Point\n",
-                style: CustomTextStyle.extraLite.responsive(context),
+                style: CustomTextStyle.extraLite13.responsive(context),
               ),
               TextSpan(
                 text: "EGP $money",

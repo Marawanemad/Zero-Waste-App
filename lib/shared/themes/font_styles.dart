@@ -11,11 +11,17 @@ abstract class CustomTextStyle {
     color: Colors.black,
   );
   // extra lite
-  static const TextStyle extraLite = TextStyle(
+  static const TextStyle extraLite13 = TextStyle(
     fontFamily: "Outfit",
     fontSize: 13,
     fontWeight: FontWeight.w200,
     color: CustomColors.vividGreen49,
+  );
+  static const TextStyle extraLite18 = TextStyle(
+    fontFamily: "Outfit",
+    fontSize: 18,
+    fontWeight: FontWeight.w200,
+    color: CustomColors.black19,
   );
   // regular
   static const TextStyle regular12 = TextStyle(
@@ -94,7 +100,7 @@ abstract class CustomTextStyle {
     fontFamily: "Outfit",
     fontSize: 20,
     fontWeight: FontWeight.w600,
-    color: Color(0xFF2C2C63),
+    color: CustomColors.blue65,
   );
 
   // bold
@@ -122,6 +128,12 @@ abstract class CustomTextStyle {
     fontSize: 16,
     fontWeight: FontWeight.w700,
     color: CustomColors.darkGreen28,
+  );
+  static const TextStyle bold18 = TextStyle(
+    fontFamily: "Outfit",
+    fontSize: 18,
+    fontWeight: FontWeight.w700,
+    color: CustomColors.black19,
   );
   static const TextStyle bold20 = TextStyle(
     fontFamily: "Outfit",
@@ -167,6 +179,18 @@ abstract class CustomTextStyle {
     fontSize: 16,
     fontWeight: FontWeight.w800,
     color: Colors.black,
+  );
+  static const TextStyle extraBold18 = TextStyle(
+    fontFamily: "Outfit",
+    fontSize: 16,
+    fontWeight: FontWeight.w800,
+    color: CustomColors.blue65,
+  );
+  static const TextStyle extraBold22 = TextStyle(
+    fontFamily: "Outfit",
+    fontSize: 22,
+    fontWeight: FontWeight.w800,
+    color: Colors.white,
   );
   static const TextStyle extraBold24 = TextStyle(
     fontFamily: "Outfit",

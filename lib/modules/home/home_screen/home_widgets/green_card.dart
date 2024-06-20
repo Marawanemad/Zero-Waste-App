@@ -45,8 +45,9 @@ Widget homeGreenCard({
                   ),
                   child: Text(
                     buttonText,
-                    style: CustomTextStyle.bold20.copyWith(
-                        fontSize: 12, color: CustomColors.darkGreen28),
+                    style: CustomTextStyle.bold20
+                        .copyWith(fontSize: 12, color: CustomColors.darkGreen28)
+                        .responsive(context),
                   ),
                 ),
               ],

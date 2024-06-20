@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zero_waste_app/modules/home/statistics/charts/bar_chart.dart';
+import 'package:zero_waste_app/modules/home/statistics/charts/line_chart.dart';
+import 'package:zero_waste_app/modules/home/statistics/charts/pie_chart.dart';
 import 'package:zero_waste_app/modules/home/statistics/cubit/statistics_cubit.dart';
 import 'package:zero_waste_app/modules/home/statistics/cubit/statistics_state.dart';
 import 'package:zero_waste_app/shared/assets.dart';
@@ -17,8 +19,8 @@ class StatisticsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     List<Widget> chartScreens = [
       const BarChartUI(),
-      const SizedBox(),
-      const SizedBox(),
+      const LineChartUI(),
+      const PieChartUI(),
       const SizedBox(),
     ];
     return BlocProvider(

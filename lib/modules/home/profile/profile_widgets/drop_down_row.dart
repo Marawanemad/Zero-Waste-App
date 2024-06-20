@@ -16,23 +16,26 @@ Widget dropDownRow(
       children: [
         Icon(iconName, color: CustomColors.grey96),
         const SizedBox(width: 20),
-        DropdownButton(
-          elevation: 9,
-          padding: const EdgeInsets.only(right: 20),
-          hint: hintText,
-          iconEnabledColor: CustomColors.grey96,
-          underline: const SizedBox(),
-          value: selectedCountry,
-          onChanged: onChange,
-          items: dropDownList.map<DropdownMenuItem<String>>((String country) {
-            return DropdownMenuItem<String>(
-              value: country,
-              child: Text(
-                country,
-                style: CustomTextStyle.medium18.responsive(context),
-              ),
-            );
-          }).toList(),
+        Expanded(
+          child: DropdownButton(
+            isExpanded: true,
+            elevation: 9,
+            padding: const EdgeInsets.only(right: 20),
+            hint: hintText,
+            iconEnabledColor: CustomColors.grey96,
+            underline: const SizedBox(),
+            value: selectedCountry,
+            onChanged: onChange,
+            items: dropDownList.map<DropdownMenuItem<String>>((String country) {
+              return DropdownMenuItem<String>(
+                value: country,
+                child: Text(
+                  country,
+                  style: CustomTextStyle.medium18.responsive(context),
+                ),
+              );
+            }).toList(),
+          ),
         ),
       ],
     ),

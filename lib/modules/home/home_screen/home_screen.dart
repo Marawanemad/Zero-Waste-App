@@ -272,6 +272,25 @@ class HomeScreen extends StatelessWidget {
                               ),
                             ),
                           ),
+                          homeCubit.currentIndex == 3
+                              ? Center(
+                                  child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 5, horizontal: 25),
+                                    decoration: ShapeDecoration(
+                                      color: CustomColors.vividGreen49,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                    ),
+                                    child: Text(
+                                      "Glass is under Construction",
+                                      style: CustomTextStyle.extraBold22
+                                          .responsive(context),
+                                    ),
+                                  ),
+                                )
+                              : const SizedBox(),
                         ],
                       ),
                     ),

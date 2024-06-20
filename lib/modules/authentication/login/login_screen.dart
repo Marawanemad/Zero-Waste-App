@@ -49,11 +49,11 @@ class _LoginScreenState extends State<LoginScreen> {
                     TextSpan(
                         text: "Welcome Back\n",
                         style: CustomTextStyle.bold34
-                            .copyWith(color: CustomColors.darkGrey73)),
+                            .copyWith(color: CustomColors.darkGrey41)),
                     TextSpan(
                         text: " You are doing such a Great Effort",
                         style: CustomTextStyle.regular12.copyWith(
-                            color: CustomColors.darkGrey73, fontSize: 17)),
+                            color: CustomColors.darkGrey41, fontSize: 17)),
                   ],
                 ),
               ),
@@ -130,7 +130,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     textAlign: TextAlign.center,
                     "Login with Google",
                     style: CustomTextStyle.semiBold14
-                        .copyWith(color: CustomColors.darkGrey73, fontSize: 15),
+                        .copyWith(color: CustomColors.darkGrey41, fontSize: 15),
                   ),
                   icon: Brand(
                     Brands.google,

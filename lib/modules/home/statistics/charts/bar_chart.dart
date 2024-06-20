@@ -12,7 +12,7 @@ class BarChartUI extends StatefulWidget {
 }
 
 class BarChartUIState extends State<BarChartUI> {
-  final Duration animDuration = const Duration(milliseconds: 250);
+  final Duration animDuration = const Duration(milliseconds: 400);
 
   final Color backgroundColor = CustomColors.vividGreen49.withOpacity(0.6);
   final Color dropDownColor = CustomColors.whiteF0;
@@ -39,7 +39,7 @@ class BarChartUIState extends State<BarChartUI> {
               children: <Widget>[
                 Text('$itemSelected Visits',
                     style: CustomTextStyle.extraBold16
-                        .copyWith(color: CustomColors.grey41)),
+                        .copyWith(color: CustomColors.darkGrey41)),
                 const SizedBox(height: 38),
                 Expanded(
                   child: Padding(
@@ -56,11 +56,17 @@ class BarChartUIState extends State<BarChartUI> {
           Padding(
             padding: const EdgeInsets.all(8),
             child: Align(
-              alignment: Alignment.topRight,
+              alignment: AlignmentDirectional.topEnd,
               child: DropdownButton<String>(
+                icon: const Padding(
+                  padding: EdgeInsets.only(right: 25.0),
+                  child: Icon(
+                    Icons.keyboard_arrow_down_rounded,
+                    color: CustomColors.darkGrey54,
+                  ),
+                ),
                 dropdownColor: dropDownColor,
                 underline: const SizedBox(),
-                value: itemSelected,
                 onChanged: (newValue) {
                   // Use WidgetsBinding.instance.addPostFrameCallback to defer the state update
                   WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -76,7 +82,7 @@ class BarChartUIState extends State<BarChartUI> {
                     child: Text(
                       dateName,
                       style: CustomTextStyle.semiBold12
-                          .copyWith(color: CustomColors.grey41)
+                          .copyWith(color: CustomColors.darkGrey41)
                           .responsive(context),
                     ),
                   );

@@ -91,7 +91,7 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen>
           children: [
             Text("Reset Password",
                 style: CustomTextStyle.bold34
-                    .copyWith(color: CustomColors.darkGrey73)),
+                    .copyWith(color: CustomColors.darkGrey41)),
             const Spacer(flex: 2),
             Form(
               key: formKey,

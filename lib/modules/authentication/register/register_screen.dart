@@ -47,7 +47,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             children: [
               Text("Register",
                   style: CustomTextStyle.bold34
-                      .copyWith(color: CustomColors.darkGrey73)),
+                      .copyWith(color: CustomColors.darkGrey41)),
               const SizedBox(height: 30),
               Form(
                 key: formKey,
@@ -116,7 +116,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   textAlign: TextAlign.center,
                   "Sign up with Google",
                   style: CustomTextStyle.semiBold14
-                      .copyWith(color: CustomColors.darkGrey73, fontSize: 15),
+                      .copyWith(color: CustomColors.darkGrey41, fontSize: 15),
                 ),
                 icon: Brand(
                   Brands.google,
