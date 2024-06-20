@@ -1,22 +1,20 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:zero_waste_app/modules/home/statistics/statistics_widget/statistics_widget.dart';
+
 import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
 
-class BarChartUI extends StatefulWidget {
-  const BarChartUI({super.key});
+class TwoBarCharts extends StatefulWidget {
+  const TwoBarCharts({super.key});
 
   @override
-  State<StatefulWidget> createState() => BarChartUIState();
+  State<StatefulWidget> createState() => TwoBarChartsState();
 }
 
-class BarChartUIState extends State<BarChartUI> {
+class TwoBarChartsState extends State<TwoBarCharts> {
   final Duration animDuration = const Duration(milliseconds: 400);
-
-  final Color backgroundColor = CustomColors.vividGreen49.withOpacity(0.6);
-  final Color dropDownColor = CustomColors.whiteF0;
-  final Color barColor = CustomColors.darkGreen28;
   int touchedIndex = -1;
   List<String> dropDownList = ['Daily', 'Monthly', 'Yearly'];
   String itemSelected = 'Daily';
@@ -24,69 +22,92 @@ class BarChartUIState extends State<BarChartUI> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.9,
-      height: MediaQuery.of(context).size.height * 0.65,
-      decoration: ShapeDecoration(
-        color: backgroundColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-      ),
+      margin: const EdgeInsets.symmetric(horizontal: 12),
+      padding: const EdgeInsets.only(bottom: 40),
+      color: Colors.white,
       child: Stack(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
+        alignment: Alignment.centerLeft,
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width * 0.9,
+            height: MediaQuery.of(context).size.height * 0.65,
+            decoration: ShapeDecoration(
+              color: Colors.white,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(12)),
+            ),
+            child: Stack(
+              alignment: Alignment.topRight,
               children: <Widget>[
-                Text('$itemSelected Visits',
-                    style: CustomTextStyle.extraBold16
-                        .copyWith(color: CustomColors.darkGrey41)),
-                const SizedBox(height: 38),
-                Expanded(
-                  child: BarChart(
-                    mainBarData(),
-                    swapAnimationDuration: animDuration,
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      Text("Gained Points",
+                          style:
+                              CustomTextStyle.extraBold18.responsive(context)),
+                      const SizedBox(height: 27),
+                      Row(
+                        children: <Widget>[
+                          Indicator(
+                            color: CustomColors.blueDA,
+                            text: 'This month',
+                            size: touchedIndex == 2 ? 18 : 16,
+                          ),
+                          const SizedBox(width: 15),
+                          Indicator(
+                            color: CustomColors.orange4A,
+                            text: 'Last month',
+                            size: touchedIndex == 1 ? 18 : 16,
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 38),
+                      Expanded(
+                        child: BarChart(
+                          mainBarData(),
+                          swapAnimationDuration: animDuration,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  child: DropdownButton<String>(
+                    alignment: Alignment.center,
+                    dropdownColor: Colors.white,
+                    underline: const SizedBox(),
+                    value: itemSelected,
+                    icon: const Icon(Icons.keyboard_arrow_down_sharp,
+                        color: CustomColors.grey9C),
+                    onChanged: (newValue) {
+                      // Use WidgetsBinding.instance.addPostFrameCallback to defer the state update
+                      WidgetsBinding.instance.addPostFrameCallback((_) {
+                        setState(() {
+                          itemSelected = newValue!;
+                        });
+                      });
+                    },
+                    items: dropDownList
+                        .map<DropdownMenuItem<String>>((String dateName) {
+                      return DropdownMenuItem<String>(
+                        value: dateName,
+                        child: Text(
+                          dateName,
+                          style: CustomTextStyle.semiBold12
+                              .copyWith(color: CustomColors.grey9C)
+                              .responsive(context),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                )
               ],
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: Align(
-              alignment: AlignmentDirectional.topEnd,
-              child: DropdownButton<String>(
-                icon: const Padding(
-                  padding: EdgeInsets.only(right: 25.0),
-                  child: Icon(
-                    Icons.keyboard_arrow_down_rounded,
-                    color: CustomColors.darkGrey54,
-                  ),
-                ),
-                dropdownColor: dropDownColor,
-                underline: const SizedBox(),
-                onChanged: (newValue) {
-                  // Use WidgetsBinding.instance.addPostFrameCallback to defer the state update
-                  WidgetsBinding.instance.addPostFrameCallback((_) {
-                    setState(() {
-                      itemSelected = newValue!;
-                    });
-                  });
-                },
-                items: dropDownList
-                    .map<DropdownMenuItem<String>>((String dateName) {
-                  return DropdownMenuItem<String>(
-                    value: dateName,
-                    child: Text(
-                      dateName,
-                      style: CustomTextStyle.semiBold12
-                          .copyWith(color: CustomColors.darkGrey41)
-                          .responsive(context),
-                    ),
-                  );
-                }).toList(),
-              ),
-            ),
-          )
         ],
       ),
     );
@@ -94,7 +115,8 @@ class BarChartUIState extends State<BarChartUI> {
 
   BarChartGroupData makeGroupData(
     int x,
-    double y, {
+    double y,
+    double y2, {
     bool isTouched = false,
     List<int> showTooltips = const [],
   }) {
@@ -102,13 +124,31 @@ class BarChartUIState extends State<BarChartUI> {
       x: x,
       barRods: [
         BarChartRodData(
+          borderRadius: const BorderRadius.only(
+              topRight: Radius.circular(10), topLeft: Radius.circular(10)),
           toY: y,
-          color: barColor,
+          color: CustomColors.blueDA,
           width: itemSelected == 'Daily'
-              ? 15
+              ? 10
               : itemSelected == 'Monthly'
-                  ? 10
-                  : 22,
+                  ? 7
+                  : 11,
+          backDrawRodData: BackgroundBarChartRodData(
+            show: true,
+            toY: 20,
+            color: Colors.white,
+          ),
+        ),
+        BarChartRodData(
+          borderRadius: const BorderRadius.only(
+              topRight: Radius.circular(10), topLeft: Radius.circular(10)),
+          toY: y2,
+          color: CustomColors.orange4A,
+          width: itemSelected == 'Daily'
+              ? 10
+              : itemSelected == 'Monthly'
+                  ? 7
+                  : 11,
           backDrawRodData: BackgroundBarChartRodData(
             show: true,
             toY: 20,
@@ -125,19 +165,19 @@ class BarChartUIState extends State<BarChartUI> {
       return List.generate(7, (i) {
         switch (i) {
           case 0:
-            return makeGroupData(0, 5);
+            return makeGroupData(0, 5, 10);
           case 1:
-            return makeGroupData(1, 6.5);
+            return makeGroupData(1, 6.5, 5);
           case 2:
-            return makeGroupData(2, 5);
+            return makeGroupData(2, 5, 3);
           case 3:
-            return makeGroupData(3, 7.5);
+            return makeGroupData(3, 7.5, 5);
           case 4:
-            return makeGroupData(4, 9);
+            return makeGroupData(4, 9, 6);
           case 5:
-            return makeGroupData(5, 11.5);
+            return makeGroupData(5, 11.5, 8);
           case 6:
-            return makeGroupData(6, 6.5);
+            return makeGroupData(6, 6.5, 3);
           default:
             return throw Error();
         }
@@ -146,29 +186,29 @@ class BarChartUIState extends State<BarChartUI> {
       return List.generate(12, (i) {
         switch (i) {
           case 0:
-            return makeGroupData(0, 6.5);
+            return makeGroupData(0, 6, 6.5);
           case 1:
-            return makeGroupData(1, 5);
+            return makeGroupData(1, 8, 5);
           case 2:
-            return makeGroupData(2, 7.5);
+            return makeGroupData(2, 12, 7.5);
           case 3:
-            return makeGroupData(3, 9);
+            return makeGroupData(3, 11, 9);
           case 4:
-            return makeGroupData(4, 11.5);
+            return makeGroupData(4, 6, 11.5);
           case 5:
-            return makeGroupData(5, 6.5);
+            return makeGroupData(5, 4, 6.5);
           case 6:
-            return makeGroupData(6, 6.5);
+            return makeGroupData(6, 2, 6.5);
           case 7:
-            return makeGroupData(7, 6.5);
+            return makeGroupData(7, 8, 6.5);
           case 8:
-            return makeGroupData(8, 6.5);
+            return makeGroupData(8, 15, 6.5);
           case 9:
-            return makeGroupData(9, 6.5);
+            return makeGroupData(9, 9, 6.5);
           case 10:
-            return makeGroupData(10, 6.5);
+            return makeGroupData(10, 18, 6.5);
           case 11:
-            return makeGroupData(11, 5);
+            return makeGroupData(11, 7, 5);
           default:
             return throw Error();
         }
@@ -177,13 +217,13 @@ class BarChartUIState extends State<BarChartUI> {
       return List.generate(4, (i) {
         switch (i) {
           case 0:
-            return makeGroupData(0, 5);
+            return makeGroupData(0, 5, 3);
           case 1:
-            return makeGroupData(1, 6.5);
+            return makeGroupData(1, 6.5, 10);
           case 2:
-            return makeGroupData(2, 5);
+            return makeGroupData(2, 5, 9);
           case 3:
-            return makeGroupData(3, 7.5);
+            return makeGroupData(3, 7.5, 5);
           default:
             return throw Error();
         }
@@ -195,7 +235,6 @@ class BarChartUIState extends State<BarChartUI> {
     return BarChartData(
       barTouchData: BarTouchData(
         touchTooltipData: BarTouchTooltipData(
-          tooltipBgColor: dropDownColor,
           tooltipHorizontalAlignment: FLHorizontalAlignment.right,
           getTooltipItem: (group, groupIndex, rod, rodIndex) {
             String? weekDay;
@@ -286,15 +325,11 @@ class BarChartUIState extends State<BarChartUI> {
             }
             return BarTooltipItem(
               '$weekDay\n',
-              itemSelected == 'Monthly'
-                  ? CustomTextStyle.semiBold8.responsive(context)
-                  : CustomTextStyle.extraBold16.responsive(context),
+              CustomTextStyle.semiBold12.responsive(context),
               children: <TextSpan>[
                 TextSpan(
                   text: (rod.toY - 1).toString(),
-                  style: itemSelected == 'Monthly'
-                      ? CustomTextStyle.semiBold8.responsive(context)
-                      : CustomTextStyle.extraBold16.responsive(context),
+                  style: CustomTextStyle.semiBold12.responsive(context),
                 ),
               ],
             );
@@ -323,10 +358,21 @@ class BarChartUIState extends State<BarChartUI> {
         ),
       ),
       borderData: FlBorderData(
-        show: false,
+        border: Border.symmetric(
+          horizontal: BorderSide(
+            color: CustomColors.grey9C.withOpacity(0.2),
+          ),
+        ),
       ),
       barGroups: showingGroups(),
-      gridData: const FlGridData(show: false),
+      gridData: FlGridData(
+        drawVerticalLine: false,
+        horizontalInterval: 10,
+        getDrawingHorizontalLine: (value) => FlLine(
+          strokeWidth: 1,
+          color: CustomColors.grey9C.withOpacity(0.2),
+        ),
+      ),
     );
   }
 
@@ -422,9 +468,9 @@ class BarChartUIState extends State<BarChartUI> {
       space: 16,
       child: Text(
         weekDay,
-        style: itemSelected == 'Monthly'
-            ? CustomTextStyle.semiBold8.responsive(context)
-            : CustomTextStyle.extraBold16.responsive(context),
+        style: CustomTextStyle.semiBold12
+            .copyWith(color: CustomColors.grey9C)
+            .responsive(context),
       ),
     );
   }

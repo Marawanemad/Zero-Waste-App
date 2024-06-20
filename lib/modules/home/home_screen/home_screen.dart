@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:zero_waste_app/modules/home/exchange/exchange_screen.dart';
 import 'package:zero_waste_app/modules/home/home_screen/cubit/home_cubit.dart';
 import 'package:zero_waste_app/modules/home/home_screen/cubit/home_state.dart';
@@ -193,7 +194,12 @@ class HomeScreen extends StatelessWidget {
                                   context: context,
                                   image: Assets.imagesHomeCard2,
                                   text: "Environmental\nStatus",
-                                  onPressed: () {},
+                                  onPressed: () async {
+                                    await launchUrl(
+                                        Uri.parse(
+                                            "https://www.envisionenvironmental.com/links"),
+                                        mode: LaunchMode.inAppWebView);
+                                  },
                                   buttonText: 'Click Here',
                                 ),
                               ],
