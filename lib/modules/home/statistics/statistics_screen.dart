@@ -66,7 +66,7 @@ class StatisticsScreen extends StatelessWidget {
                             child: TextButton(
                               style: ElevatedButton.styleFrom(
                                 shadowColor: Colors.black.withOpacity(0.4),
-
+                                padding: EdgeInsets.zero,
                                 elevation: statisticsCubit.currentIndex == index
                                     ? 5
                                     : 0,
@@ -95,7 +95,7 @@ class StatisticsScreen extends StatelessWidget {
                         }),
                       ),
                     ),
-                    const SizedBox(height: 65),
+                    const SizedBox(height: 60),
                     chartScreens[statisticsCubit.currentIndex],
                     const SizedBox(height: 30),
                   ],

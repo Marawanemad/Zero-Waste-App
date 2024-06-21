@@ -28,11 +28,14 @@ void pointsInfoDialog({required context}) {
             infoDetails(
                 text: "Plastic", context: context, weight: "300", score: "50"),
             infoDetails(
-                text: "Metal", context: context, weight: "300", score: "50"),
+                text: "Metal", context: context, weight: "100", score: "50"),
             infoDetails(
-                text: "Paper", context: context, weight: "300", score: "50"),
+                text: "Paper ", context: context, weight: "500", score: "50"),
             infoDetails(
-                text: "Glass", context: context, weight: "300", score: "50"),
+                text: "Glass    ",
+                context: context,
+                weight: "1000",
+                score: "50"),
           ],
         )),
   );
@@ -45,14 +48,14 @@ Widget infoDetails({
   required score,
 }) {
   return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
     children: [
       Text(
         text,
         style: CustomTextStyle.bold16.responsive(context),
       ),
       Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5),
+        padding: const EdgeInsets.symmetric(vertical: 5),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 5),
           decoration: ShapeDecoration(

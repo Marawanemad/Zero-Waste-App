@@ -196,9 +196,9 @@ class HomeScreen extends StatelessWidget {
                                   text: "Environmental\nStatus",
                                   onPressed: () async {
                                     await launchUrl(
-                                        Uri.parse(
-                                            "https://www.envisionenvironmental.com/links"),
-                                        mode: LaunchMode.inAppWebView);
+                                      Uri.parse(
+                                          "https://www.envisionenvironmental.com/links"),
+                                    );
                                   },
                                   buttonText: 'Click Here',
                                 ),

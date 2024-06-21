@@ -29,7 +29,9 @@ class LineChartUIState extends State<LineChartUI> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
-          margin: const EdgeInsets.only(bottom: 60, top: 24),
+          margin: const EdgeInsets.only(
+            bottom: 60,
+          ),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
           decoration: ShapeDecoration(
             shape: RoundedRectangleBorder(
