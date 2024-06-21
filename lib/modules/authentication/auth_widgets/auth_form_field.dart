@@ -24,7 +24,7 @@ Widget AuthFormField({
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
         child: Container(
           height: 50,
-          padding: const EdgeInsets.only(left: 5, bottom: 20),
+          padding: const EdgeInsets.only(left: 5, bottom: 8),
           child: formField(
               controller: controller,
               focusNode: focusNode,

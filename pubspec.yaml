@@ -20,6 +20,7 @@ dependencies:
   carousel_slider: ^4.2.1
   flutter_svg: ^2.0.9
   icons_plus: ^5.0.0
+  qr_flutter: ^4.1.0
   
   flutter:
     sdk: flutter

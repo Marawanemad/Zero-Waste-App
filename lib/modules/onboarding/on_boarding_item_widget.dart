@@ -21,12 +21,16 @@ class OnBoardingItemWidget extends StatelessWidget {
               // Image.asset(model.image),
               Image(
                 image: AssetImage(model.image),
+                width: MediaQuery.of(context).size.width * 0.5,
                 fit: BoxFit.cover,
               ),
-              Text(model.title,
-                  style: CustomTextStyle.black28.copyWith(shadows: [
-                    const Shadow(color: Colors.black, blurRadius: 0.2)
-                  ]).responsive(context)),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 50.0),
+                child: Text(model.title,
+                    style: CustomTextStyle.black28.copyWith(shadows: [
+                      const Shadow(color: Colors.black, blurRadius: 0.2)
+                    ]).responsive(context)),
+              ),
             ]
           : [
               // Image.asset(model.image),

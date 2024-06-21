@@ -119,7 +119,7 @@ class _MyAddressScreenState extends State<MyAddressScreen> {
                         context: context,
                         hintText: Text(
                           selectedCountry ?? "Country",
-                          style: CustomTextStyle.semiBold14,
+                          style: CustomTextStyle.semiBold14.responsive(context),
                         ),
                         iconName: IonIcons.globe,
                         selectedCountry: selectedCountry,

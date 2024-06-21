@@ -52,10 +52,11 @@ class _SplashScreenState extends State<SplashScreen>
       body: Center(
         child: FadeTransition(
           opacity: _animation,
-          child: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30.0),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30.0),
             child: Image(
-              image: AssetImage(Assets.imagesApp),
+              width: MediaQuery.of(context).size.width * 0.7,
+              image: const AssetImage(Assets.imagesApp),
               fit: BoxFit.contain,
             ),
           ),

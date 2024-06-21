@@ -17,21 +17,41 @@ class LineChartUIState extends State<LineChartUI> {
   final Color verticalLineColor = CustomColors.orange4A;
   final Color dropDownColor = CustomColors.whiteF0;
   final Color barColor = CustomColors.darkGreen28;
-  final Duration animDuration = const Duration(milliseconds: 400);
 
   List<String> dropDownList = ['Daily', 'Monthly', 'Yearly'];
   String itemSelected = 'Daily';
   double value = 510.0;
 
+  late Future<List<FlSpot>> firstSpots;
+  late Future<List<FlSpot>> secondSpots;
+
+  @override
+  void initState() {
+    super.initState();
+    firstSpots = getFirstSpots();
+    secondSpots = getSecondSpots();
+  }
+
+  Future<List<FlSpot>> getFirstSpots() async {
+    await Future.delayed(const Duration(seconds: 1)); // Simulate network delay
+    return firstListOfSpots();
+  }
+
+  Future<List<FlSpot>> getSecondSpots() async {
+    await Future.delayed(const Duration(seconds: 1)); // Simulate network delay
+    return secondListOfSpots();
+  }
+
   @override
   Widget build(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
+    final double height = MediaQuery.of(context).size.height;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
-          margin: const EdgeInsets.only(
-            bottom: 60,
-          ),
+          margin: const EdgeInsets.only(bottom: 60),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
           decoration: ShapeDecoration(
             shape: RoundedRectangleBorder(
@@ -57,8 +77,8 @@ class LineChartUIState extends State<LineChartUI> {
           ),
         ),
         Container(
-          width: MediaQuery.of(context).size.width * 0.9,
-          height: MediaQuery.of(context).size.height * 0.65,
+          width: width * 0.9,
+          height: height * 0.65,
           decoration: ShapeDecoration(
             color: Colors.white,
             shape:
@@ -76,9 +96,28 @@ class LineChartUIState extends State<LineChartUI> {
                         style: CustomTextStyle.extraBold18.responsive(context)),
                     const SizedBox(height: 38),
                     Expanded(
-                      child: LineChart(
-                        lineChartData(),
-                        duration: animDuration,
+                      child: FutureBuilder<List<List<FlSpot>>>(
+                        future: Future.wait([firstSpots, secondSpots]),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return Center(
+                              child: CircularProgressIndicator(
+                                color: firstLineColor,
+                              ),
+                            );
+                          } else if (snapshot.hasError) {
+                            return Center(
+                                child: Text('Error: ${snapshot.error}'));
+                          } else if (!snapshot.hasData ||
+                              snapshot.data == null) {
+                            return const Center(
+                                child: Text('No data available'));
+                          }
+                          return LineChart(
+                            lineChartData(snapshot.data![0], snapshot.data![1]),
+                          );
+                        },
                       ),
                     ),
                   ],
@@ -102,27 +141,29 @@ class LineChartUIState extends State<LineChartUI> {
                   icon: const Icon(Icons.keyboard_arrow_down_sharp,
                       color: CustomColors.grey9C),
                   onChanged: (newValue) {
-                    // Use WidgetsBinding.instance.addPostFrameCallback to defer the state update
-                    WidgetsBinding.instance.addPostFrameCallback((_) {
-                      setState(() {
+                    setState(
+                      () {
                         itemSelected = newValue!;
-                      });
-                    });
-                  },
-                  items: dropDownList
-                      .map<DropdownMenuItem<String>>((String dateName) {
-                    return DropdownMenuItem<String>(
-                      value: dateName,
-                      child: Text(
-                        dateName,
-                        style: CustomTextStyle.semiBold12
-                            .copyWith(color: CustomColors.grey9C)
-                            .responsive(context),
-                      ),
+                        firstSpots = getFirstSpots();
+                        secondSpots = getSecondSpots();
+                      },
                     );
-                  }).toList(),
+                  },
+                  items: dropDownList.map<DropdownMenuItem<String>>(
+                    (String dateName) {
+                      return DropdownMenuItem<String>(
+                        value: dateName,
+                        child: Text(
+                          dateName,
+                          style: CustomTextStyle.semiBold12
+                              .copyWith(color: CustomColors.grey9C)
+                              .responsive(context),
+                        ),
+                      );
+                    },
+                  ).toList(),
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -130,7 +171,8 @@ class LineChartUIState extends State<LineChartUI> {
     );
   }
 
-  LineChartData lineChartData() {
+  LineChartData lineChartData(
+      List<FlSpot> firstSpots, List<FlSpot> secondSpots) {
     return LineChartData(
       gridData: const FlGridData(
         drawVerticalLine: false,
@@ -153,10 +195,10 @@ class LineChartUIState extends State<LineChartUI> {
         ),
         leftTitles: AxisTitles(
           sideTitles: SideTitles(
-              reservedSize: 40,
               showTitles: true,
-              interval: 1,
-              getTitlesWidget: getTitlesLeft),
+              getTitlesWidget: getTitlesLeft,
+              reservedSize: 40,
+              interval: 1),
         ),
       ),
       borderData: FlBorderData(show: false),
@@ -188,52 +230,31 @@ class LineChartUIState extends State<LineChartUI> {
             color: CustomColors.liteGreyF7.withOpacity(0.4))
       ],
       minY: 0,
-      lineBarsData: lineBarsData(),
+      lineBarsData: lineBarsData(firstSpots, secondSpots),
     );
   }
 
-  List<FlSpot> firstListOfSpots = [];
-  List<FlSpot> secondListOfSpots = [];
-  List<LineChartBarData> lineBarsData() {
-    dataOfGraph();
+  List<LineChartBarData> lineBarsData(
+      List<FlSpot> firstSpots, List<FlSpot> secondSpots) {
     return [
       LineChartBarData(
           color: firstLineColor,
           dotData: const FlDotData(show: false),
           isCurved: true,
-          spots: firstListOfSpots),
+          spots: firstSpots),
       LineChartBarData(
         dotData: const FlDotData(show: false),
         isCurved: true,
         color: secondLineColor,
-        spots: secondListOfSpots,
+        spots: secondSpots,
       ),
     ];
   }
 
-  void dataOfGraph() {
+  List<FlSpot> firstListOfSpots() {
     switch (itemSelected) {
-      case 'Daily':
-        firstListOfSpots = const [
-          FlSpot(0, 90),
-          FlSpot(1, 125),
-          FlSpot(2, 75),
-          FlSpot(3, 150),
-          FlSpot(4, 500),
-          FlSpot(5, 140),
-          FlSpot(6, 140),
-        ];
-        secondListOfSpots = const [
-          FlSpot(0, 60),
-          FlSpot(1, 60),
-          FlSpot(2, 125),
-          FlSpot(3, 50),
-          FlSpot(4, 125),
-          FlSpot(5, 75),
-          FlSpot(6, 75),
-        ];
       case 'Monthly':
-        firstListOfSpots = const [
+        return const [
           FlSpot(0, 300),
           FlSpot(1, 400),
           FlSpot(2, 250),
@@ -247,7 +268,30 @@ class LineChartUIState extends State<LineChartUI> {
           FlSpot(10, 400),
           FlSpot(11, 300),
         ];
-        secondListOfSpots = const [
+      case 'Yearly':
+        return const [
+          FlSpot(0, 500),
+          FlSpot(1, 250),
+          FlSpot(2, 300),
+          FlSpot(3, 200),
+        ];
+      default:
+        return const [
+          FlSpot(0, 90),
+          FlSpot(1, 125),
+          FlSpot(2, 75),
+          FlSpot(3, 150),
+          FlSpot(4, 500),
+          FlSpot(5, 140),
+          FlSpot(6, 140),
+        ];
+    }
+  }
+
+  List<FlSpot> secondListOfSpots() {
+    switch (itemSelected) {
+      case 'Monthly':
+        return const [
           FlSpot(0, 200),
           FlSpot(1, 300),
           FlSpot(2, 150),
@@ -262,29 +306,14 @@ class LineChartUIState extends State<LineChartUI> {
           FlSpot(11, 200),
         ];
       case 'Yearly':
-        firstListOfSpots = const [
-          FlSpot(0, 500),
-          FlSpot(1, 250),
-          FlSpot(2, 300),
-          FlSpot(3, 200),
-        ];
-        secondListOfSpots = const [
+        return const [
           FlSpot(0, 300),
           FlSpot(1, 500),
           FlSpot(2, 100),
           FlSpot(3, 150),
         ];
       default:
-        firstListOfSpots = const [
-          FlSpot(0, 75),
-          FlSpot(1, 125),
-          FlSpot(2, 80),
-          FlSpot(3, 150),
-          FlSpot(4, 500),
-          FlSpot(5, 140),
-          FlSpot(6, 140),
-        ];
-        secondListOfSpots = const [
+        return const [
           FlSpot(0, 60),
           FlSpot(1, 60),
           FlSpot(2, 125),
@@ -297,7 +326,8 @@ class LineChartUIState extends State<LineChartUI> {
   }
 
   Widget getTitlesBottom(double value, TitleMeta meta) {
-    String? title;
+    String title = '';
+
     if (itemSelected == 'Daily') {
       switch (value.toInt()) {
         case 0:
@@ -320,9 +350,6 @@ class LineChartUIState extends State<LineChartUI> {
           break;
         case 6:
           title = 'Sat';
-          break;
-        default:
-          title = '';
           break;
       }
     } else if (itemSelected == 'Monthly') {
@@ -363,9 +390,6 @@ class LineChartUIState extends State<LineChartUI> {
         case 11:
           title = 'Dec';
           break;
-        default:
-          title = '';
-          break;
       }
     } else if (itemSelected == 'Yearly') {
       switch (value.toInt()) {
@@ -381,16 +405,13 @@ class LineChartUIState extends State<LineChartUI> {
         case 3:
           title = '2024';
           break;
-        default:
-          title = '';
-          break;
       }
     }
 
     return SideTitleWidget(
       axisSide: meta.axisSide,
       child: Text(
-        title!,
+        title,
         style: CustomTextStyle.regular12
             .copyWith(color: CustomColors.grey9C)
             .responsive(context),
@@ -399,7 +420,7 @@ class LineChartUIState extends State<LineChartUI> {
   }
 
   Widget getTitlesLeft(double value, TitleMeta meta) {
-    String? title;
+    String title = '';
 
     switch (value.toInt()) {
       case 50:
@@ -453,7 +474,7 @@ class LineChartUIState extends State<LineChartUI> {
       axisSide: meta.axisSide,
       space: 6,
       child: Text(
-        title ?? '',
+        title,
         style: CustomTextStyle.regular12
             .copyWith(color: CustomColors.grey9C)
             .responsive(context),
