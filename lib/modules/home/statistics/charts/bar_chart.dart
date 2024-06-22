@@ -127,17 +127,17 @@ class BarChartUIState extends State<BarChartUI> {
           case 0:
             return makeGroupData(0, 5);
           case 1:
-            return makeGroupData(1, 6.5);
+            return makeGroupData(1, 6);
           case 2:
             return makeGroupData(2, 5);
           case 3:
-            return makeGroupData(3, 7.5);
+            return makeGroupData(3, 7);
           case 4:
             return makeGroupData(4, 9);
           case 5:
-            return makeGroupData(5, 11.5);
+            return makeGroupData(5, 11);
           case 6:
-            return makeGroupData(6, 6.5);
+            return makeGroupData(6, 6);
           default:
             return throw Error();
         }
@@ -146,27 +146,27 @@ class BarChartUIState extends State<BarChartUI> {
       return List.generate(12, (i) {
         switch (i) {
           case 0:
-            return makeGroupData(0, 6.5);
+            return makeGroupData(0, 6);
           case 1:
             return makeGroupData(1, 5);
           case 2:
-            return makeGroupData(2, 7.5);
+            return makeGroupData(2, 7);
           case 3:
             return makeGroupData(3, 9);
           case 4:
-            return makeGroupData(4, 11.5);
+            return makeGroupData(4, 11);
           case 5:
-            return makeGroupData(5, 6.5);
+            return makeGroupData(5, 6);
           case 6:
-            return makeGroupData(6, 6.5);
+            return makeGroupData(6, 6);
           case 7:
-            return makeGroupData(7, 6.5);
+            return makeGroupData(7, 6);
           case 8:
-            return makeGroupData(8, 6.5);
+            return makeGroupData(8, 6);
           case 9:
-            return makeGroupData(9, 6.5);
+            return makeGroupData(9, 6);
           case 10:
-            return makeGroupData(10, 6.5);
+            return makeGroupData(10, 6);
           case 11:
             return makeGroupData(11, 5);
           default:
@@ -179,11 +179,11 @@ class BarChartUIState extends State<BarChartUI> {
           case 0:
             return makeGroupData(0, 5);
           case 1:
-            return makeGroupData(1, 6.5);
+            return makeGroupData(1, 6);
           case 2:
             return makeGroupData(2, 5);
           case 3:
-            return makeGroupData(3, 7.5);
+            return makeGroupData(3, 7);
           default:
             return throw Error();
         }
@@ -196,7 +196,7 @@ class BarChartUIState extends State<BarChartUI> {
       barTouchData: BarTouchData(
         touchTooltipData: BarTouchTooltipData(
           tooltipBgColor: dropDownColor,
-          tooltipHorizontalAlignment: FLHorizontalAlignment.right,
+          tooltipHorizontalAlignment: FLHorizontalAlignment.center,
           getTooltipItem: (group, groupIndex, rod, rodIndex) {
             String? weekDay;
             if (itemSelected == 'Daily') {
@@ -228,40 +228,40 @@ class BarChartUIState extends State<BarChartUI> {
             } else if (itemSelected == 'Monthly') {
               switch (group.x) {
                 case 0:
-                  weekDay = 'Jan';
+                  weekDay = 'January';
                   break;
                 case 1:
-                  weekDay = 'Feb';
+                  weekDay = 'February';
                   break;
                 case 2:
-                  weekDay = 'Mar';
+                  weekDay = 'March';
                   break;
                 case 3:
-                  weekDay = 'Apr';
+                  weekDay = 'April';
                   break;
                 case 4:
                   weekDay = 'May';
                   break;
                 case 5:
-                  weekDay = 'Jun';
+                  weekDay = 'June';
                   break;
                 case 6:
-                  weekDay = 'Jul';
+                  weekDay = 'July';
                   break;
                 case 7:
-                  weekDay = 'Aug';
+                  weekDay = 'August';
                   break;
                 case 8:
-                  weekDay = 'Sep';
+                  weekDay = 'September';
                   break;
                 case 9:
-                  weekDay = 'Oct';
+                  weekDay = 'October';
                   break;
                 case 10:
-                  weekDay = 'Nov';
+                  weekDay = 'November';
                   break;
                 case 11:
-                  weekDay = 'Dec';
+                  weekDay = 'December';
                   break;
                 default:
                   throw Error();
@@ -286,15 +286,11 @@ class BarChartUIState extends State<BarChartUI> {
             }
             return BarTooltipItem(
               '$weekDay\n',
-              itemSelected == 'Monthly'
-                  ? CustomTextStyle.semiBold8.responsive(context)
-                  : CustomTextStyle.extraBold16.responsive(context),
+              CustomTextStyle.extraBold16.responsive(context),
               children: <TextSpan>[
                 TextSpan(
-                  text: (rod.toY - 1).toString(),
-                  style: itemSelected == 'Monthly'
-                      ? CustomTextStyle.semiBold8.responsive(context)
-                      : CustomTextStyle.extraBold16.responsive(context),
+                  text: (rod.toY.toInt()).toString(),
+                  style: CustomTextStyle.extraBold16.responsive(context),
                 ),
               ],
             );

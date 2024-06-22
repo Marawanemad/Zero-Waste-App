@@ -95,7 +95,7 @@ class StatisticsScreen extends StatelessWidget {
                         }),
                       ),
                     ),
-                    const SizedBox(height: 60),
+                    const SizedBox(height: 30),
                     chartScreens[statisticsCubit.currentIndex],
                     const SizedBox(height: 30),
                   ],

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:icons_plus/icons_plus.dart';
-import 'package:zero_waste_app/modules/home/profile/profile_sub_screens/about_me_screen.dart';
-import 'package:zero_waste_app/modules/home/profile/profile_sub_screens/debit_card_screen.dart';
-import 'package:zero_waste_app/modules/home/profile/profile_sub_screens/my_address_screen.dart';
-import 'package:zero_waste_app/modules/home/profile/profile_sub_screens/transactions_screen.dart';
-import 'package:zero_waste_app/modules/home/profile/profile_sub_screens/wallets_screen.dart';
-import 'package:zero_waste_app/modules/home/profile/profile_widgets/profile_row_button.dart';
+import 'package:zero_waste_app/modules/home/account/account_sub_screens/about_me_screen.dart';
+import 'package:zero_waste_app/modules/home/account/account_sub_screens/debit_card_screen.dart';
+import 'package:zero_waste_app/modules/home/account/account_sub_screens/my_address_screen.dart';
+import 'package:zero_waste_app/modules/home/account/account_sub_screens/transactions_screen.dart';
+import 'package:zero_waste_app/modules/home/account/account_sub_screens/wallets_screen.dart';
+import 'package:zero_waste_app/modules/home/account/account_widgets/account_row_button.dart';
 
 import 'package:zero_waste_app/shared/assets.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';
@@ -15,8 +15,8 @@ import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
 import 'package:zero_waste_app/shared/widgets/default_app_bar.dart';
 
-class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+class AccountScreen extends StatelessWidget {
+  const AccountScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -82,7 +82,7 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: 50),
               rowButton(
                   context: context,
-                  assetIconName: Assets.iconsProfile,
+                  assetIconName: Assets.iconsAccount,
                   text: "About me",
                   pageScreen: const AboutMeScreen()),
               rowButton(

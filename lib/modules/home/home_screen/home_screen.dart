@@ -10,7 +10,7 @@ import 'package:zero_waste_app/modules/home/home_screen/home_widgets/green_card.
 import 'package:zero_waste_app/modules/home/home_screen/home_widgets/home_grid_items.dart';
 import 'package:zero_waste_app/modules/home/home_screen/home_widgets/points_info_dialog.dart';
 import 'package:zero_waste_app/modules/home/bin_location/map_screen.dart';
-import 'package:zero_waste_app/modules/home/profile/profile_screen.dart';
+import 'package:zero_waste_app/modules/home/account/account_screen.dart';
 import 'package:zero_waste_app/modules/home/qr_code/qr_scan_screen.dart';
 import 'package:zero_waste_app/modules/home/statistics/statistics_screen.dart';
 import 'package:zero_waste_app/shared/assets.dart';
@@ -174,10 +174,8 @@ class HomeScreen extends StatelessWidget {
                               scrollDirection: Axis.horizontal,
                               children: [
                                 homeGreenCard(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.2,
                                   width:
-                                      MediaQuery.of(context).size.width * 0.4,
+                                      MediaQuery.of(context).size.width * 0.5,
                                   context: context,
                                   image: Assets.imagesHomeCard1,
                                   text: "EARN 100\nPOINTS FREE",
@@ -187,10 +185,11 @@ class HomeScreen extends StatelessWidget {
                                   buttonText: 'Earn Now',
                                 ),
                                 homeGreenCard(
-                                  height:
-                                      MediaQuery.of(context).size.height * 0.5,
+                                  padding: const EdgeInsets.only(
+                                      top: 0, left: 8, bottom: 0, right: 25),
                                   width:
-                                      MediaQuery.of(context).size.width * 0.5,
+                                      MediaQuery.of(context).size.width * 0.3,
+                                  angle: 0.1,
                                   context: context,
                                   image: Assets.imagesHomeCard2,
                                   text: "Environmental\nStatus",
@@ -263,7 +262,7 @@ class HomeScreen extends StatelessWidget {
                           ConstrainedBox(
                             constraints: BoxConstraints(
                               maxHeight: MediaQuery.of(context).size.height *
-                                  0.58, // Adjust height as needed
+                                  0.3, // Adjust height as needed
                             ),
                             child: Padding(
                               padding:
@@ -301,10 +300,9 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Container(
-                    decoration: const BoxDecoration(),
-                    padding: const EdgeInsets.symmetric(vertical: 5),
+                  SizedBox(
                     width: double.infinity,
+                    height: 100,
                     child: Row(
                       children: [
                         bottomNavBarItem(
@@ -313,39 +311,43 @@ class HomeScreen extends StatelessWidget {
                             context: context,
                             onTap: () {}),
                         bottomNavBarItem(
-                            assetName: Assets.iconsStatistics,
-                            labelName: "Statistics",
-                            context: context,
-                            onTap: () {
-                              navigate(
-                                  context: context,
-                                  pageScreen: const StatisticsScreen());
-                            }),
+                          assetName: Assets.iconsStatistics,
+                          labelName: "Statistics",
+                          context: context,
+                          onTap: () {
+                            navigate(
+                                context: context,
+                                pageScreen: const StatisticsScreen());
+                          },
+                        ),
                         NavBarCircleButton(
-                            context: context,
-                            onTap: () {
-                              navigate(
-                                  context: context,
-                                  pageScreen: const QrScanScreen());
-                            }),
+                          context: context,
+                          onTap: () {
+                            navigate(
+                                context: context,
+                                pageScreen: const QrScanScreen());
+                          },
+                        ),
                         bottomNavBarItem(
-                            assetName: Assets.iconsExchangeArrow,
-                            labelName: "Exchange",
-                            context: context,
-                            onTap: () {
-                              navigate(
-                                  context: context,
-                                  pageScreen: const ExchangeScreen());
-                            }),
+                          assetName: Assets.iconsExchangeArrow,
+                          labelName: "Exchange",
+                          context: context,
+                          onTap: () {
+                            navigate(
+                                context: context,
+                                pageScreen: const ExchangeScreen());
+                          },
+                        ),
                         bottomNavBarItem(
-                            assetName: Assets.iconsProfile,
-                            labelName: "Profile",
-                            context: context,
-                            onTap: () {
-                              navigate(
-                                  context: context,
-                                  pageScreen: const ProfileScreen());
-                            }),
+                          assetName: Assets.iconsAccount,
+                          labelName: "Profile",
+                          context: context,
+                          onTap: () {
+                            navigate(
+                                context: context,
+                                pageScreen: const AccountScreen());
+                          },
+                        ),
                       ],
                     ),
                   ),

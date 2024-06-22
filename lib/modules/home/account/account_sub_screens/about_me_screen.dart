@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:zero_waste_app/modules/home/profile/profile_widgets/profile_form_field.dart';
+import 'package:zero_waste_app/modules/home/account/account_widgets/account_form_field.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
@@ -167,7 +167,7 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
                       focusNode: confirmPasswordFocusNode,
                       keyboardType: TextInputType.visiblePassword,
                       text_input_action: TextInputAction.done,
-                      hintText: "confirm Password",
+                      hintText: "Confirm Password",
                       obscureText: true,
                       validationMessage: "Password must not be empty",
                       prefixIcon: const Icon(

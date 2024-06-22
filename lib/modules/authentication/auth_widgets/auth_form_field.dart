@@ -22,9 +22,8 @@ Widget AuthFormField({
         color: CustomColors.greyF3,
         elevation: 5,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(17)),
-        child: Container(
-          height: 50,
-          padding: const EdgeInsets.only(left: 5, bottom: 8),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 5, bottom: 6),
           child: formField(
               controller: controller,
               focusNode: focusNode,

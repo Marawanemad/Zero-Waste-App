@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:zero_waste_app/modules/home/profile/profile_sub_screens/validation_screen.dart';
-import 'package:zero_waste_app/modules/home/profile/profile_widgets/green_row.dart';
-import 'package:zero_waste_app/modules/home/profile/profile_widgets/profile_form_field.dart';
+import 'package:zero_waste_app/modules/home/account/account_sub_screens/validation_screen.dart';
+import 'package:zero_waste_app/modules/home/account/account_widgets/green_row.dart';
+import 'package:zero_waste_app/modules/home/account/account_widgets/account_form_field.dart';
 import 'package:zero_waste_app/shared/assets.dart';
 import 'package:zero_waste_app/shared/helpers/navigation_helper.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';
@@ -150,7 +150,7 @@ class _DebitCardScreenState extends State<DebitCardScreen> {
               padding: const EdgeInsets.only(top: 40.0),
               child: Center(
                 child: DefaultGreenButton(
-                    text: "Add Address",
+                    text: "Add Card",
                     onPressed: () {
                       navigateAndFinish(
                           context: context,

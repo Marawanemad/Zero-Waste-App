@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:zero_waste_app/modules/home/profile/profile_widgets/drop_down_row.dart';
-import 'package:zero_waste_app/modules/home/profile/profile_widgets/profile_form_field.dart';
+import 'package:zero_waste_app/modules/home/account/account_widgets/drop_down_row.dart';
+import 'package:zero_waste_app/modules/home/account/account_widgets/account_form_field.dart';
 import 'package:zero_waste_app/shared/assets.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/responsive_scroll_screen.dart';
@@ -77,8 +77,8 @@ class _MyAddressScreenState extends State<MyAddressScreen> {
                       hintText: "Address",
                       validationMessage: "Address must not be empty",
                       prefixIcon: Transform.scale(
-                        scaleY: 0.6,
-                        scaleX: 0.7,
+                        scaleY: 0.7,
+                        scaleX: 0.55,
                         origin: const Offset(0, 2),
                         child: SvgPicture.asset(
                             width: 10,

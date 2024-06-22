@@ -111,27 +111,27 @@ class TwoBarChartsState extends State<TwoBarCharts> {
     return List.generate(12, (i) {
       switch (i) {
         case 0:
-          return makeGroupData(0, 6, 6.5);
+          return makeGroupData(0, 6, 6);
         case 1:
           return makeGroupData(1, 8, 5);
         case 2:
-          return makeGroupData(2, 12, 7.5);
+          return makeGroupData(2, 12, 7);
         case 3:
           return makeGroupData(3, 11, 9);
         case 4:
-          return makeGroupData(4, 6, 11.5);
+          return makeGroupData(4, 6, 11);
         case 5:
-          return makeGroupData(5, 4, 6.5);
+          return makeGroupData(5, 4, 6);
         case 6:
-          return makeGroupData(6, 2, 6.5);
+          return makeGroupData(6, 2, 6);
         case 7:
-          return makeGroupData(7, 8, 6.5);
+          return makeGroupData(7, 8, 6);
         case 8:
-          return makeGroupData(8, 15, 6.5);
+          return makeGroupData(8, 15, 6);
         case 9:
-          return makeGroupData(9, 9, 6.5);
+          return makeGroupData(9, 9, 6);
         case 10:
-          return makeGroupData(10, 18, 6.5);
+          return makeGroupData(10, 18, 6);
         case 11:
           return makeGroupData(11, 7, 5);
         default:
@@ -144,45 +144,45 @@ class TwoBarChartsState extends State<TwoBarCharts> {
     return BarChartData(
       barTouchData: BarTouchData(
         touchTooltipData: BarTouchTooltipData(
-          tooltipHorizontalAlignment: FLHorizontalAlignment.right,
+          tooltipHorizontalAlignment: FLHorizontalAlignment.center,
           getTooltipItem: (group, groupIndex, rod, rodIndex) {
             String? weekDay;
             switch (group.x) {
               case 0:
-                weekDay = 'Jan';
+                weekDay = 'January';
                 break;
               case 1:
-                weekDay = 'Feb';
+                weekDay = 'February';
                 break;
               case 2:
-                weekDay = 'Mar';
+                weekDay = 'March';
                 break;
               case 3:
-                weekDay = 'Apr';
+                weekDay = 'April';
                 break;
               case 4:
                 weekDay = 'May';
                 break;
               case 5:
-                weekDay = 'Jun';
+                weekDay = 'June';
                 break;
               case 6:
-                weekDay = 'Jul';
+                weekDay = 'July';
                 break;
               case 7:
-                weekDay = 'Aug';
+                weekDay = 'August';
                 break;
               case 8:
-                weekDay = 'Sep';
+                weekDay = 'September';
                 break;
               case 9:
-                weekDay = 'Oct';
+                weekDay = 'October';
                 break;
               case 10:
-                weekDay = 'Nov';
+                weekDay = 'November';
                 break;
               case 11:
-                weekDay = 'Dec';
+                weekDay = 'December';
                 break;
               default:
                 throw Error();
@@ -193,7 +193,7 @@ class TwoBarChartsState extends State<TwoBarCharts> {
               CustomTextStyle.semiBold12.responsive(context),
               children: <TextSpan>[
                 TextSpan(
-                  text: (rod.toY - 1).toString(),
+                  text: (rod.toY.toInt()).toString(),
                   style: CustomTextStyle.semiBold12.responsive(context),
                 ),
               ],

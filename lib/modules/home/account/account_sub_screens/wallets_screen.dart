@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:zero_waste_app/modules/home/profile/profile_sub_screens/validation_screen.dart';
-import 'package:zero_waste_app/modules/home/profile/profile_widgets/profile_form_field.dart';
-import 'package:zero_waste_app/modules/home/profile/profile_widgets/row_wallets_image.dart';
-import 'package:zero_waste_app/modules/home/profile/profile_widgets/saved_wallets_row.dart';
+import 'package:zero_waste_app/modules/home/account/account_sub_screens/validation_screen.dart';
+import 'package:zero_waste_app/modules/home/account/account_widgets/account_form_field.dart';
+import 'package:zero_waste_app/modules/home/account/account_widgets/row_wallets_image.dart';
+import 'package:zero_waste_app/modules/home/account/account_widgets/saved_wallets_row.dart';
 import 'package:zero_waste_app/shared/assets.dart';
 import 'package:zero_waste_app/shared/helpers/navigation_helper.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';

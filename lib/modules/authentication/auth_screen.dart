@@ -129,40 +129,36 @@ class _AuthScreenState extends State<AuthScreen> {
                     .responsive(context),
               ),
               const Spacer(flex: 2),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 50),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    authButton(
-                      button_color: CustomColors.vividGreen5A,
-                      button_text: Text(
-                        "Sign in",
-                        style: CustomTextStyle.semiBold18
-                            .copyWith(color: Colors.white)
-                            .responsive(context),
-                      ),
-                      lift_radius: true,
-                      onTap: () => navigateAndFinish(
-                          context: context, pageScreen: const LoginScreen()),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  authButton(
+                    button_color: CustomColors.vividGreen5A,
+                    button_text: Text(
+                      "Sign in",
+                      style: CustomTextStyle.semiBold18
+                          .copyWith(color: Colors.white)
+                          .responsive(context),
                     ),
-                    authButton(
-                      button_color: CustomColors.greyF3,
-                      button_text: Text(
-                        "Register",
-                        style: CustomTextStyle.semiBold18
-                            .copyWith(color: CustomColors.darkGrey51)
-                            .responsive(context),
-                      ),
-                      lift_radius: false,
-                      onTap: () {
-                        navigateAndFinish(
-                            context: context,
-                            pageScreen: const RegisterScreen());
-                      },
+                    lift_radius: true,
+                    onTap: () => navigateAndFinish(
+                        context: context, pageScreen: const LoginScreen()),
+                  ),
+                  authButton(
+                    button_color: CustomColors.greyF3,
+                    button_text: Text(
+                      "Register",
+                      style: CustomTextStyle.semiBold18
+                          .copyWith(color: CustomColors.darkGrey51)
+                          .responsive(context),
                     ),
-                  ],
-                ),
+                    lift_radius: false,
+                    onTap: () {
+                      navigateAndFinish(
+                          context: context, pageScreen: const RegisterScreen());
+                    },
+                  ),
+                ],
               ),
               const SizedBox(height: 60),
               // Text with many colors

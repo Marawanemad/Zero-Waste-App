@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:zero_waste_app/modules/home/profile/profile_sub_screens/debit_card_screen.dart';
-import 'package:zero_waste_app/modules/home/profile/profile_sub_screens/wallets_screen.dart';
+import 'package:zero_waste_app/modules/home/account/account_sub_screens/debit_card_screen.dart';
+import 'package:zero_waste_app/modules/home/account/account_sub_screens/wallets_screen.dart';
 import 'package:zero_waste_app/shared/assets.dart';
 import 'package:zero_waste_app/shared/helpers/navigation_helper.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';

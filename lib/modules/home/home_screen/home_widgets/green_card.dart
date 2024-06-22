@@ -12,6 +12,8 @@ Widget homeGreenCard({
   double? height,
   double? width,
   required String buttonText,
+  padding,
+  double? angle,
 }) {
   return Container(
     margin: const EdgeInsets.only(right: 8),
@@ -54,11 +56,17 @@ Widget homeGreenCard({
             ),
           ),
         ),
-        Image(
-          width: width,
-          height: height,
-          image: AssetImage(image),
-          fit: BoxFit.fill,
+        Transform.rotate(
+          angle: angle ?? 0.0,
+          child: Padding(
+            padding: padding ?? const EdgeInsets.only(top: 8.0, left: 8),
+            child: Image(
+              width: width,
+              height: height,
+              image: AssetImage(image),
+              fit: BoxFit.fill,
+            ),
+          ),
         ),
       ],
     ),

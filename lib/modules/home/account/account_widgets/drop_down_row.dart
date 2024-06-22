@@ -11,12 +11,17 @@ Widget dropDownRow(
     required onChange,
     required dropDownList}) {
   return Padding(
-    padding: const EdgeInsets.only(left: 15, top: 10),
+    padding: const EdgeInsets.only(top: 10, left: 8.0),
     child: Row(
       children: [
-        Icon(iconName, color: CustomColors.grey96),
-        const SizedBox(width: 20),
-        Expanded(
+        Icon(
+          iconName,
+          color: CustomColors.grey96,
+          size: 25,
+        ),
+        Container(
+          margin: const EdgeInsets.only(left: 18, bottom: 5),
+          width: MediaQuery.of(context).size.width * 0.8,
           child: DropdownButton(
             isExpanded: true,
             elevation: 9,

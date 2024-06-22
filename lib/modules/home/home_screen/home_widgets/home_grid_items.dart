@@ -18,7 +18,7 @@ Widget itemGridShape({
     children: List.generate(
       text.length,
       (index) => Container(
-        padding: const EdgeInsets.all(5),
+        padding: const EdgeInsets.all(4),
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
             side: const BorderSide(color: CustomColors.vividGreen49),

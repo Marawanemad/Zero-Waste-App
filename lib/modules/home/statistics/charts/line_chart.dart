@@ -51,7 +51,7 @@ class LineChartUIState extends State<LineChartUI> {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
-          margin: const EdgeInsets.only(bottom: 60),
+          margin: const EdgeInsets.only(bottom: 30),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
           decoration: ShapeDecoration(
             shape: RoundedRectangleBorder(
@@ -78,7 +78,7 @@ class LineChartUIState extends State<LineChartUI> {
         ),
         Container(
           width: width * 0.9,
-          height: height * 0.65,
+          height: height * 0.6,
           decoration: ShapeDecoration(
             color: Colors.white,
             shape:
@@ -153,11 +153,14 @@ class LineChartUIState extends State<LineChartUI> {
                     (String dateName) {
                       return DropdownMenuItem<String>(
                         value: dateName,
-                        child: Text(
-                          dateName,
-                          style: CustomTextStyle.semiBold12
-                              .copyWith(color: CustomColors.grey9C)
-                              .responsive(context),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            dateName,
+                            style: CustomTextStyle.semiBold12
+                                .copyWith(color: CustomColors.grey9C)
+                                .responsive(context),
+                          ),
                         ),
                       );
                     },
@@ -428,28 +431,20 @@ class LineChartUIState extends State<LineChartUI> {
         break;
       case 100:
         title = '100';
-        break;
-      case 150:
-        title = '150';
+
         break;
       case 200:
         title = '200';
         break;
-      case 250:
-        title = '250';
-        break;
+
       case 300:
         title = '300';
         break;
-      case 350:
-        title = '350';
-        break;
+
       case 400:
         title = '400';
         break;
-      case 450:
-        title = '450';
-        break;
+
       case 500:
         title = '500';
         break;

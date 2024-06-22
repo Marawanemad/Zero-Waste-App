@@ -19,17 +19,23 @@ class OnBoardingItemWidget extends StatelessWidget {
       children: model.isLast
           ? [
               // Image.asset(model.image),
-              Image(
-                image: AssetImage(model.image),
-                width: MediaQuery.of(context).size.width * 0.5,
-                fit: BoxFit.cover,
+              Padding(
+                padding: const EdgeInsets.only(right: 15.0),
+                child: Image(
+                  alignment: Alignment.centerLeft,
+                  image: AssetImage(model.image),
+                  width: MediaQuery.of(context).size.width * 0.55,
+                  fit: BoxFit.cover,
+                ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(vertical: 50.0),
+                padding: const EdgeInsets.symmetric(vertical: 45.0),
                 child: Text(model.title,
-                    style: CustomTextStyle.black28.copyWith(shadows: [
-                      const Shadow(color: Colors.black, blurRadius: 0.2)
-                    ]).responsive(context)),
+                    style: CustomTextStyle.black28.copyWith(
+                        letterSpacing: 7,
+                        shadows: [
+                          const Shadow(color: Colors.black, blurRadius: 0.2)
+                        ]).responsive(context)),
               ),
             ]
           : [

@@ -10,26 +10,31 @@ Widget bottomNavBarItem(
     required context,
     required onTap}) {
   return Expanded(
-    child: InkWell(
-      onTap: onTap,
-      child: Column(children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 5.0),
-          child: SvgPicture.asset(
-            assetName,
-            height: 30.0.getResponsiveFontSize(context),
+    child: Padding(
+      padding: const EdgeInsets.only(
+        top: 30,
+      ),
+      child: InkWell(
+        onTap: onTap,
+        child: Column(children: [
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 5.0),
+            child: SvgPicture.asset(
+              assetName,
+              height: 30.0.getResponsiveFontSize(context),
+            ),
           ),
-        ),
-        Text(
-          labelName,
-          style: CustomTextStyle.regular12
-              .copyWith(
-                  color: labelName == "Home"
-                      ? CustomColors.vividGreen25
-                      : CustomColors.grey61)
-              .responsive(context),
-        )
-      ]),
+          Text(
+            labelName,
+            style: CustomTextStyle.regular12
+                .copyWith(
+                    color: labelName == "Home"
+                        ? CustomColors.vividGreen25
+                        : CustomColors.grey61)
+                .responsive(context),
+          )
+        ]),
+      ),
     ),
   );
 }

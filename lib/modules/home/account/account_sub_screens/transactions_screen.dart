@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zero_waste_app/modules/home/profile/profile_widgets/transaction_item.dart';
+import 'package:zero_waste_app/modules/home/account/account_widgets/transaction_item.dart';
 import 'package:zero_waste_app/shared/assets.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/responsive_scroll_screen.dart';
