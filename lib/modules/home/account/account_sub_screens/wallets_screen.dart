@@ -76,13 +76,7 @@ class WalletsScreen extends StatelessWidget {
               child: Center(
                 child: DefaultGreenButton(
                     text: "Add Wallet",
-                    onPressed: () {
-                      navigateAndFinish(
-                          context: context,
-                          pageScreen: ValidationScreen(
-                            successState: true,
-                          ));
-                    },
+                    onPressed: () {},
                     horizontalPadding: 20,
                     verticalPadding: 14,
                     textSize: 16),
@@ -96,14 +90,20 @@ class WalletsScreen extends StatelessWidget {
               ),
             ),
             SavedWalletsRow(
-                context: context,
-                icon: const Icon(
-                  LineAwesome.trash_solid,
-                  color: CustomColors.red05,
-                ),
-                onPressed: () {},
-                imageName: Assets.imagesHomeProfileWeLogo,
-                walletNumber: "+20 1210 199 141"),
+              context: context,
+              onRowTap: () => navigateAndFinish(
+                  context: context,
+                  pageScreen: ValidationScreen(
+                    successState: true,
+                  )),
+              icon: const Icon(
+                LineAwesome.trash_solid,
+                color: CustomColors.red05,
+              ),
+              onIconPressed: () {},
+              imageName: Assets.imagesHomeProfileWeLogo,
+              walletNumber: "+20 1210 199 141",
+            ),
           ],
         ),
       ),

@@ -10,8 +10,11 @@ Widget dropDownRow(
     required selectedCountry,
     required onChange,
     required dropDownList}) {
-  return Padding(
-    padding: const EdgeInsets.only(top: 10, left: 8.0),
+  return Container(
+    padding: const EdgeInsets.only(top: 10, left: 8.0, bottom: 5),
+    margin: const EdgeInsets.only(top: 10, bottom: 10, right: 20),
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10), color: Colors.white),
     child: Row(
       children: [
         Icon(

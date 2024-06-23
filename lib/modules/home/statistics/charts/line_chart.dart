@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:zero_waste_app/modules/home/statistics/statistics_widget/general_chart_ui.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
@@ -15,7 +16,6 @@ class LineChartUIState extends State<LineChartUI> {
   final Color firstLineColor = CustomColors.vividGreen49;
   final Color secondLineColor = CustomColors.liteGreyE8;
   final Color verticalLineColor = CustomColors.orange4A;
-  final Color dropDownColor = CustomColors.whiteF0;
   final Color barColor = CustomColors.darkGreen28;
 
   List<String> dropDownList = ['Daily', 'Monthly', 'Yearly'];
@@ -44,134 +44,101 @@ class LineChartUIState extends State<LineChartUI> {
 
   @override
   Widget build(BuildContext context) {
-    final double width = MediaQuery.of(context).size.width;
-    final double height = MediaQuery.of(context).size.height;
-
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Container(
-          margin: const EdgeInsets.only(bottom: 30),
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-          decoration: ShapeDecoration(
-            shape: RoundedRectangleBorder(
-              side:
-                  const BorderSide(width: 2, color: CustomColors.vividGreen49),
-              borderRadius: BorderRadius.circular(25),
-            ),
-          ),
-          child: Text.rich(
-            textAlign: TextAlign.center,
-            TextSpan(
-              children: [
-                TextSpan(
-                    text: "Total balance\n",
-                    style: CustomTextStyle.regular12
-                        .copyWith(color: CustomColors.grey9C, fontSize: 14)
-                        .responsive(context)),
-                TextSpan(
-                    text: "EGP $value",
-                    style: CustomTextStyle.extraBold18.responsive(context)),
-              ],
-            ),
+    return Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+      Container(
+        margin: const EdgeInsets.only(bottom: 30),
+        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+        decoration: ShapeDecoration(
+          shape: RoundedRectangleBorder(
+            side: const BorderSide(width: 2, color: CustomColors.vividGreen49),
+            borderRadius: BorderRadius.circular(25),
           ),
         ),
-        Container(
-          width: width * 0.9,
-          height: height * 0.6,
-          decoration: ShapeDecoration(
-            color: Colors.white,
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-          ),
-          child: Stack(
-            alignment: Alignment.topRight,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    Text('Earnings',
-                        style: CustomTextStyle.extraBold18.responsive(context)),
-                    const SizedBox(height: 38),
-                    Expanded(
-                      child: FutureBuilder<List<List<FlSpot>>>(
-                        future: Future.wait([firstSpots, secondSpots]),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
-                            return Center(
-                              child: CircularProgressIndicator(
-                                color: firstLineColor,
-                              ),
-                            );
-                          } else if (snapshot.hasError) {
-                            return Center(
-                                child: Text('Error: ${snapshot.error}'));
-                          } else if (!snapshot.hasData ||
-                              snapshot.data == null) {
-                            return const Center(
-                                child: Text('No data available'));
-                          }
-                          return LineChart(
-                            lineChartData(snapshot.data![0], snapshot.data![1]),
-                          );
-                        },
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
-                child: DropdownButton<String>(
-                  alignment: Alignment.center,
-                  dropdownColor: Colors.white,
-                  underline: Container(
-                    height: 30,
-                    width: 85,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: CustomColors.grey9C),
-                      borderRadius: BorderRadius.circular(12.5),
-                    ),
-                  ),
-                  value: itemSelected,
-                  icon: const Icon(Icons.keyboard_arrow_down_sharp,
-                      color: CustomColors.grey9C),
-                  onChanged: (newValue) {
-                    setState(
-                      () {
-                        itemSelected = newValue!;
-                        firstSpots = getFirstSpots();
-                        secondSpots = getSecondSpots();
-                      },
-                    );
-                  },
-                  items: dropDownList.map<DropdownMenuItem<String>>(
-                    (String dateName) {
-                      return DropdownMenuItem<String>(
-                        value: dateName,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            dateName,
-                            style: CustomTextStyle.semiBold12
-                                .copyWith(color: CustomColors.grey9C)
-                                .responsive(context),
-                          ),
-                        ),
-                      );
-                    },
-                  ).toList(),
-                ),
-              ),
+        child: Text.rich(
+          textAlign: TextAlign.center,
+          TextSpan(
+            children: [
+              TextSpan(
+                  text: "Total balance\n",
+                  style: CustomTextStyle.regular12
+                      .copyWith(color: CustomColors.grey9C, fontSize: 14)
+                      .responsive(context)),
+              TextSpan(
+                  text: "EGP $value",
+                  style: CustomTextStyle.extraBold18.responsive(context)),
             ],
           ),
         ),
-      ],
-    );
+      ),
+      generalChartUI(
+        context: context,
+        backgroundColor: Colors.white,
+        firstText: 'Earnings',
+        expandedWidget: FutureBuilder<List<List<FlSpot>>>(
+          future: Future.wait([firstSpots, secondSpots]),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(
+                child: CircularProgressIndicator(
+                  color: firstLineColor,
+                ),
+              );
+            } else if (snapshot.hasError) {
+              return Center(child: Text('Error: ${snapshot.error}'));
+            } else if (!snapshot.hasData || snapshot.data == null) {
+              return const Center(child: Text('No data available'));
+            }
+            return LineChart(
+              lineChartData(snapshot.data![0], snapshot.data![1]),
+            );
+          },
+        ),
+        indexOfChart: 1,
+        secondStackWidget: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 20),
+          child: DropdownButton<String>(
+            alignment: Alignment.center,
+            dropdownColor: Colors.white,
+            underline: Container(
+              height: 30,
+              width: 85,
+              decoration: BoxDecoration(
+                border: Border.all(color: CustomColors.grey9C),
+                borderRadius: BorderRadius.circular(12.5),
+              ),
+            ),
+            value: itemSelected,
+            icon: const Icon(Icons.keyboard_arrow_down_sharp,
+                color: CustomColors.grey9C),
+            onChanged: (newValue) {
+              setState(
+                () {
+                  itemSelected = newValue!;
+                  firstSpots = getFirstSpots();
+                  secondSpots = getSecondSpots();
+                },
+              );
+            },
+            items: dropDownList.map<DropdownMenuItem<String>>(
+              (String dateName) {
+                return DropdownMenuItem<String>(
+                  value: dateName,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      dateName,
+                      style: CustomTextStyle.semiBold12
+                          .copyWith(color: CustomColors.grey9C)
+                          .responsive(context),
+                    ),
+                  ),
+                );
+              },
+            ).toList(),
+          ),
+        ),
+      )
+    ]);
   }
 
   LineChartData lineChartData(

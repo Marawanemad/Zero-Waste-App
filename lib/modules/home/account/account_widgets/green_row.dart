@@ -6,7 +6,8 @@ import 'package:zero_waste_app/shared/themes/font_styles.dart';
 Widget greenDebitCardRow(
     {required context,
     required icon,
-    required onPressed,
+    required onIconPressed,
+    required onRowTap,
     required visaNumber,
     required name}) {
   return Container(
@@ -23,38 +24,42 @@ Widget greenDebitCardRow(
     ),
     child: Row(
       children: [
-        Text.rich(
-          TextSpan(
-            children: [
+        Expanded(
+          child: InkWell(
+            onTap: onRowTap,
+            child: Text.rich(
               TextSpan(
-                text: "VISA",
-                style: CustomTextStyle.medium10
-                    .copyWith(color: Colors.black)
-                    .responsive(context),
+                children: [
+                  TextSpan(
+                    text: "VISA",
+                    style: CustomTextStyle.medium10
+                        .copyWith(color: Colors.black)
+                        .responsive(context),
+                  ),
+                  TextSpan(
+                    text: ": XXXX XXXX XXXX $visaNumber",
+                    style: CustomTextStyle.medium10
+                        .copyWith(color: CustomColors.darkGreen28)
+                        .responsive(context),
+                  ),
+                  TextSpan(
+                    text: "       Holder: ",
+                    style: CustomTextStyle.medium10
+                        .copyWith(color: Colors.black)
+                        .responsive(context),
+                  ),
+                  TextSpan(
+                    text: "$name",
+                    style: CustomTextStyle.medium10
+                        .copyWith(color: CustomColors.darkGreen28)
+                        .responsive(context),
+                  ),
+                ],
               ),
-              TextSpan(
-                text: ": XXXX XXXX XXXX $visaNumber",
-                style: CustomTextStyle.medium10
-                    .copyWith(color: CustomColors.darkGreen28)
-                    .responsive(context),
-              ),
-              TextSpan(
-                text: "       Holder: ",
-                style: CustomTextStyle.medium10
-                    .copyWith(color: Colors.black)
-                    .responsive(context),
-              ),
-              TextSpan(
-                text: "$name",
-                style: CustomTextStyle.medium10
-                    .copyWith(color: CustomColors.darkGreen28)
-                    .responsive(context),
-              ),
-            ],
+            ),
           ),
         ),
-        const Spacer(),
-        IconButton(onPressed: onPressed, icon: icon)
+        IconButton(onPressed: onIconPressed, icon: icon)
       ],
     ),
   );

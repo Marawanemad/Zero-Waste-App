@@ -11,14 +11,12 @@ Widget bottomNavBarItem(
     required onTap}) {
   return Expanded(
     child: Padding(
-      padding: const EdgeInsets.only(
-        top: 30,
-      ),
+      padding: const EdgeInsets.only(top: 30),
       child: InkWell(
         onTap: onTap,
         child: Column(children: [
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 5.0),
+            padding: const EdgeInsets.only(bottom: 5.0),
             child: SvgPicture.asset(
               assetName,
               height: 30.0.getResponsiveFontSize(context),

@@ -17,10 +17,13 @@ Widget ProfileFormField({
   onSubmit,
   focusNode,
 }) {
-  return Padding(
-    padding: const EdgeInsets.only(top: 5, bottom: 5, right: 40),
+  return Container(
+    padding: const EdgeInsets.only(bottom: 6, right: 10),
+    margin: const EdgeInsets.only(top: 10, bottom: 10, right: 20),
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10), color: Colors.white),
     child: formField(
-      contentPadding: const EdgeInsets.symmetric(vertical: 10),
+      contentPadding: const EdgeInsets.only(top: 10),
       prefixIcon: prefixIcon,
       suffixPressed: suffixIconPressed,
       suffixIcon: suffixIcon,

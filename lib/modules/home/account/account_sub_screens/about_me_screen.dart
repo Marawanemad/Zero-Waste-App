@@ -130,9 +130,13 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
                       hintText: "Current Password",
                       obscureText: true,
                       validationMessage: "Password must not be empty",
-                      prefixIcon: const Icon(
-                        IonIcons.lock_closed,
-                        color: CustomColors.grey96,
+                      prefixIcon: const Padding(
+                        padding: EdgeInsets.only(bottom: 5.0),
+                        child: Icon(
+                          size: 25,
+                          IonIcons.lock_closed,
+                          color: CustomColors.grey96,
+                        ),
                       ),
                     ),
                     ProfileFormField(
@@ -143,9 +147,12 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
                       hintText: "Password",
                       obscureText: true,
                       validationMessage: "Password must not be empty",
-                      prefixIcon: const Icon(
-                        IonIcons.lock_closed,
-                        color: CustomColors.grey96,
+                      prefixIcon: const Padding(
+                        padding: EdgeInsets.only(bottom: 5.0),
+                        child: Icon(
+                          IonIcons.lock_closed,
+                          color: CustomColors.grey96,
+                        ),
                       ),
                       suffixIcon: Icon(
                         obscureText ? IonIcons.eye : IonIcons.eye_off,
@@ -170,9 +177,12 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
                       hintText: "Confirm Password",
                       obscureText: true,
                       validationMessage: "Password must not be empty",
-                      prefixIcon: const Icon(
-                        IonIcons.lock_closed,
-                        color: CustomColors.grey96,
+                      prefixIcon: const Padding(
+                        padding: EdgeInsets.only(bottom: 5.0),
+                        child: Icon(
+                          IonIcons.lock_closed,
+                          color: CustomColors.grey96,
+                        ),
                       ),
                     ),
                   ],

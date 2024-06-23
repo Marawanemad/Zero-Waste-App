@@ -1,6 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
-import 'package:zero_waste_app/modules/home/statistics/statistics_widget/statistics_widget.dart';
+import 'package:zero_waste_app/modules/home/statistics/statistics_widget/general_chart_ui.dart';
 
 import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
@@ -19,53 +19,15 @@ class TwoBarChartsState extends State<TwoBarCharts> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 12),
-      padding: const EdgeInsets.only(bottom: 40),
-      color: Colors.white,
-      child: Container(
-        width: MediaQuery.of(context).size.width * 0.9,
-        height: MediaQuery.of(context).size.height * 0.65,
-        decoration: ShapeDecoration(
-          color: Colors.white,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    return generalChartUI(
+        context: context,
+        backgroundColor: Colors.white,
+        firstText: 'Gained Points',
+        expandedWidget: BarChart(
+          mainBarData(),
+          swapAnimationDuration: animDuration,
         ),
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Text("Gained Points",
-                  style: CustomTextStyle.extraBold18.responsive(context)),
-              const SizedBox(height: 27),
-              Row(
-                children: <Widget>[
-                  Indicator(
-                    color: CustomColors.blueDA,
-                    text: 'This year',
-                    size: touchedIndex == 2 ? 18 : 16,
-                  ),
-                  const SizedBox(width: 15),
-                  Indicator(
-                    color: CustomColors.orange4A,
-                    text: 'Last year',
-                    size: touchedIndex == 1 ? 18 : 16,
-                  ),
-                ],
-              ),
-              const SizedBox(height: 38),
-              Expanded(
-                child: BarChart(
-                  mainBarData(),
-                  swapAnimationDuration: animDuration,
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+        indexOfChart: 3);
   }
 
   BarChartGroupData makeGroupData(

@@ -17,7 +17,7 @@ Widget authButton({
       ),
     ),
     child: Padding(
-      padding: const EdgeInsets.symmetric(vertical: 14.0, horizontal: 45),
+      padding: const EdgeInsets.symmetric(vertical: 14.0, horizontal: 40),
       child: Center(child: button_text),
     ),
   );

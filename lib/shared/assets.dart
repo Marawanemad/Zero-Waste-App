@@ -93,6 +93,10 @@ class Assets {
   /// assets/images/authentication/auth_screen.png
   static const String imagesAuthenticationAuthScreen = "assets/images/authentication/auth_screen.png";
 
+  /// Assets for imagesDefaultUser
+  /// assets/images/default_user.png
+  static const String imagesDefaultUser = "assets/images/default_user.png";
+
   /// Assets for imagesHomeAccount
   /// assets/images/home/account.png
   static const String imagesHomeAccount = "assets/images/home/account.png";

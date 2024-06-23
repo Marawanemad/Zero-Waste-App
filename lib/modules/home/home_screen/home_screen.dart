@@ -261,20 +261,18 @@ class HomeScreen extends StatelessWidget {
                           ),
                           ConstrainedBox(
                             constraints: BoxConstraints(
-                              maxHeight: MediaQuery.of(context).size.height *
-                                  0.3, // Adjust height as needed
+                              maxHeight: homeCubit.currentIndex == 3
+                                  ? MediaQuery.of(context).size.height * 0.2
+                                  : MediaQuery.of(context).size.height *
+                                      0.3, // Adjust height as needed
                             ),
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 8.0),
-                              child: itemGridShape(
-                                context: context,
-                                text: homeCubit
-                                    .textListSelected[homeCubit.currentIndex],
-                                imageName: homeCubit
-                                    .imagesListSelected[homeCubit.currentIndex],
-                                scrollController: homeCubit.scrollController,
-                              ),
+                            child: itemGridShape(
+                              context: context,
+                              text: homeCubit
+                                  .textListSelected[homeCubit.currentIndex],
+                              imageName: homeCubit
+                                  .imagesListSelected[homeCubit.currentIndex],
+                              scrollController: homeCubit.scrollController,
                             ),
                           ),
                           homeCubit.currentIndex == 3
@@ -302,7 +300,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   SizedBox(
                     width: double.infinity,
-                    height: 100,
+                    height: 95,
                     child: Row(
                       children: [
                         bottomNavBarItem(

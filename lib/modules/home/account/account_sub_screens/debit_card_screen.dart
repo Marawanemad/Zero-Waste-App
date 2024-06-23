@@ -115,9 +115,12 @@ class _DebitCardScreenState extends State<DebitCardScreen> {
                             text_input_action: TextInputAction.done,
                             hintText: "CVV",
                             validationMessage: "CVV must not be empty",
-                            prefixIcon: const Icon(
-                              IonIcons.lock_closed,
-                              color: CustomColors.grey96,
+                            prefixIcon: const Padding(
+                              padding: EdgeInsets.only(bottom: 5.0),
+                              child: Icon(
+                                IonIcons.lock_closed,
+                                color: CustomColors.grey96,
+                              ),
                             ),
                           ),
                         ),
@@ -137,27 +140,28 @@ class _DebitCardScreenState extends State<DebitCardScreen> {
             Padding(
               padding: const EdgeInsets.only(left: 25.0, right: 20, top: 17),
               child: greenDebitCardRow(
+                context: context,
+                icon: const Icon(
+                  LineAwesome.trash_solid,
+                  color: CustomColors.red05,
+                ),
+                onIconPressed: () {},
+                visaNumber: "8790",
+                name: "Your Name",
+                onRowTap: () => navigateAndFinish(
                   context: context,
-                  icon: const Icon(
-                    LineAwesome.trash_solid,
-                    color: CustomColors.red05,
+                  pageScreen: ValidationScreen(
+                    successState: false,
                   ),
-                  onPressed: () {},
-                  visaNumber: "8790",
-                  name: "Your Name"),
+                ),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.only(top: 40.0),
               child: Center(
                 child: DefaultGreenButton(
                     text: "Add Card",
-                    onPressed: () {
-                      navigateAndFinish(
-                          context: context,
-                          pageScreen: ValidationScreen(
-                            successState: false,
-                          ));
-                    },
+                    onPressed: () {},
                     horizontalPadding: 20,
                     verticalPadding: 14,
                     textSize: 16),

@@ -52,8 +52,8 @@ class AccountScreen extends StatelessWidget {
                       border: Border.all(color: CustomColors.green46, width: 5),
                       shape: BoxShape.circle,
                       image: const DecorationImage(
-                        image: AssetImage(Assets.imagesApp),
-                        fit: BoxFit.contain,
+                        image: AssetImage(Assets.imagesDefaultUser),
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),

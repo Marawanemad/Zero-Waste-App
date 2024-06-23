@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:zero_waste_app/modules/home/statistics/statistics_widget/general_chart_ui.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
@@ -23,71 +24,51 @@ class BarChartUIState extends State<BarChartUI> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: MediaQuery.of(context).size.width * 0.9,
-      height: MediaQuery.of(context).size.height * 0.65,
-      decoration: ShapeDecoration(
-        color: backgroundColor,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    return generalChartUI(
+      context: context,
+      backgroundColor: backgroundColor,
+      firstText: '$itemSelected Visits',
+      expandedWidget: BarChart(
+        mainBarData(),
+        swapAnimationDuration: animDuration,
       ),
-      child: Stack(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget>[
-                Text('$itemSelected Visits',
-                    style: CustomTextStyle.extraBold16
-                        .copyWith(color: CustomColors.darkGrey41)),
-                const SizedBox(height: 38),
-                Expanded(
-                  child: BarChart(
-                    mainBarData(),
-                    swapAnimationDuration: animDuration,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: Align(
-              alignment: AlignmentDirectional.topEnd,
-              child: DropdownButton<String>(
-                icon: const Padding(
-                  padding: EdgeInsets.only(right: 25.0),
-                  child: Icon(
-                    Icons.keyboard_arrow_down_rounded,
-                    color: CustomColors.darkGrey54,
-                  ),
-                ),
-                dropdownColor: dropDownColor,
-                underline: const SizedBox(),
-                onChanged: (newValue) {
-                  // Use WidgetsBinding.instance.addPostFrameCallback to defer the state update
-                  WidgetsBinding.instance.addPostFrameCallback((_) {
-                    setState(() {
-                      itemSelected = newValue!;
-                    });
-                  });
-                },
-                items: dropDownList
-                    .map<DropdownMenuItem<String>>((String dateName) {
-                  return DropdownMenuItem<String>(
-                    value: dateName,
-                    child: Text(
-                      dateName,
-                      style: CustomTextStyle.semiBold12
-                          .copyWith(color: CustomColors.darkGrey41)
-                          .responsive(context),
-                    ),
-                  );
-                }).toList(),
+      indexOfChart: 0,
+      secondStackWidget: Padding(
+        padding: const EdgeInsets.all(8),
+        child: Align(
+          alignment: AlignmentDirectional.topEnd,
+          child: DropdownButton<String>(
+            icon: const Padding(
+              padding: EdgeInsets.only(right: 25.0),
+              child: Icon(
+                Icons.keyboard_arrow_down_rounded,
+                color: CustomColors.darkGrey54,
               ),
             ),
-          )
-        ],
+            dropdownColor: dropDownColor,
+            underline: const SizedBox(),
+            onChanged: (newValue) {
+              // Use WidgetsBinding.instance.addPostFrameCallback to defer the state update
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                setState(() {
+                  itemSelected = newValue!;
+                });
+              });
+            },
+            items:
+                dropDownList.map<DropdownMenuItem<String>>((String dateName) {
+              return DropdownMenuItem<String>(
+                value: dateName,
+                child: Text(
+                  dateName,
+                  style: CustomTextStyle.semiBold12
+                      .copyWith(color: CustomColors.darkGrey41)
+                      .responsive(context),
+                ),
+              );
+            }).toList(),
+          ),
+        ),
       ),
     );
   }

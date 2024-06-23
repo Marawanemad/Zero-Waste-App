@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:zero_waste_app/modules/home/statistics/statistics_widget/general_chart_ui.dart';
 import 'package:zero_waste_app/modules/home/statistics/statistics_widget/statistics_widget.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
@@ -27,53 +28,35 @@ class _PieChartUIState extends State<PieChartUI> {
       color: Colors.white,
       child: Column(
         children: [
-          Container(
-            width: MediaQuery.of(context).size.width * 0.9,
-            height: MediaQuery.of(context).size.height * 0.65,
-            decoration: ShapeDecoration(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12)),
+          generalChartUI(
+            context: context,
+            backgroundColor: Colors.white,
+            firstText: 'Materials',
+            expandedWidget: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: PieChart(
+                pieChartData(),
+              ),
             ),
-            child: Stack(
-              alignment: Alignment.center,
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: <Widget>[
-                      Text('Materials',
-                          style:
-                              CustomTextStyle.extraBold18.responsive(context)),
-                      const SizedBox(height: 38),
-                      Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 8),
-                          child: PieChart(
-                            pieChartData(),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+            indexOfChart: 2,
+            secondStackWidget: Positioned(
+              bottom: MediaQuery.of(context).size.height * 0.25,
+              child: Text.rich(
+                textAlign: TextAlign.center,
+                TextSpan(
+                  children: [
+                    TextSpan(
+                        text: "Total\n",
+                        style: CustomTextStyle.bold18.responsive(context)),
+                    TextSpan(
+                        text: "110 Throw",
+                        style: CustomTextStyle.extraLite18.responsive(context))
+                  ],
                 ),
-                Positioned(
-                  bottom: MediaQuery.of(context).size.height * 0.25,
-                  child: Text.rich(
-                      textAlign: TextAlign.center,
-                      TextSpan(children: [
-                        TextSpan(
-                            text: "Total\n",
-                            style: CustomTextStyle.bold18.responsive(context)),
-                        TextSpan(
-                            text: "110 Throw",
-                            style:
-                                CustomTextStyle.extraLite18.responsive(context))
-                      ])),
-                )
-              ],
+              ),
             ),
           ),
+          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -124,7 +107,7 @@ class _PieChartUIState extends State<PieChartUI> {
         show: false,
       ),
       sectionsSpace: 0,
-      centerSpaceRadius: 120,
+      centerSpaceRadius: MediaQuery.of(context).size.height * 0.15,
       sections: showingSections(),
     );
   }
