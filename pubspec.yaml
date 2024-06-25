@@ -21,6 +21,8 @@ dependencies:
   flutter_svg: ^2.0.9
   icons_plus: ^5.0.0
   qr_flutter: ^4.1.0
+  fluttertoast: ^8.2.6
+
   
   flutter:
     sdk: flutter

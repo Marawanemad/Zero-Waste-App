@@ -9,7 +9,6 @@ import 'package:zero_waste_app/modules/home/home_screen/home_widgets/congratulat
 import 'package:zero_waste_app/modules/home/home_screen/home_widgets/green_card.dart';
 import 'package:zero_waste_app/modules/home/home_screen/home_widgets/home_grid_items.dart';
 import 'package:zero_waste_app/modules/home/home_screen/home_widgets/points_info_dialog.dart';
-import 'package:zero_waste_app/modules/home/bin_location/map_screen.dart';
 import 'package:zero_waste_app/modules/home/account/account_screen.dart';
 import 'package:zero_waste_app/modules/home/qr_code/qr_scan_screen.dart';
 import 'package:zero_waste_app/modules/home/statistics/statistics_screen.dart';
@@ -52,9 +51,8 @@ class HomeScreen extends StatelessWidget {
                                 ),
                                 const Spacer(),
                                 InkWell(
-                                  onTap: () => navigate(
-                                      context: context,
-                                      pageScreen: const MapScreen()),
+                                  onTap: () => launchUrl(Uri.parse(
+                                      "https://www.google.com/maps/@31.2077245,29.9439491,17.37z?entry=ttu")),
                                   child: Wrap(
                                     children: [
                                       const Image(

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
-import 'package:zero_waste_app/modules/authentication/login/login_screen.dart';
-import 'package:zero_waste_app/shared/helpers/navigation_helper.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
 
-void registerDialog({required context}) {
+void registerDialog({required context, required onPressed}) {
   showDialog(
     barrierDismissible: false,
     useRootNavigator: false,
@@ -31,10 +29,7 @@ void registerDialog({required context}) {
         ),
         actions: [
           OutlinedButton(
-            onPressed: () {
-              navigateAndFinish(
-                  context: context, pageScreen: const LoginScreen());
-            },
+            onPressed: onPressed,
             style: OutlinedButton.styleFrom(
               minimumSize: const Size.fromHeight(30),
               maximumSize: const Size.fromWidth(double.infinity),

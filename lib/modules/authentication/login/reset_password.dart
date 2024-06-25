@@ -7,6 +7,7 @@ import 'package:zero_waste_app/shared/themes/font_styles.dart';
 import 'package:zero_waste_app/shared/widgets/default_app_bar.dart';
 import 'package:zero_waste_app/shared/helpers/navigation_helper.dart';
 import 'package:zero_waste_app/shared/widgets/default_green_button.dart';
+import 'package:zero_waste_app/shared/widgets/show_toast.dart';
 
 class ResetPasswordScreen extends StatefulWidget {
   const ResetPasswordScreen({super.key});
@@ -79,6 +80,10 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                   } else {
                     setState(() {
                       showErrorIcon = true;
+                      ShowToast(
+                          msg: "Text form field must not be empty",
+                          colorState: ToastState.error,
+                          toastTimeLength: ToastLengthTime.long);
                     });
                   }
                 },
