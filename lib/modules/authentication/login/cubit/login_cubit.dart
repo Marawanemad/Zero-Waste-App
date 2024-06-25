@@ -33,25 +33,4 @@ class LoginCubit extends Cubit<LoginState> {
       emit(LoginErrorState(onError.toString()));
     });
   }
-
-//   void getBuisnessData() {
-//     // to make loading state
-//     emit(HomeLoadingStates());
-// // call getData from DioHelper and give it path and query we want to return thier data
-//     DioHelper.getData(
-//       url: 'v2/top-headlines',
-//       query: {
-//         "country": "eg",
-//         "category": "business",
-//         "apiKey": "cee73e39c7394a80a39ea84b4b4f5e9d"
-//         // 65f7f556ec76449fa7dc7c0069f040ca
-//       },
-//     ).then((value) {
-//       print("Success oh yah");
-//       emit(GetHomeDataSuccessStates());
-//     }).catchError((error) {
-//       print(error.toString());
-//       emit(GetHomeDataErrorStates(error));
-//     });
-//   }
 }
