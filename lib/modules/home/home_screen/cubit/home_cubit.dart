@@ -1,7 +1,12 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:zero_waste_app/modules/home/home_screen/cubit/home_state.dart';
 import 'package:zero_waste_app/shared/assets.dart';
+import 'package:zero_waste_app/shared/data/local/cache_helper.dart';
+import 'package:zero_waste_app/shared/data/local/shared_pref_keys_enum.dart';
+import 'package:image_picker/image_picker.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(InitialState());
@@ -148,5 +153,54 @@ class HomeCubit extends Cubit<HomeState> {
     scrollController.jumpTo(0);
 
     emit(ChangeCategoriesButtonsState());
+  }
+
+  int totalPoints = 0;
+  changeTotalPoints(int value) {
+    totalPoints += value;
+    CacheHelper.setData(SharedPrefKeys.getPointsValue.key, totalPoints);
+
+    emit(ChangeTotalPointsValueState());
+  }
+
+  // to get image in the file
+  File? profileImage;
+  // to get image from device
+  var picker = ImagePicker();
+  // make function to get image
+  Future<void> getProfileImage() async {
+    // make user upload image from gallary
+    final pickedFile = await picker.pickMedia();
+    if (pickedFile != null) {
+      // store path of the image in the file
+      profileImage = File(pickedFile.path);
+      profileImage != null
+          ? await CacheHelper.setData(
+              SharedPrefKeys.getImage.key, profileImage!.path)
+          : null;
+
+      emit(SocialProfileImagePickedSuccessState());
+    } else {
+      emit(SocialProfileImagePickedErrorState());
+    }
+  }
+
+  String name = 'Name';
+  void changeAboutMeButton(
+      {required nameController,
+      required emailController,
+      required phoneController}) {
+    nameController.text != ''
+        ? CacheHelper.setData(SharedPrefKeys.getName.key, nameController.text)
+        : null;
+    emailController.text != ''
+        ? CacheHelper.setData(SharedPrefKeys.getEmail.key, emailController.text)
+        : null;
+    phoneController.text != ''
+        ? CacheHelper.setData(SharedPrefKeys.getPhone.key, phoneController.text)
+        : null;
+
+    name = CacheHelper.cachedData[SharedPrefKeys.getName.key];
+    emit(ChangeAboutMeState());
   }
 }

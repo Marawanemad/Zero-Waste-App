@@ -6,12 +6,19 @@ PreferredSizeWidget defaultAppBar({
   required context,
   Widget? leading,
   Widget? title,
+  Color? appBarColor,
+  double? appBarHeight,
   List<Widget>? actionWidgetsList,
   centerTitle = false,
   pageScreen,
 }) {
   return AppBar(
+    bottom: PreferredSize(
+        preferredSize: Size.fromHeight(appBarHeight ?? 0),
+        child: const SizedBox()),
     elevation: 0,
+    backgroundColor: appBarColor,
+    titleSpacing: appBarHeight,
     leading: leading ??
         Padding(
           padding: const EdgeInsets.all(10.0),

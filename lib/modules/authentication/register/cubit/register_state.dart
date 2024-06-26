@@ -4,6 +4,8 @@ abstract class RegisterState {}
 
 class RegisterInitialState extends RegisterState {}
 
+class ShowErrorIconFlagState extends RegisterState {}
+
 class RegisterLoadingState extends RegisterState {}
 
 class RegisterSuccessState extends RegisterState {

@@ -8,6 +8,11 @@ class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitialState());
 // to make object from cubit use it in any place
   static LoginCubit get(context) => BlocProvider.of(context);
+  bool showErrorIcon = false;
+  void changeErrorIconFlag() {
+    showErrorIcon != showErrorIcon;
+    emit(ShowErrorIconFlagState());
+  }
 
   LoginModel? loginModel;
   void userLogin({

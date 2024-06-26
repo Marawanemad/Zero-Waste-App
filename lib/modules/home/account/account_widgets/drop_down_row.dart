@@ -24,11 +24,10 @@ Widget dropDownRow(
         ),
         Container(
           margin: const EdgeInsets.only(left: 18, bottom: 5),
-          width: MediaQuery.of(context).size.width * 0.8,
+          width: MediaQuery.of(context).size.width * 0.7,
           child: DropdownButton(
             isExpanded: true,
             elevation: 9,
-            padding: const EdgeInsets.only(right: 20),
             hint: hintText,
             iconEnabledColor: CustomColors.grey96,
             underline: const SizedBox(),

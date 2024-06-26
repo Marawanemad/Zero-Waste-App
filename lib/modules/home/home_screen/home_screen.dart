@@ -13,6 +13,8 @@ import 'package:zero_waste_app/modules/home/account/account_screen.dart';
 import 'package:zero_waste_app/modules/home/qr_code/qr_scan_screen.dart';
 import 'package:zero_waste_app/modules/home/statistics/statistics_screen.dart';
 import 'package:zero_waste_app/shared/assets.dart';
+import 'package:zero_waste_app/shared/data/local/cache_helper.dart';
+import 'package:zero_waste_app/shared/data/local/shared_pref_keys_enum.dart';
 import 'package:zero_waste_app/shared/helpers/navigation_helper.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
@@ -97,7 +99,8 @@ class HomeScreen extends StatelessWidget {
                                                   color: CustomColors.grey61)
                                               .responsive(context)),
                                       TextSpan(
-                                          text: 'NAME!',
+                                          text:
+                                              '${CacheHelper.cachedData[SharedPrefKeys.getName.key]}!',
                                           style: CustomTextStyle.bold20
                                               .responsive(context)),
                                       TextSpan(
@@ -110,8 +113,9 @@ class HomeScreen extends StatelessWidget {
                                 ),
                                 const Spacer(),
                                 InkWell(
-                                  onTap: () =>
-                                      pointsInfoDialog(context: context),
+                                  onTap: () {
+                                    pointsInfoDialog(context: context);
+                                  },
                                   child: Container(
                                     decoration: ShapeDecoration(
                                       shape: RoundedRectangleBorder(
@@ -137,7 +141,8 @@ class HomeScreen extends StatelessWidget {
                                                         .regular12
                                                         .responsive(context)),
                                                 TextSpan(
-                                                    text: "1719",
+                                                    text:
+                                                        "${CacheHelper.cachedData[SharedPrefKeys.getPointsValue.key]}",
                                                     style: CustomTextStyle
                                                         .bold22
                                                         .copyWith(
@@ -177,9 +182,17 @@ class HomeScreen extends StatelessWidget {
                                   context: context,
                                   image: Assets.imagesHomeCard1,
                                   text: "EARN 100\nPOINTS FREE",
-                                  onPressed: () {
-                                    congratulationDialog(context: context);
-                                  },
+                                  onPressed: CacheHelper.cachedData[
+                                          SharedPrefKeys.getFreePoints.key]
+                                      ? () {
+                                          congratulationDialog(
+                                              context: context);
+                                          CacheHelper.setData(
+                                              SharedPrefKeys.getFreePoints.key,
+                                              false);
+                                          homeCubit.changeTotalPoints(100);
+                                        }
+                                      : () {},
                                   buttonText: 'Earn Now',
                                 ),
                                 homeGreenCard(

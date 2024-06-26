@@ -9,6 +9,12 @@ class RegisterCubit extends Cubit<RegisterState> {
 // to make object from cubit use it in any place
   static RegisterCubit get(context) => BlocProvider.of(context);
 
+  bool showErrorIcon = false;
+  void changeErrorIconFlag() {
+    showErrorIcon != showErrorIcon;
+    emit(ShowErrorIconFlagState());
+  }
+
   RegisterModel? registerModel;
   void userRegister(
       {required String email,
@@ -18,7 +24,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     // to make load when check data
     emit(RegisterLoadingState());
     // make object from Dio to send data to API
-  DioHelper.postData(
+    DioHelper.postData(
       url: 'signUp',
       data: {
         'name': name,

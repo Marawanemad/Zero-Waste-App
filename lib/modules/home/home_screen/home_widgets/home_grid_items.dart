@@ -17,8 +17,8 @@ Widget itemGridShape({
     children: List.generate(
       text.length,
       (index) => Transform.scale(
-        scaleX: 0.9,
-        scaleY: 0.75,
+        scaleX: 0.7,
+        scaleY: 0.8,
         child: Container(
           decoration: ShapeDecoration(
             color: Colors.white,

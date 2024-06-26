@@ -5,6 +5,8 @@ import 'package:zero_waste_app/modules/home/account/account_sub_screens/validati
 import 'package:zero_waste_app/modules/home/account/account_widgets/green_row.dart';
 import 'package:zero_waste_app/modules/home/account/account_widgets/account_form_field.dart';
 import 'package:zero_waste_app/shared/assets.dart';
+import 'package:zero_waste_app/shared/data/local/cache_helper.dart';
+import 'package:zero_waste_app/shared/data/local/shared_pref_keys_enum.dart';
 import 'package:zero_waste_app/shared/helpers/navigation_helper.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/responsive_scroll_screen.dart';
@@ -34,6 +36,8 @@ class _DebitCardScreenState extends State<DebitCardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: defaultAppBar(
+        appBarColor: Colors.white,
+        appBarHeight: 25,
         context: context,
         centerTitle: true,
         title: Text(
@@ -147,7 +151,7 @@ class _DebitCardScreenState extends State<DebitCardScreen> {
                 ),
                 onIconPressed: () {},
                 visaNumber: "8790",
-                name: "Your Name",
+                name: CacheHelper.cachedData[SharedPrefKeys.getName.key],
                 onRowTap: () => navigateAndFinish(
                   context: context,
                   pageScreen: ValidationScreen(

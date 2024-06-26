@@ -13,6 +13,8 @@ class TransactionsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: defaultAppBar(
+        appBarColor: Colors.white,
+        appBarHeight: 25,
         context: context,
         centerTitle: true,
         title: Text(

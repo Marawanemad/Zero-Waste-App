@@ -5,6 +5,8 @@ import 'package:zero_waste_app/modules/home/account/account_widgets/account_form
 import 'package:zero_waste_app/modules/home/account/account_widgets/row_wallets_image.dart';
 import 'package:zero_waste_app/modules/home/account/account_widgets/saved_wallets_row.dart';
 import 'package:zero_waste_app/shared/assets.dart';
+import 'package:zero_waste_app/shared/data/local/cache_helper.dart';
+import 'package:zero_waste_app/shared/data/local/shared_pref_keys_enum.dart';
 import 'package:zero_waste_app/shared/helpers/navigation_helper.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/responsive_scroll_screen.dart';
@@ -23,6 +25,8 @@ class WalletsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: defaultAppBar(
+        appBarColor: Colors.white,
+        appBarHeight: 25,
         context: context,
         centerTitle: true,
         title: Text(
@@ -60,7 +64,8 @@ class WalletsScreen extends StatelessWidget {
                       controller: phoneController,
                       keyboardType: TextInputType.phone,
                       text_input_action: TextInputAction.next,
-                      hintText: "+20 1210 199 141",
+                      hintText:
+                          CacheHelper.cachedData[SharedPrefKeys.getPhone.key],
                       validationMessage: "Phone must not be empty",
                       prefixIcon: const Icon(
                         LineAwesome.phone_solid,
@@ -102,7 +107,7 @@ class WalletsScreen extends StatelessWidget {
               ),
               onIconPressed: () {},
               imageName: Assets.imagesHomeProfileWeLogo,
-              walletNumber: "+20 1210 199 141",
+              walletNumber: CacheHelper.cachedData[SharedPrefKeys.getPhone.key],
             ),
           ],
         ),

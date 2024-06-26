@@ -52,12 +52,20 @@ import 'package:zero_waste_app/shared/data/local/shared_pref_keys_enum.dart';
 //       cachedData.forEach((key, value) => _getData(key));
 // }
 
-
-
 class CacheHelper {
   static final Map<String, dynamic> cachedData = {
     SharedPrefKeys.onBoarding.key: true,
     SharedPrefKeys.userToken.key: '',
+    SharedPrefKeys.getFreePoints.key: true,
+    SharedPrefKeys.getPointsValue.key: 0,
+    SharedPrefKeys.getName.key: "Name",
+    SharedPrefKeys.getEmail.key: "userName@gmail.com",
+    SharedPrefKeys.getPhone.key: "+20 1210 199 141",
+    SharedPrefKeys.getAddress.key: "Address",
+    SharedPrefKeys.getZipCode.key: "Zip Code",
+    SharedPrefKeys.getCity.key: "City",
+    SharedPrefKeys.getCountry.key: "Country",
+    SharedPrefKeys.getImage.key: null,
   };
 
   static late SharedPreferences prefs;

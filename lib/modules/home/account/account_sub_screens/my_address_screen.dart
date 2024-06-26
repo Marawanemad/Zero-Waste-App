@@ -4,6 +4,8 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:zero_waste_app/modules/home/account/account_widgets/drop_down_row.dart';
 import 'package:zero_waste_app/modules/home/account/account_widgets/account_form_field.dart';
 import 'package:zero_waste_app/shared/assets.dart';
+import 'package:zero_waste_app/shared/data/local/cache_helper.dart';
+import 'package:zero_waste_app/shared/data/local/shared_pref_keys_enum.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/responsive_scroll_screen.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
@@ -52,6 +54,8 @@ class _MyAddressScreenState extends State<MyAddressScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: defaultAppBar(
+        appBarColor: Colors.white,
+        appBarHeight: 25,
         context: context,
         centerTitle: true,
         title: Text(
@@ -74,7 +78,8 @@ class _MyAddressScreenState extends State<MyAddressScreen> {
                       controller: addressController,
                       keyboardType: TextInputType.streetAddress,
                       text_input_action: TextInputAction.next,
-                      hintText: "Address",
+                      hintText:
+                          CacheHelper.cachedData[SharedPrefKeys.getAddress.key],
                       validationMessage: "Address must not be empty",
                       prefixIcon: Transform.scale(
                         scaleY: 0.7,
@@ -92,7 +97,8 @@ class _MyAddressScreenState extends State<MyAddressScreen> {
                       controller: zipCodeController,
                       keyboardType: TextInputType.streetAddress,
                       text_input_action: TextInputAction.next,
-                      hintText: "Zip code",
+                      hintText:
+                          CacheHelper.cachedData[SharedPrefKeys.getZipCode.key],
                       validationMessage: "Zip code must not be empty",
                       prefixIcon: Transform.rotate(
                         angle:
@@ -108,7 +114,8 @@ class _MyAddressScreenState extends State<MyAddressScreen> {
                       controller: cityController,
                       keyboardType: TextInputType.text,
                       text_input_action: TextInputAction.next,
-                      hintText: "City",
+                      hintText:
+                          CacheHelper.cachedData[SharedPrefKeys.getCity.key],
                       validationMessage: "City must not be empty",
                       prefixIcon: const Icon(
                         IonIcons.map,
@@ -118,7 +125,9 @@ class _MyAddressScreenState extends State<MyAddressScreen> {
                     dropDownRow(
                         context: context,
                         hintText: Text(
-                          selectedCountry ?? "Country",
+                          selectedCountry ??
+                              CacheHelper
+                                  .cachedData[SharedPrefKeys.getCountry.key],
                           style: CustomTextStyle.semiBold14.responsive(context),
                         ),
                         iconName: IonIcons.globe,
@@ -142,7 +151,26 @@ class _MyAddressScreenState extends State<MyAddressScreen> {
               child: Center(
                 child: DefaultGreenButton(
                     text: "Add Address",
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(() {
+                        addressController.text != ''
+                            ? CacheHelper.setData(SharedPrefKeys.getAddress.key,
+                                addressController.text)
+                            : null;
+                        zipCodeController.text != ''
+                            ? CacheHelper.setData(SharedPrefKeys.getZipCode.key,
+                                zipCodeController.text)
+                            : null;
+                        cityController.text != ''
+                            ? CacheHelper.setData(
+                                SharedPrefKeys.getCity.key, cityController.text)
+                            : null;
+                        countryController.text != ''
+                            ? CacheHelper.setData(SharedPrefKeys.getCountry.key,
+                                countryController.text)
+                            : null;
+                      });
+                    },
                     horizontalPadding: 20,
                     verticalPadding: 14,
                     textSize: 16),

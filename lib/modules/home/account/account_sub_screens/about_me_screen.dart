@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:icons_plus/icons_plus.dart';
 import 'package:zero_waste_app/modules/home/account/account_widgets/account_form_field.dart';
+import 'package:zero_waste_app/shared/data/local/cache_helper.dart';
+import 'package:zero_waste_app/shared/data/local/shared_pref_keys_enum.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
@@ -49,6 +51,8 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
     return Scaffold(
       appBar: defaultAppBar(
         context: context,
+        appBarColor: Colors.white,
+        appBarHeight: 25,
         centerTitle: true,
         title: Text(
           "About me",
@@ -77,7 +81,8 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
                       controller: nameController,
                       keyboardType: TextInputType.name,
                       text_input_action: TextInputAction.next,
-                      hintText: "Name",
+                      hintText:
+                          CacheHelper.cachedData[SharedPrefKeys.getName.key],
                       validationMessage: "Name must not be empty",
                       prefixIcon: const Icon(
                         LineAwesome.user_circle_solid,
@@ -89,7 +94,8 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
                       controller: emailController,
                       keyboardType: TextInputType.emailAddress,
                       text_input_action: TextInputAction.next,
-                      hintText: "omaradam9888@gmail.com",
+                      hintText:
+                          CacheHelper.cachedData[SharedPrefKeys.getEmail.key],
                       validationMessage: "Email must not be empty",
                       prefixIcon: const Icon(
                         IonIcons.mail,
@@ -101,7 +107,8 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
                       controller: phoneController,
                       keyboardType: TextInputType.phone,
                       text_input_action: TextInputAction.next,
-                      hintText: "+20 1210 199 141",
+                      hintText:
+                          CacheHelper.cachedData[SharedPrefKeys.getPhone.key],
                       validationMessage: "Phone must not be empty",
                       prefixIcon: const Icon(
                         LineAwesome.phone_solid,
@@ -145,7 +152,7 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
                       keyboardType: TextInputType.visiblePassword,
                       text_input_action: TextInputAction.next,
                       hintText: "Password",
-                      obscureText: true,
+                      obscureText: obscureText,
                       validationMessage: "Password must not be empty",
                       prefixIcon: const Padding(
                         padding: EdgeInsets.only(bottom: 5.0),
@@ -193,7 +200,22 @@ class _AboutMeScreenState extends State<AboutMeScreen> {
                 child: Center(
                   child: DefaultGreenButton(
                       text: "Save Settings",
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          nameController.text != ''
+                              ? CacheHelper.setData(SharedPrefKeys.getName.key,
+                                  nameController.text)
+                              : null;
+                          emailController.text != ''
+                              ? CacheHelper.setData(SharedPrefKeys.getEmail.key,
+                                  emailController.text)
+                              : null;
+                          phoneController.text != ''
+                              ? CacheHelper.setData(SharedPrefKeys.getPhone.key,
+                                  phoneController.text)
+                              : null;
+                        });
+                      },
                       horizontalPadding: 20,
                       verticalPadding: 14,
                       textSize: 16),

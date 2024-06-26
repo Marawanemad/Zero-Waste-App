@@ -11,6 +11,7 @@ import 'package:zero_waste_app/modules/authentication/register/cubit/register_cu
 import 'package:zero_waste_app/modules/authentication/register/cubit/register_state.dart';
 import 'package:zero_waste_app/modules/home/home_screen/home_screen.dart';
 import 'package:zero_waste_app/shared/data/local/cache_helper.dart';
+import 'package:zero_waste_app/shared/data/local/shared_pref_keys_enum.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/responsive_scroll_screen.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
@@ -37,7 +38,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   var passwordController = TextEditingController();
 
   var confirmPasswordController = TextEditingController();
-  bool showErrorIcon = false;
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +71,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
           // }
         },
         builder: (BuildContext context, RegisterState state) {
+          var cubit = RegisterCubit.get(context);
           return PopScope(
             canPop: false,
             onPopInvoked: (didPop) {
@@ -94,7 +95,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         children: [
                           AuthFormField(
                             controller: nameController,
-                            showErrorIcon: showErrorIcon,
+                            showErrorIcon: cubit.showErrorIcon,
                             keyboardType: TextInputType.name,
                             text_input_action: TextInputAction.next,
                             hintText: "Name",
@@ -102,7 +103,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           AuthFormField(
                             controller: emailController,
-                            showErrorIcon: showErrorIcon,
+                            showErrorIcon: cubit.showErrorIcon,
                             keyboardType: TextInputType.emailAddress,
                             text_input_action: TextInputAction.next,
                             hintText: "Email",
@@ -110,7 +111,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           AuthFormField(
                             controller: phoneController,
-                            showErrorIcon: showErrorIcon,
+                            showErrorIcon: cubit.showErrorIcon,
                             keyboardType: TextInputType.phone,
                             text_input_action: TextInputAction.next,
                             hintText: "Phone",
@@ -118,7 +119,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           AuthFormField(
                             controller: passwordController,
-                            showErrorIcon: showErrorIcon,
+                            showErrorIcon: cubit.showErrorIcon,
                             obscureText: true,
                             keyboardType: TextInputType.visiblePassword,
                             text_input_action: TextInputAction.next,
@@ -127,7 +128,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           ),
                           AuthFormField(
                             controller: confirmPasswordController,
-                            showErrorIcon: showErrorIcon,
+                            showErrorIcon: cubit.showErrorIcon,
                             obscureText: true,
                             keyboardType: TextInputType.visiblePassword,
                             text_input_action: TextInputAction.done,
@@ -146,22 +147,41 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           textSize: 22,
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
-                              setState(() {
-                                showErrorIcon = false;
-                              });
-                              RegisterCubit.get(context).userRegister(
-                                  name: nameController.text,
-                                  phone: phoneController.text,
-                                  email: emailController.text,
-                                  password: passwordController.text);
+                              cubit.changeErrorIconFlag();
+                              if (confirmPasswordController.text ==
+                                  passwordController.text) {
+                                registerDialog(
+                                  context: context,
+                                  onPressed: () {
+                                    navigateAndFinish(
+                                        context: context,
+                                        pageScreen: const HomeScreen());
+                                    CacheHelper.setData(
+                                        SharedPrefKeys.userToken.key,
+                                        "token given");
+                                  },
+                                );
+                              } else {
+                                setState(() {
+                                  ShowToast(
+                                      msg:
+                                          "Confirm Password and Password not the same",
+                                      colorState: ToastState.error,
+                                      toastTimeLength: ToastLengthTime.long);
+                                });
+                              }
+
+                              // RegisterCubit.get(context).userRegister(
+                              //     name: nameController.text,
+                              //     phone: phoneController.text,
+                              //     email: emailController.text,
+                              //     password: passwordController.text);
                             } else {
-                              setState(() {
-                                showErrorIcon = true;
-                                ShowToast(
-                                    msg: "Text form field must not be empty",
-                                    colorState: ToastState.error,
-                                    toastTimeLength: ToastLengthTime.long);
-                              });
+                              cubit.changeErrorIconFlag();
+                              ShowToast(
+                                  msg: "Text form field must not be empty",
+                                  colorState: ToastState.error,
+                                  toastTimeLength: ToastLengthTime.long);
                             }
                           },
                           text: "Create Account"),

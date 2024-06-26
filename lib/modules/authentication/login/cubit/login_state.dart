@@ -4,6 +4,8 @@ abstract class LoginState {}
 
 class LoginInitialState extends LoginState {}
 
+class ShowErrorIconFlagState extends LoginState {}
+
 class LoginLoadingState extends LoginState {}
 
 class LoginSuccessState extends LoginState {
@@ -15,16 +17,4 @@ class LoginSuccessState extends LoginState {
 class LoginErrorState extends LoginState {
   final String error;
   LoginErrorState(this.error);
-}
-
-class HomeLoadingStates extends LoginState {}
-
-class GetHomeDataSuccessStates extends LoginState {
-// make it take parameter to listen on it in blocConsumer
-  GetHomeDataSuccessStates();
-}
-
-class GetHomeDataErrorStates extends LoginState {
-  final String error;
-  GetHomeDataErrorStates(this.error);
 }

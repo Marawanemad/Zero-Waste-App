@@ -11,6 +11,7 @@ import 'package:zero_waste_app/modules/authentication/login/cubit/login_state.da
 import 'package:zero_waste_app/modules/authentication/login/forget_password.dart';
 import 'package:zero_waste_app/modules/home/home_screen/home_screen.dart';
 import 'package:zero_waste_app/shared/data/local/cache_helper.dart';
+import 'package:zero_waste_app/shared/data/local/shared_pref_keys_enum.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/responsive_scroll_screen.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
 import 'package:zero_waste_app/shared/themes/font_styles.dart';
@@ -32,7 +33,6 @@ class _LoginScreenState extends State<LoginScreen> {
   var emailController = TextEditingController();
 
   var passwordController = TextEditingController();
-  bool showErrorIcon = false;
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
           // }
         },
         builder: (BuildContext context, LoginState state) {
+          var cubit = LoginCubit.get(context);
           return PopScope(
             canPop: false,
             onPopInvoked: (didPop) => navigateAndFinish(
@@ -93,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         children: [
                           AuthFormField(
                             controller: emailController,
-                            showErrorIcon: showErrorIcon,
+                            showErrorIcon: cubit.showErrorIcon,
                             keyboardType: TextInputType.emailAddress,
                             text_input_action: TextInputAction.next,
                             hintText: "Username, Email",
@@ -102,7 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           const SizedBox(height: 10),
                           AuthFormField(
                             controller: passwordController,
-                            showErrorIcon: showErrorIcon,
+                            showErrorIcon: cubit.showErrorIcon,
                             obscureText: true,
                             keyboardType: TextInputType.visiblePassword,
                             text_input_action: TextInputAction.done,
@@ -142,23 +143,21 @@ class _LoginScreenState extends State<LoginScreen> {
                           textSize: 22,
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
-                              setState(() {
-                                showErrorIcon = false;
-                                navigateAndFinish(
-                                    context: context,
-                                    pageScreen: const HomeScreen());
-                              });
+                              cubit.changeErrorIconFlag();
+                              CacheHelper.setData(
+                                  SharedPrefKeys.userToken.key, "token given");
+                              navigateAndFinish(
+                                  context: context,
+                                  pageScreen: const HomeScreen());
                               // LoginCubit.get(context).userLogin(
                               //     email: emailController.text,
                               //     password: passwordController.text);
                             } else {
-                              setState(() {
-                                showErrorIcon = true;
-                                ShowToast(
-                                    msg: "Text form field must not be empty",
-                                    colorState: ToastState.error,
-                                    toastTimeLength: ToastLengthTime.long);
-                              });
+                              cubit.changeErrorIconFlag();
+                              ShowToast(
+                                  msg: "Text form field must not be empty",
+                                  colorState: ToastState.error,
+                                  toastTimeLength: ToastLengthTime.long);
                             }
                           },
                           text: "Sign in"),

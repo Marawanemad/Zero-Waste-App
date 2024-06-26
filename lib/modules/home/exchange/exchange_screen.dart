@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:zero_waste_app/modules/home/exchange/exchange_widget.dart/exchange_dialog.dart';
 import 'package:zero_waste_app/modules/home/exchange/exchange_widget.dart/exchange_money_row.dart';
 import 'package:zero_waste_app/shared/assets.dart';
+import 'package:zero_waste_app/shared/data/local/cache_helper.dart';
+import 'package:zero_waste_app/shared/data/local/shared_pref_keys_enum.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/context_width_extension.dart';
 import 'package:zero_waste_app/shared/helpers/responsive/responsive_scroll_screen.dart';
 import 'package:zero_waste_app/shared/themes/colors.dart';
@@ -57,7 +59,9 @@ class _ExchangeScreenState extends State<ExchangeScreen> {
                           .copyWith(fontSize: 32, color: Colors.white)
                           .responsive(context)),
                   TextSpan(
-                    text: "1719 Points",
+                    text: CacheHelper
+                        .cachedData[SharedPrefKeys.getPointsValue.key]
+                        .toString(),
                     style: CustomTextStyle.semiBold20.copyWith(
                       color: Colors.white,
                       shadows: [
