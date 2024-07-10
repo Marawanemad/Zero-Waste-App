@@ -21,8 +21,8 @@ discord bot test
     <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/bbdb3a51-147f-4c15-a9c6-db5deb0b877b"></td>
     <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/731f3c77-6f54-4144-af2b-6906a42205ba"></td>
     <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/36d82df0-073d-4587-89c3-2a9d915f4062"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/95cbf847-8617-4a4c-a6c7-e8aa86e82d26"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/a6d8df9b-283f-4366-b361-849287998b0b"></td>
+    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/d913079e-1261-4ac6-a9c0-91382862ebb2"></td>
+    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/ef01b34b-bf68-42e8-99cd-773ea5eeabc2"></td>
     <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/8422a266-eb06-4a30-b5d8-d5ffb4915536"></td>
 
   </tr>
@@ -44,7 +44,7 @@ discord bot test
     <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/85a3b16c-c474-4f0c-bea1-0cd368feb43e"></td>
     <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/05baf817-df42-4215-9bb6-13532c938354"></td>
     <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/ddbab1db-07ce-4feb-b8ac-84413f31df06"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/b365ab2a-112e-48b2-867f-daa8ff5a442e"></td>
+    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/7d3d3200-d350-4940-9513-fd65ddcb835c"></td>
     <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/93723f19-af86-4617-b024-5948ffec02b1"></td>
     <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/0477a379-ca0a-401f-a432-46297dcec824"></td>
   </tr>
