@@ -9,8 +9,7 @@
   earn points by weight, and exchange them for cash.
 </p>
 
-> Graduation project. The UI is complete, but part of the data is hard-coded and the
-> backend is external. See [Project status](#project-status) before relying on anything.
+
 
 ## How it works
 
@@ -104,22 +103,6 @@
   </tr>
 </table>
 
-## Getting started
-
-**Requirements:** Flutter with Dart SDK `>=3.1.3 <4.0.0`, and an Android/iOS device or emulator.
-
-```bash
-git clone https://github.com/Marawanemad/Zero-Waste-App.git
-cd Zero-Waste-App
-flutter pub get
-flutter run
-```
-
-Optional: regenerate the launcher icon after changing `assets/images/app.png`:
-
-```bash
-dart run flutter_launcher_icons
-```
 
 ### Startup flow
 
@@ -160,35 +143,3 @@ assets/
 docs/screenshots/             README screenshots
 ```
 
-## Tech stack
-
-| Purpose          | Package                                    |
-| ---------------- | ------------------------------------------ |
-| State management | `flutter_bloc` (Cubit)                     |
-| Networking       | `dio`                                      |
-| Local storage    | `shared_preferences`                       |
-| Charts           | `fl_chart`                                 |
-| QR code          | `qr_flutter`                               |
-| Opening maps     | `url_launcher`                             |
-| UI helpers       | `flutter_svg`, `smooth_page_indicator`, `carousel_slider`, `fluttertoast`, `icons_plus`, `device_preview` |
-| Media            | `image_picker`                             |
-
-## Project status
-
-What is real and what is not, so you don't waste time:
-
-- **Backend:** login and register call `http://zerowaste.byethost7.com/api/` (`signIn`, `signUp`),
-  set in [dio_helper.dart](lib/shared/data/online/dio_helper.dart). That is an external free host
-  and may be offline. The base URL is plain HTTP.
-- **Hard-coded data:** exchange packages, the saved card (`8790`), the income figure and
-  chart values are static sample data in the UI code, not loaded from an API.
-- **Not wired up:** the "Sign in with Google / Facebook" buttons have empty handlers.
-  The QR screen displays a code; it does not scan anything.
-- **Bins map:** "Bins Locations" opens a fixed Google Maps URL (Alexandria, Egypt) in an
-  external app rather than showing live bin data.
-- **Tests:** there is no `test/` directory.
-
-## Credits
-
-Illustrations and 3D icons are bundled in `assets/`. Check their original licenses before any
-commercial use.
