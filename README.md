@@ -1,63 +1,194 @@
-# Zero Waste App
+<p align="center">
+  <img src="assets/images/app.png" alt="Zero Waste logo" width="280">
+</p>
 
-A new Flutter graduation project.
-discord bot test
+<h1 align="center">Zero Waste</h1>
 
-## Application Screens
+<p align="center">
+  A Flutter app that pays people to recycle. Drop off plastic, metal, paper or glass,
+  earn points by weight, and exchange them for cash.
+</p>
 
-<table>
-  <tr>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/9f68c9c2-6d7d-4fe2-998f-5dd3d0fea12f"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/68df6d15-8798-4deb-b8dc-26bd6c27f4d3"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/97ffca4e-1919-480c-bcf8-41c752d0b3f1"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/5b0017f4-e787-42df-9734-1c26a61ba4f1"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/6717fa90-64b0-4d39-87ea-a8b8c6ee8672"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/72fbfe39-8615-4811-af40-fbb61112dbea"></td>
-  </tr>
-</table>
+> Graduation project. The UI is complete, but part of the data is hard-coded and the
+> backend is external. See [Project status](#project-status) before relying on anything.
 
-<table>
-  <tr>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/bbdb3a51-147f-4c15-a9c6-db5deb0b877b"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/731f3c77-6f54-4144-af2b-6906a42205ba"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/36d82df0-073d-4587-89c3-2a9d915f4062"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/d913079e-1261-4ac6-a9c0-91382862ebb2"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/ef01b34b-bf68-42e8-99cd-773ea5eeabc2"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/8422a266-eb06-4a30-b5d8-d5ffb4915536"></td>
+## How it works
 
-  </tr>
-</table>
+1. **Sign up** and go through a 3-page onboarding.
+2. **Find a bin.** "Bins Locations" on the home screen opens Google Maps.
+3. **Recycle.** Show your QR code at the bin.
+4. **Earn points** by material and weight (shown in the in-app *Points Info* dialog):
 
-<table>
-  <tr>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/799a8906-0585-46f2-8b5b-62505ad6e3b8"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/6e18cc09-1e71-43f2-8833-e88fcbb7959e"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/865da50c-4674-402b-b58f-661efab41ff4"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/f4a82dfb-50ef-434a-8277-0315baba533b"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/70dfea11-fe21-4b2c-b9f9-b5f18eecfc4c"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/93602a0b-2e93-419f-8814-a10cde5c8a86"></td>
-  </tr>
-</table>
+   | Material | Rate               |
+   | -------- | ------------------ |
+   | Plastic  | 300 g = 50 points  |
+   | Metal    | 100 g = 50 points  |
+   | Paper    | 500 g = 50 points  |
+   | Glass    | 1000 g = 50 points |
+
+5. **Exchange points for money.** The packages are 100 points = 20 EGP, 500 = 110 EGP,
+   1000 = 230 EGP and 2000 = 480 EGP. Payout goes to a debit card or a mobile wallet
+   (Vodafone Cash, Etisalat, WE, Orange Money, InstaPay).
+6. **Track progress** in the Statistics screen: visits, income, waste by material, and points.
+
+## Screenshots
+
+### Onboarding and authentication
 
 <table>
   <tr>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/85a3b16c-c474-4f0c-bea1-0cd368feb43e"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/05baf817-df42-4215-9bb6-13532c938354"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/ddbab1db-07ce-4feb-b8ac-84413f31df06"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/7d3d3200-d350-4940-9513-fd65ddcb835c"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/93723f19-af86-4617-b024-5948ffec02b1"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/0477a379-ca0a-401f-a432-46297dcec824"></td>
+    <td align="center"><img src="docs/screenshots/07-onboarding-recycle.png" width="170"><br><sub>Onboarding: recycle</sub></td>
+    <td align="center"><img src="docs/screenshots/08-onboarding-earn.png" width="170"><br><sub>Onboarding: earn</sub></td>
+    <td align="center"><img src="docs/screenshots/09-onboarding-start.png" width="170"><br><sub>Onboarding: start</sub></td>
+    <td align="center"><img src="docs/screenshots/01-auth-welcome.png" width="170"><br><sub>Sign in / Register</sub></td>
+    <td align="center"><img src="docs/screenshots/04-login.png" width="170"><br><sub>Login</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/screenshots/02-register.png" width="170"><br><sub>Register</sub></td>
+    <td align="center"><img src="docs/screenshots/03-register-success.png" width="170"><br><sub>Sign-up success</sub></td>
+    <td align="center"><img src="docs/screenshots/05-reset-password-otp.png" width="170"><br><sub>Reset: email + OTP</sub></td>
+    <td align="center"><img src="docs/screenshots/06-reset-password-new.png" width="170"><br><sub>Reset: new password</sub></td>
+    <td></td>
   </tr>
 </table>
+
+### Home, bins and QR
 
 <table>
   <tr>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/34420d95-129e-4f8f-ba9f-38242336ca1b"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/7e22fe19-bb81-483b-8940-5256f6af46bb"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/74f5c151-93fd-46c1-b823-d8ea471c6a76"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/b4fe703b-293c-47d6-a771-83a18b0a09b5"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/091ed0c6-37a7-4db0-818b-1d45bb597d72"></td>
-    <td align="center"><img width=100% src="https://github.com/Marawanemad/Zero-Waste-App/assets/88719313/b467f2df-d146-4a3a-82a2-5546a1f51328"></td>
+    <td align="center"><img src="docs/screenshots/10-home.png" width="170"><br><sub>Home: materials grid</sub></td>
+    <td align="center"><img src="docs/screenshots/11-home-congrats.png" width="170"><br><sub>Points earned</sub></td>
+    <td align="center"><img src="docs/screenshots/12-home-points-info.png" width="170"><br><sub>Points rates</sub></td>
+    <td align="center"><img src="docs/screenshots/13-bins-map.png" width="170"><br><sub>Bins map (Google Maps)</sub></td>
+    <td align="center"><img src="docs/screenshots/14-qr-code.png" width="170"><br><sub>Your QR code</sub></td>
   </tr>
 </table>
 
+### Exchange and payment
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/screenshots/15-exchange.png" width="170"><br><sub>Choose a package</sub></td>
+    <td align="center"><img src="docs/screenshots/16-exchange-payment-method.png" width="170"><br><sub>Card or wallet</sub></td>
+    <td align="center"><img src="docs/screenshots/17-debit-card.png" width="170"><br><sub>Debit cards</sub></td>
+    <td align="center"><img src="docs/screenshots/18-wallets.png" width="170"><br><sub>Mobile wallets</sub></td>
+  </tr>
+  <tr>
+    <td align="center"><img src="docs/screenshots/19-validation-wait.png" width="170"><br><sub>Validating</sub></td>
+    <td align="center"><img src="docs/screenshots/20-validation-failure.png" width="170"><br><sub>Failure</sub></td>
+    <td align="center"><img src="docs/screenshots/21-validation-success.png" width="170"><br><sub>Success</sub></td>
+    <td></td>
+  </tr>
+</table>
+
+### Account
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/screenshots/22-account.png" width="170"><br><sub>Account menu</sub></td>
+    <td align="center"><img src="docs/screenshots/23-about-me.png" width="170"><br><sub>Profile + password</sub></td>
+    <td align="center"><img src="docs/screenshots/24-address.png" width="170"><br><sub>Address</sub></td>
+    <td align="center"><img src="docs/screenshots/25-transactions.png" width="170"><br><sub>Transactions</sub></td>
+  </tr>
+</table>
+
+### Statistics
+
+<table>
+  <tr>
+    <td align="center"><img src="docs/screenshots/26-stats-visits.png" width="170"><br><sub>Visits (bar)</sub></td>
+    <td align="center"><img src="docs/screenshots/27-stats-income.png" width="170"><br><sub>Income (line)</sub></td>
+    <td align="center"><img src="docs/screenshots/28-stats-waste-tracker.png" width="170"><br><sub>Waste tracker (pie)</sub></td>
+    <td align="center"><img src="docs/screenshots/29-stats-points.png" width="170"><br><sub>Points, monthly</sub></td>
+    <td align="center"><img src="docs/screenshots/30-stats-points-yearly.png" width="170"><br><sub>Points, yearly</sub></td>
+  </tr>
+</table>
+
+## Getting started
+
+**Requirements:** Flutter with Dart SDK `>=3.1.3 <4.0.0`, and an Android/iOS device or emulator.
+
+```bash
+git clone https://github.com/Marawanemad/Zero-Waste-App.git
+cd Zero-Waste-App
+flutter pub get
+flutter run
+```
+
+Optional: regenerate the launcher icon after changing `assets/images/app.png`:
+
+```bash
+dart run flutter_launcher_icons
+```
+
+### Startup flow
+
+[lib/main.dart](lib/main.dart) picks the first screen from local storage, then shows a splash screen:
+
+- Onboarding flag set → onboarding
+- Otherwise, no saved user token → auth screen
+- Otherwise → home
+
+## Project structure
+
+```
+lib/
+├── main.dart                 App entry point and start-screen logic
+├── bloc_observer.dart        Logs Bloc/Cubit state changes
+├── models/                   Login, register and onboarding models
+├── modules/                  One folder per feature, each with its own cubit
+│   ├── authentication/       Login, register, forgot/reset password
+│   ├── onboarding/
+│   ├── splash_screen.dart
+│   └── home/
+│       ├── home_screen/      Materials grid, points, bottom nav
+│       ├── qr_code/          QR display
+│       ├── exchange/         Points → money packages
+│       ├── statistics/       fl_chart bar, line, pie charts
+│       └── account/          Profile, address, cards, wallets, transactions
+└── shared/
+    ├── data/local/           SharedPreferences wrapper (CacheHelper)
+    ├── data/online/          Dio client (DioHelper)
+    ├── themes/               Colors and text styles (Outfit font)
+    ├── widgets/              Reusable buttons, fields, toasts
+    └── assets.dart           Generated asset path constants
+assets/
+├── images/home/{plastics,metal,paper,glass}/   Item illustrations
+├── images/home/profile/                        Payment logos, status art
+├── icons/                                      SVG icons
+└── fonts/Outfit/
+docs/screenshots/             README screenshots
+```
+
+## Tech stack
+
+| Purpose          | Package                                    |
+| ---------------- | ------------------------------------------ |
+| State management | `flutter_bloc` (Cubit)                     |
+| Networking       | `dio`                                      |
+| Local storage    | `shared_preferences`                       |
+| Charts           | `fl_chart`                                 |
+| QR code          | `qr_flutter`                               |
+| Opening maps     | `url_launcher`                             |
+| UI helpers       | `flutter_svg`, `smooth_page_indicator`, `carousel_slider`, `fluttertoast`, `icons_plus`, `device_preview` |
+| Media            | `image_picker`                             |
+
+## Project status
+
+What is real and what is not, so you don't waste time:
+
+- **Backend:** login and register call `http://zerowaste.byethost7.com/api/` (`signIn`, `signUp`),
+  set in [dio_helper.dart](lib/shared/data/online/dio_helper.dart). That is an external free host
+  and may be offline. The base URL is plain HTTP.
+- **Hard-coded data:** exchange packages, the saved card (`8790`), the income figure and
+  chart values are static sample data in the UI code, not loaded from an API.
+- **Not wired up:** the "Sign in with Google / Facebook" buttons have empty handlers.
+  The QR screen displays a code; it does not scan anything.
+- **Bins map:** "Bins Locations" opens a fixed Google Maps URL (Alexandria, Egypt) in an
+  external app rather than showing live bin data.
+- **Tests:** there is no `test/` directory.
+
+## Credits
+
+Illustrations and 3D icons are bundled in `assets/`. Check their original licenses before any
+commercial use.
